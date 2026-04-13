@@ -1,0 +1,26 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+websockets==13.0
+python-dotenv==1.0.1
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# AI / LLM
+crewai==0.67.1
+crewai-tools==0.12.1
+groq==0.11.0
+google-generativeai==0.8.3
+
+# Search & Data
+tavily-python==0.5.0
+httpx==0.27.2
+
+# Database
+supabase==2.9.1
+chromadb==0.5.18
+
+# Utils
+python-multipart==0.0.12
+aiofiles==24.1.0
+reportlab==4.2.4
+Pillow==10.4.0
