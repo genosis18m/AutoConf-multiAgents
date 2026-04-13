@@ -1,0 +1,43 @@
+export const API_BASE = '/api'
+export const WS_BASE = (sessionId: string) => `ws://localhost:8000/ws/${sessionId}`
+
+export const AGENT_LABELS: Record<string, string> = {
+  sponsor: 'Sponsor Research',
+  speaker: 'Speaker Curation',
+  ticketing: 'Ticketing Strategy',
+  venue: 'Venue Selection',
+  pricing: 'Pricing & Footfall',
+  gtm: 'GTM & Comms',
+  ops: 'Ops & Logistics',
+}
+
+export const AGENT_ICONS: Record<string, string> = {
+  sponsor: '💰',
+  speaker: '🎤',
+  ticketing: '🎫',
+  venue: '🏛️',
+  pricing: '📊',
+  gtm: '📣',
+  ops: '⚙️',
+}
+
+export const AGENT_PHASES: Record<string, number> = {
+  sponsor: 1,
+  speaker: 1,
+  ticketing: 1,
+  venue: 1,
+  pricing: 2,
+  gtm: 3,
+  ops: 4,
+}
+
+export const CONFERENCE_CATEGORIES = [
+  { id: 'AI', label: 'Artificial Intelligence', icon: '🤖', desc: 'ML, LLMs, AI agents' },
+  { id: 'Web3', label: 'Web3 & Blockchain', icon: '⛓️', desc: 'DeFi, NFTs, crypto' },
+  { id: 'SaaS', label: 'SaaS & Cloud', icon: '☁️', desc: 'B2B software, cloud' },
+  { id: 'Fintech', label: 'Fintech', icon: '💳', desc: 'Payments, banking, crypto' },
+  { id: 'DevTools', label: 'Developer Tools', icon: '🛠️', desc: 'Dev productivity' },
+  { id: 'Design', label: 'Design & UX', icon: '🎨', desc: 'Product design, UX research' },
+  { id: 'Cybersecurity', label: 'Cybersecurity', icon: '🔐', desc: 'InfoSec, privacy' },
+  { id: 'Gaming', label: 'Gaming & Esports', icon: '🎮', desc: 'Game dev, esports' },
+]
