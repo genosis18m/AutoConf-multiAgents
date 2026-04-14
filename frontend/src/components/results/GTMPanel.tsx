@@ -148,12 +148,14 @@ function TabBar({
     <div
       style={{
         display: 'flex',
-        gap: 6,
+        gap: 8,
         flexWrap: 'wrap',
-        background: 'var(--bg-surface)',
+        background: 'rgba(10, 10, 15, 0.4)',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 12,
-        padding: 6,
+        borderRadius: 16,
+        padding: 8,
+        position: 'relative',
+        boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.2)',
       }}
     >
       {channels.map((ch, i) => {
@@ -166,20 +168,32 @@ function TabBar({
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 7,
-              padding: '7px 14px',
-              borderRadius: 8,
-              fontSize: 13,
-              fontWeight: isActive ? 700 : 500,
-              border: isActive ? `1px solid ${meta.border}` : '1px solid transparent',
+              gap: 8,
+              padding: '10px 20px',
+              borderRadius: 12,
+              fontSize: 14,
+              fontWeight: isActive ? 600 : 500,
               background: isActive ? meta.bg : 'transparent',
-              color: isActive ? meta.accent : 'var(--text-secondary)',
+              color: isActive ? '#fff' : 'var(--text-secondary)',
               cursor: 'pointer',
-              transition: 'all 150ms ease',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              border: isActive ? `1px solid ${meta.border}` : '1px solid transparent',
+              boxShadow: isActive ? `0 4px 12px ${meta.bg.replace('0.08', '0.15').replace('0.1', '0.2')}` : 'none',
+              transform: isActive ? 'scale(1.02)' : 'scale(1)',
               whiteSpace: 'nowrap',
             }}
           >
-            <span style={{ color: isActive ? meta.accent : 'var(--text-dim)' }}>{meta.icon}</span>
+            <span
+              style={{
+                color: isActive ? meta.accent : 'var(--text-dim)',
+                transition: 'color 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                filter: isActive ? `drop-shadow(0 0 8px ${meta.accent})` : 'none',
+              }}
+            >
+              {meta.icon}
+            </span>
             {meta.label}
           </button>
         )
@@ -193,103 +207,120 @@ function ChannelDetail({ channel }: { channel: GTMChannel }) {
   const meta = getChannelMeta(channel.channel)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 18, animation: 'slide-in-right 0.25s ease forwards' }}>
-      {/* Strategy */}
-      <GlassCard hover={false}>
+    <div 
+      key={channel.channel} /* helps with animation when switching */
+      style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: 20, 
+        animation: 'slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards' 
+      }}
+    >
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+        {/* Strategy */}
         <div
           style={{
-            fontSize: 11,
-            fontWeight: 700,
-            color: meta.accent,
-            textTransform: 'uppercase',
-            letterSpacing: '0.08em',
-            marginBottom: 8,
+            background: 'linear-gradient(145deg, rgba(30, 35, 45, 0.4) 0%, rgba(20, 25, 30, 0.6) 100%)',
+            border: '1px solid var(--border-subtle)',
+            borderRadius: 16,
+            padding: 24,
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          Strategy
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: 2,
+            background: `linear-gradient(90deg, transparent, ${meta.accent}, transparent)`,
+            opacity: 0.5
+          }} />
+          <div style={{ fontSize: 13, fontWeight: 700, color: meta.accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Strategy
+          </div>
+          <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--text-secondary)', margin: 0 }}>
+            {channel.strategy}
+          </p>
         </div>
-        <p style={{ fontSize: 13, lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
-          {channel.strategy}
-        </p>
-      </GlassCard>
+
+        {/* Target Communities */}
+        {channel.target_communities?.length > 0 && (
+          <div
+            style={{
+              background: 'linear-gradient(145deg, rgba(30, 35, 45, 0.4) 0%, rgba(20, 25, 30, 0.6) 100%)',
+              border: '1px solid var(--border-subtle)',
+              borderRadius: 16,
+              padding: 24,
+            }}
+          >
+            <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+              Target Communities
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+              {channel.target_communities.map((c, i) => (
+                <span
+                  key={i}
+                  style={{
+                    padding: '6px 14px',
+                    borderRadius: 99,
+                    fontSize: 13,
+                    fontWeight: 500,
+                    background: meta.bg,
+                    color: meta.accent,
+                    border: `1px solid ${meta.border}`,
+                    boxShadow: `0 2px 8px ${meta.bg}`,
+                  }}
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Message Template */}
-      <GlassCard hover={false}>
+      <GlassCard hover={false} style={{ padding: 0, overflow: 'hidden' }}>
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: 12,
+            padding: '16px 24px',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+            background: 'rgba(255, 255, 255, 0.02)',
           }}
         >
-          <div
-            style={{
-              fontSize: 11,
-              fontWeight: 700,
-              color: meta.accent,
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-            }}
-          >
-            Message Template
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{
+              width: 32, height: 32, borderRadius: 8, background: meta.bg, border: `1px solid ${meta.border}`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', color: meta.accent
+            }}>
+              {meta.icon}
+            </div>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: '#fff' }}>Message Template</div>
+              <div style={{ fontSize: 12, color: 'var(--text-dim)' }}>Ready to copy & paste</div>
+            </div>
           </div>
           <CopyButton text={channel.message_template} />
         </div>
-        <pre
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 12,
-            lineHeight: 1.75,
-            color: 'var(--text-primary)',
-            background: 'rgba(0,0,0,0.35)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: 8,
-            padding: '14px 16px',
-            whiteSpace: 'pre-wrap',
-            wordBreak: 'break-word',
-            margin: 0,
-          }}
-        >
-          {channel.message_template}
-        </pre>
-      </GlassCard>
-
-      {/* Target Communities */}
-      {channel.target_communities?.length > 0 && (
-        <div>
-          <div
+        <div style={{ padding: 24, background: 'rgba(0, 0, 0, 0.2)' }}>
+          <pre
             style={{
-              fontSize: 11,
-              fontWeight: 700,
-              color: 'var(--text-secondary)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              marginBottom: 10,
+              fontFamily: 'var(--font-mono)',
+              fontSize: 14,
+              lineHeight: 1.7,
+              color: 'var(--text-primary)',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
+              margin: 0,
             }}
           >
-            Target Communities
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-            {channel.target_communities.map((c, i) => (
-              <span
-                key={i}
-                style={{
-                  padding: '4px 12px',
-                  borderRadius: 99,
-                  fontSize: 12,
-                  fontWeight: 500,
-                  background: meta.bg,
-                  color: meta.accent,
-                  border: `1px solid ${meta.border}`,
-                }}
-              >
-                {c}
-              </span>
-            ))}
-          </div>
+            {channel.message_template}
+          </pre>
         </div>
-      )}
+      </GlassCard>
     </div>
   )
 }
@@ -393,15 +424,31 @@ function EmptyState() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '64px 24px',
+        padding: '100px 24px',
         color: 'var(--text-dim)',
-        gap: 12,
+        gap: 20,
+        background: 'var(--bg-glass)',
+        border: '1px solid var(--border-subtle)',
+        borderRadius: 24,
       }}
     >
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.27-.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16h1l.92.92z" />
-      </svg>
-      <span style={{ fontSize: 14 }}>GTM strategy will appear here once the agent completes.</span>
+      <div style={{
+        width: 80, height: 80, borderRadius: '50%', background: 'rgba(255, 69, 0, 0.05)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        border: '1px solid rgba(255, 69, 0, 0.1)'
+      }}>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF4500" strokeWidth="1.5">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.27-.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16h1l.92.92z" />
+        </svg>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--text-primary)', marginBottom: 8 }}>
+          Awaiting GTM Strategy
+        </div>
+        <div style={{ fontSize: 14, color: 'var(--text-secondary)', maxWidth: 300 }}>
+          The GTM agent is formulating the perfect outreach channels and message templates...
+        </div>
+      </div>
     </div>
   )
 }
@@ -419,14 +466,14 @@ export function GTMPanel() {
   const activeChannel = channels[activeTab] ?? channels[0]
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
       {/* Header */}
       <div>
-        <h2 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontSize: 28, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: 12 }}>
           Go-to-Market Strategy
         </h2>
-        <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginTop: 4 }}>
-          Multi-channel outreach templates and campaign timeline
+        <p style={{ fontSize: 15, color: 'var(--text-secondary)', marginTop: 8, maxWidth: 600, lineHeight: 1.5 }}>
+          Your master plan for audience generation. This multi-channel approach is tailored to capture target attendees across all relevant platforms.
         </p>
       </div>
 
@@ -435,32 +482,41 @@ export function GTMPanel() {
         <div
           style={{
             display: 'flex',
-            gap: 8,
-            flexWrap: 'wrap',
-            padding: '12px 16px',
-            background: 'rgba(0,229,255,0.04)',
-            border: '1px solid rgba(0,229,255,0.15)',
-            borderRadius: 10,
+            flexDirection: 'column',
+            gap: 16,
+            padding: 24,
+            background: 'linear-gradient(135deg, rgba(0, 229, 255, 0.05) 0%, rgba(0, 150, 255, 0.02) 100%)',
+            border: '1px solid rgba(0, 229, 255, 0.15)',
+            borderRadius: 16,
+            boxShadow: 'inset 0 0 20px rgba(0, 229, 255, 0.02)',
           }}
         >
-          <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-cyan)', textTransform: 'uppercase', letterSpacing: '0.08em', alignSelf: 'center', flexShrink: 0 }}>
-            Key Messages:
-          </span>
-          {key_messages.map((msg, i) => (
-            <span
-              key={i}
-              style={{
-                fontSize: 12,
-                color: 'var(--text-secondary)',
-                padding: '3px 10px',
-                background: 'rgba(0,0,0,0.2)',
-                borderRadius: 6,
-                border: '1px solid var(--border-subtle)',
-              }}
-            >
-              {msg}
-            </span>
-          ))}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, color: 'var(--accent-cyan)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+            Core Campaign Messaging
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+            {key_messages.map((msg, i) => (
+              <div
+                key={i}
+                style={{
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: 'var(--text-primary)',
+                  padding: '10px 16px',
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  borderRadius: 10,
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                }}
+              >
+                <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-cyan)' }} />
+                {msg}
+              </div>
+            ))}
+          </div>
         </div>
       )}
 

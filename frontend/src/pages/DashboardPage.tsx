@@ -54,41 +54,57 @@ export function DashboardPage() {
       </div>
 
       {/* Stats bar */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-5">
         {[
           {
-            icon: <CheckCircle2 size={16} color="#00E676" />,
-            label: 'Completed',
+            icon: <CheckCircle2 size={18} color="#00E676" />,
+            label: 'Agents Completed',
             value: `${completedCount} / 7`,
             color: '#00E676',
-            bg: 'rgba(0,230,118,0.07)',
+            bg: 'rgba(0,230,118,0.06)',
+            boxShadow: '0 0 20px rgba(0,230,118,0.02) inset'
           },
           {
-            icon: <Zap size={16} color="#00E5FF" />,
+            icon: <Zap size={18} color="#00E5FF" />,
             label: 'Running',
             value: runningCount,
             color: '#00E5FF',
-            bg: 'rgba(0,229,255,0.07)',
+            bg: 'rgba(0,229,255,0.06)',
+            boxShadow: '0 0 20px rgba(0,229,255,0.02) inset'
           },
           {
-            icon: <Clock size={16} color="#B388FF" />,
+            icon: <Clock size={18} color="#B388FF" />,
             label: 'Overall Progress',
             value: `${Math.round(totalProgress)}%`,
             color: '#B388FF',
-            bg: 'rgba(179,136,255,0.07)',
+            bg: 'rgba(179,136,255,0.06)',
+            boxShadow: '0 0 20px rgba(179,136,255,0.02) inset'
           },
         ].map(stat => (
           <div
             key={stat.label}
-            className="rounded-xl p-4 flex items-center gap-3"
-            style={{ background: stat.bg, border: `1px solid ${stat.color}22` }}
+            className="rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden"
+            style={{ 
+              background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(10,12,16,0.5) 100%)`, 
+              border: `1px solid ${stat.color}22`,
+              boxShadow: stat.boxShadow
+            }}
           >
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${stat.color}18` }}>
+            {/* Glow orb */}
+            <div 
+              className="absolute pointer-events-none" 
+              style={{ 
+                top: '-50%', left: '-10%', width: '150px', height: '150px', 
+                background: `radial-gradient(circle, ${stat.color}15 0%, transparent 70%)` 
+              }} 
+            />
+            
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center relative z-10" style={{ background: `${stat.color}15`, border: `1px solid ${stat.color}33`, boxShadow: `0 0 10px ${stat.color}11` }}>
               {stat.icon}
             </div>
-            <div>
-              <p className="text-xs font-medium" style={{ color: 'var(--text-dim)' }}>{stat.label}</p>
-              <p className="text-xl font-bold" style={{ color: stat.color }}>{stat.value}</p>
+            <div className="relative z-10">
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-0.5" style={{ color: 'var(--text-dim)' }}>{stat.label}</p>
+              <p className="text-2xl font-bold tracking-tight" style={{ color: '#fff', textShadow: `0 0 12px ${stat.color}55` }}>{stat.value}</p>
             </div>
           </div>
         ))}
@@ -97,10 +113,15 @@ export function DashboardPage() {
       <div className="flex gap-6">
         {/* Phase timeline sidebar */}
         <div
-          className="w-44 flex-shrink-0 rounded-xl p-4"
-          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}
+          className="w-48 flex-shrink-0 rounded-2xl p-5"
+          style={{ 
+            background: 'linear-gradient(180deg, rgba(30, 35, 45, 0.4) 0%, rgba(20, 25, 30, 0.2) 100%)', 
+            border: '1px solid var(--border-subtle)',
+            boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.02)'
+          }}
         >
-          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: 'var(--text-dim)' }}>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-5 flex items-center gap-2" style={{ color: 'var(--text-dim)' }}>
+            <span className="w-2 h-2 rounded-full bg-accent-purple/50"></span>
             Phases
           </p>
           <ProgressTimeline />
@@ -111,9 +132,10 @@ export function DashboardPage() {
           <AgentStatusGrid />
 
           {/* Live logs */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--text-dim)' }}>
-              Live Logs
+          <div className="mt-8">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-5 flex items-center gap-2" style={{ color: 'var(--text-dim)' }}>
+              <span className="w-2 h-2 rounded-full bg-accent-cyan/50"></span>
+              Live Execution Logs
             </p>
             <LiveLogs />
           </div>

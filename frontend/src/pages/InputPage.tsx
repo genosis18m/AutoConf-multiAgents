@@ -41,25 +41,51 @@ export function InputPage() {
           <ConferenceForm />
         </div>
 
-        {/* Feature badges */}
-        <div className="mt-4 flex max-w-4xl flex-wrap justify-center gap-2">
-          {[
-            '💰 Sponsor Outreach',
-            '🎤 Speaker Lineup',
-            '🏛️ Venue Recommendations',
-            '📊 Pricing Forecast',
-            '📣 GTM Strategy',
-            '⚙️ Ops Runbook',
-          ].map((f) => (
-            <span
-              key={f}
-              className="rounded-full px-3 py-1 text-[11px] sm:text-xs"
-              style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
+        <footer className="mt-5 w-full max-w-4xl">
+          <div
+            className="rounded-2xl px-4 py-4 sm:px-5"
+            style={{
+              background: 'rgba(18, 18, 26, 0.7)',
+              border: '1px solid var(--border-subtle)',
+              backdropFilter: 'blur(18px)',
+            }}
+          >
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                '💰 Sponsors',
+                '🎤 Speakers',
+                '🏛️ Venues',
+                '📊 Pricing',
+                '📣 GTM',
+                '⚙️ Ops',
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full px-3 py-1 text-[11px] sm:text-xs"
+                  style={{
+                    background: 'var(--bg-elevated)',
+                    border: '1px solid var(--border-subtle)',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <div
+              className="mt-4 flex flex-col items-center justify-between gap-2 border-t pt-3 text-center sm:flex-row sm:text-left"
+              style={{ borderColor: 'rgba(42, 42, 58, 0.9)' }}
             >
-              {f}
-            </span>
-          ))}
-        </div>
+              <p className="text-[11px] sm:text-xs" style={{ color: 'var(--text-secondary)' }}>
+                EventAIL plans multi-day conferences with 7 autonomous agents and live execution updates.
+              </p>
+              <p className="text-[11px] sm:text-xs" style={{ color: 'var(--text-dim)' }}>
+                FastAPI · React · WebSocket streaming · Export-ready outputs
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   )

@@ -4,12 +4,13 @@ import clsx from 'clsx'
 interface GlassCardProps {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   hover?: boolean
   glow?: boolean
   onClick?: () => void
 }
 
-export function GlassCard({ children, className, hover = true, glow = false, onClick }: GlassCardProps) {
+export function GlassCard({ children, className, style, hover = true, glow = false, onClick }: GlassCardProps) {
   return (
     <div
       onClick={onClick}
@@ -19,7 +20,7 @@ export function GlassCard({ children, className, hover = true, glow = false, onC
         glow && 'agent-running',
         className,
       )}
-      style={{ background: 'var(--bg-glass)', backdropFilter: 'blur(20px)' }}
+      style={{ background: 'var(--bg-glass)', backdropFilter: 'blur(20px)', ...style }}
     >
       {children}
     </div>
