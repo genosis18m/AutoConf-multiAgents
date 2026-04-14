@@ -81,7 +81,7 @@ async def run_conference_plan(
     gtm_result = await _run_agent(
         "gtm",
         run_gtm_agent,
-        {**base, "speakers": speaker_result, "pricing": pricing_result},
+        {**{k: v for k, v in base.items() if k != "budget"}, "speakers": speaker_result, "pricing": pricing_result},
         session_id,
         ws_manager,
     )
@@ -101,7 +101,7 @@ async def run_conference_plan(
     ops_result = await _run_agent(
         "ops",
         run_ops_agent,
-        {**base, "all_data": all_data},
+        {**{k: v for k, v in base.items() if k != "budget"}, "all_data": all_data},
         session_id,
         ws_manager,
     )

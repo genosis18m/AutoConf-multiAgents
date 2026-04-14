@@ -1,4 +1,4 @@
-# ConferenceAI — AI-Powered Conference Organizer
+# EventAIL — 7-Agent Autonomous Platform
 
 An AI-driven platform that automates the full lifecycle of organizing multi-day conferences and events. Seven autonomous agents coordinate to handle sponsor outreach, speaker curation, venue selection, ticketing, pricing, GTM, and live operations.
 

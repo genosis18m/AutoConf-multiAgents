@@ -6,7 +6,14 @@ import logging
 from config import settings
 from services.websocket_manager import WebSocketManager
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s: %(message)s")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(name)s %(levelname)s: %(message)s",
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("conference.log")
+    ]
+)
 logger = logging.getLogger(__name__)
 
 ws_manager = WebSocketManager()

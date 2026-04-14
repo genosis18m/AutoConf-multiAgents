@@ -1,4 +1,5 @@
 import { ConferenceForm } from '../components/input/ConferenceForm'
+import { EventAILLogo } from '../components/branding/EventAILLogo'
 
 export function InputPage() {
   return (
@@ -8,30 +9,20 @@ export function InputPage() {
       <div className="gradient-orb w-80 h-80 bottom-[-60px] right-[-60px]" style={{ background: 'var(--accent-purple)' }} />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center px-6 py-16">
+      <div className="relative z-10 flex min-h-full flex-col items-center justify-center px-5 py-5 sm:px-6 sm:py-7">
         {/* Hero text */}
-        <div className="text-center mb-12 max-w-2xl">
+        <div className="mb-5 flex max-w-2xl flex-col items-center text-center sm:mb-6">
           <div
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6"
+            className="mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
             style={{ background: 'rgba(0,229,255,0.1)', border: '1px solid rgba(0,229,255,0.2)', color: '#00E5FF' }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-ping" />
             7 AI Agents · Phased Execution · Real-time
           </div>
 
-          <h1
-            className="text-5xl sm:text-6xl font-extrabold mb-4 leading-tight tracking-tight"
-            style={{
-              color: 'var(--text-primary)',
-              background: 'linear-gradient(135deg, #E8E8EC, #00E5FF)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            ConferenceAI
-          </h1>
+          <EventAILLogo variant="hero" className="mb-3 mx-auto" />
 
-          <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>
+          <p className="mx-auto max-w-xl text-sm sm:text-base" style={{ color: 'var(--text-secondary)' }}>
             Enter your conference details. 7 autonomous AI agents will research sponsors,
             speakers, venues, pricing, GTM strategy, and operations — in minutes.
           </p>
@@ -39,7 +30,7 @@ export function InputPage() {
 
         {/* Form container */}
         <div
-          className="w-full max-w-2xl rounded-xl p-8"
+          className="w-full max-w-2xl rounded-xl p-5 sm:p-6"
           style={{
             background: 'var(--bg-glass)',
             backdropFilter: 'blur(20px)',
@@ -51,7 +42,7 @@ export function InputPage() {
         </div>
 
         {/* Feature badges */}
-        <div className="mt-10 flex flex-wrap gap-3 justify-center">
+        <div className="mt-4 flex max-w-4xl flex-wrap justify-center gap-2">
           {[
             '💰 Sponsor Outreach',
             '🎤 Speaker Lineup',
@@ -62,7 +53,7 @@ export function InputPage() {
           ].map((f) => (
             <span
               key={f}
-              className="text-xs px-3 py-1.5 rounded-full"
+              className="rounded-full px-3 py-1 text-[11px] sm:text-xs"
               style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
             >
               {f}

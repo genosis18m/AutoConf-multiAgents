@@ -1,5 +1,6 @@
 import { useConferenceStore } from '../../store/useConferenceStore'
 import clsx from 'clsx'
+import { OrbitLoader } from '../shared/OrbitLoader'
 
 const PHASES = [
   { id: 1, label: 'Phase 1', desc: 'Sponsor + Speaker + Venue', parallel: true },
@@ -43,13 +44,16 @@ export function ProgressTimeline() {
 
             {/* Content */}
             <div className="pb-5">
-              <p
-                className={clsx('text-sm font-semibold', isDone || isActive ? '' : 'opacity-50')}
-                style={{ color: isDone ? '#00E676' : isActive ? '#00E5FF' : 'var(--text-secondary)' }}
-              >
-                {phase.label}
-                {phase.parallel && <span className="ml-1 text-xs opacity-70">(parallel)</span>}
-              </p>
+              <div className="flex items-center gap-2">
+                <p
+                  className={clsx('text-sm font-semibold', isDone || isActive ? '' : 'opacity-50')}
+                  style={{ color: isDone ? '#00E676' : isActive ? '#00E5FF' : 'var(--text-secondary)' }}
+                >
+                  {phase.label}
+                  {phase.parallel && <span className="ml-1 text-xs opacity-70">(parallel)</span>}
+                </p>
+                {isActive && <OrbitLoader size={20} label={`${phase.label} in progress`} />}
+              </div>
               <p className="text-xs mt-0.5" style={{ color: 'var(--text-dim)' }}>
                 {phase.desc}
               </p>

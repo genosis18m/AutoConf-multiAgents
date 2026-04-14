@@ -53,6 +53,8 @@ async def generate_conference_plan(
 
 
 async def _run_plan(session_id, category, geography, audience_size, budget, ws_manager):
+    # Wait for the frontend to establish WebSocket connection before broadcasting
+    await asyncio.sleep(2)
     try:
         results = await run_conference_plan(
             session_id=session_id,

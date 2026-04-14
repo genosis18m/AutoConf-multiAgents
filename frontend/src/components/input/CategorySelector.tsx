@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import { CONFERENCE_CATEGORIES } from '../../lib/constants'
+import { ChevronDown } from 'lucide-react'
 
 interface CategorySelectorProps {
   value: string
@@ -7,36 +7,46 @@ interface CategorySelectorProps {
 }
 
 export function CategorySelector({ value, onChange }: CategorySelectorProps) {
+  const selectedCategory = CONFERENCE_CATEGORIES.find((category) => category.id === value) ?? CONFERENCE_CATEGORIES[0]
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      {CONFERENCE_CATEGORIES.map((cat) => {
-        const isSelected = value === cat.id
-        return (
-          <button
-            key={cat.id}
-            type="button"
-            onClick={() => onChange(cat.id)}
-            className={clsx(
-              'rounded-lg p-3 text-left transition-all duration-200 border',
-              isSelected
-                ? 'border-accent-cyan bg-accent-cyan/10'
-                : 'border-border-subtle bg-bg-elevated hover:border-accent-cyan/40 hover:bg-accent-cyan/5',
-            )}
-            style={{
-              borderColor: isSelected ? '#00E5FF' : undefined,
-              boxShadow: isSelected ? '0 0 12px rgba(0,229,255,0.15)' : undefined,
-            }}
-          >
-            <span className="text-xl block mb-1">{cat.icon}</span>
-            <p className="text-xs font-semibold" style={{ color: isSelected ? '#00E5FF' : 'var(--text-primary)' }}>
+    <div className="w-full flex flex-col items-center gap-2">
+      <div className="relative w-full">
+        <span
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-base pointer-events-none"
+          aria-hidden="true"
+        >
+          {selectedCategory.icon}
+        </span>
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-full appearance-none rounded-lg py-2.5 pl-10 pr-12 text-sm outline-none transition-all"
+          style={{
+            background: 'var(--bg-elevated)',
+            border: '1px solid var(--border-subtle)',
+            color: 'var(--text-primary)',
+          }}
+          onFocus={(e) => (e.target.style.borderColor = '#00E5FF')}
+          onBlur={(e) => (e.target.style.borderColor = 'var(--border-subtle)')}
+          aria-label="Conference Category"
+        >
+          {CONFERENCE_CATEGORIES.map((cat) => (
+            <option key={cat.id} value={cat.id}>
               {cat.label}
-            </p>
-            <p className="text-xs mt-0.5" style={{ color: 'var(--text-dim)' }}>
-              {cat.desc}
-            </p>
-          </button>
-        )
-      })}
+            </option>
+          ))}
+        </select>
+        <ChevronDown
+          size={18}
+          className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+          style={{ color: 'var(--accent-cyan)' }}
+        />
+      </div>
+
+      <p className="text-xs text-center" style={{ color: 'var(--text-dim)' }}>
+        {selectedCategory.desc}
+      </p>
     </div>
   )
 }

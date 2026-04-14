@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CategorySelector } from './CategorySelector'
-import { GlowButton } from '../shared/GlowButton'
+import { SpeederLoader } from '../shared/SpeederLoader'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import { startGeneration } from '../../lib/api'
-import { Zap, MapPin, Users, DollarSign } from 'lucide-react'
+import { MapPin, Users, DollarSign } from 'lucide-react'
 
 export function ConferenceForm() {
   const navigate = useNavigate()
@@ -44,10 +44,36 @@ export function ConferenceForm() {
     }
   }
 
+  if (loading) {
+    return (
+      <div className="w-full max-w-2xl mx-auto">
+        <div className="generation-loader-panel">
+          <div className="generation-loader-stage">
+            <div className="generation-loader-rails">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+            <SpeederLoader label="Generating conference plan" />
+          </div>
+          <div className="text-center space-y-2">
+            <p className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>
+              Launching your conference agents
+            </p>
+            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+              We&apos;re starting the workflow and opening the live dashboard.
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto space-y-8">
+    <form onSubmit={handleSubmit} className="mx-auto w-full max-w-2xl space-y-6">
       {/* Category */}
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <label className="block text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
           Conference Category
         </label>
@@ -55,7 +81,7 @@ export function ConferenceForm() {
       </div>
 
       {/* Geography */}
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <label className="block text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
           Geography / City
         </label>
@@ -66,7 +92,7 @@ export function ConferenceForm() {
             value={geography}
             onChange={(e) => setGeography(e.target.value)}
             placeholder="e.g. Bengaluru, India or New York, USA"
-            className="w-full pl-9 pr-4 py-3 rounded-lg text-sm outline-none transition-all"
+            className="w-full rounded-lg py-2.5 pl-9 pr-4 text-sm outline-none transition-all"
             style={{
               background: 'var(--bg-elevated)',
               border: '1px solid var(--border-subtle)',
@@ -80,8 +106,8 @@ export function ConferenceForm() {
       </div>
 
       {/* Audience Size + Budget */}
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="space-y-2.5">
           <label className="block text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
             Target Audience Size
           </label>
@@ -93,7 +119,7 @@ export function ConferenceForm() {
               onChange={(e) => setAudienceSize(Number(e.target.value))}
               min={50}
               max={50000}
-              className="w-full pl-9 pr-4 py-3 rounded-lg text-sm outline-none transition-all"
+              className="w-full rounded-lg py-2.5 pl-9 pr-4 text-sm outline-none transition-all"
               style={{
                 background: 'var(--bg-elevated)',
                 border: '1px solid var(--border-subtle)',
@@ -105,7 +131,7 @@ export function ConferenceForm() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           <label className="block text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>
             Budget (optional)
           </label>
@@ -117,7 +143,7 @@ export function ConferenceForm() {
               onChange={(e) => setBudget(e.target.value)}
               placeholder="e.g. 50000"
               min={0}
-              className="w-full pl-9 pr-4 py-3 rounded-lg text-sm outline-none transition-all"
+              className="w-full rounded-lg py-2.5 pl-9 pr-4 text-sm outline-none transition-all"
               style={{
                 background: 'var(--bg-elevated)',
                 border: '1px solid var(--border-subtle)',
@@ -136,10 +162,34 @@ export function ConferenceForm() {
         </p>
       )}
 
-      <GlowButton type="submit" loading={loading} size="lg" className="w-full justify-center">
-        <Zap size={18} />
-        {loading ? 'Starting agents...' : 'Generate Conference Plan'}
-      </GlowButton>
+      <button type="submit" className="generate-button w-full">
+        <span className="generate-button__text">Create Plan</span>
+        <span className="generate-button__icon" aria-hidden="true">
+          <svg viewBox="0 0 72 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8 21H48"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M38 9L56 21L38 33"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M58 14L64 21L58 28"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.9"
+            />
+          </svg>
+        </span>
+      </button>
     </form>
   )
 }
