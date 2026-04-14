@@ -5,9 +5,7 @@ python-dotenv==1.0.1
 pydantic==2.9.2
 pydantic-settings==2.5.2
 
-# AI / LLM
-crewai==0.67.1
-crewai-tools==0.12.1
+# LLM — direct API clients (no crewai dependency hell)
 groq==0.11.0
 google-generativeai==0.8.3
 
