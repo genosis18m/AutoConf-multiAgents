@@ -20,6 +20,14 @@ export function DashboardPage() {
     if (!sessionId) navigate('/')
   }, [sessionId, navigate])
 
+  // Auto-navigate to results when all agents complete
+  useEffect(() => {
+    if (isComplete) {
+      const timer = setTimeout(() => navigate('/results'), 1500)
+      return () => clearTimeout(timer)
+    }
+  }, [isComplete, navigate])
+
   const agents = Object.values(agentStatuses)
   const completedCount = agents.filter(a => a.status === 'completed').length
   const runningCount = agents.filter(a => a.status === 'running').length

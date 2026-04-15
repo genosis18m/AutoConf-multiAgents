@@ -51,18 +51,20 @@ async def run_conference_plan(
 
     base = dict(category=category, geography=geography, audience_size=audience_size, budget=budget)
 
-    # ── Phase 1: Parallel ────────────────────────────────────────────────────
-    await ws_manager.broadcast_phase_change(session_id, 1, "Phase 1 starting — Sponsor, Speaker & Venue agents running in parallel...")
+    # ── Phase 1: Sequential to respect Free Tier API limits ───────────────────
+    await ws_manager.broadcast_phase_change(session_id, 1, "Phase 1 starting — Sponsor, Speaker & Venue agents (running to respect rate limit)...")
 
-    phase1 = await asyncio.gather(
-        _run_agent("sponsor", run_sponsor_agent, base, session_id, ws_manager),
-        _run_agent("speaker", run_speaker_agent, {k: v for k, v in base.items() if k != "budget"}, session_id, ws_manager),
-        _run_agent("ticketing", run_ticketing_agent, base, session_id, ws_manager),
-        _run_agent("venue", run_venue_agent, base, session_id, ws_manager),
-        return_exceptions=False,
-    )
-
-    sponsor_result, speaker_result, ticketing_result, venue_result = phase1
+    sponsor_result = await _run_agent("sponsor", run_sponsor_agent, base, session_id, ws_manager)
+    await asyncio.sleep(5)
+    
+    speaker_result = await _run_agent("speaker", run_speaker_agent, {k: v for k, v in base.items() if k != "budget"}, session_id, ws_manager)
+    await asyncio.sleep(5)
+    
+    ticketing_result = await _run_agent("ticketing", run_ticketing_agent, base, session_id, ws_manager)
+    await asyncio.sleep(5)
+    
+    venue_result = await _run_agent("venue", run_venue_agent, base, session_id, ws_manager)
+    await asyncio.sleep(5)
 
     # ── Phase 2: Pricing (needs venue) ───────────────────────────────────────
     await ws_manager.broadcast_phase_change(session_id, 2, "Phase 2 starting — Pricing & Footfall agent...")
@@ -74,6 +76,7 @@ async def run_conference_plan(
         session_id,
         ws_manager,
     )
+    await asyncio.sleep(5)
 
     # ── Phase 3: GTM (needs speaker + pricing) ───────────────────────────────
     await ws_manager.broadcast_phase_change(session_id, 3, "Phase 3 starting — GTM & Communication agent...")
@@ -85,6 +88,7 @@ async def run_conference_plan(
         session_id,
         ws_manager,
     )
+    await asyncio.sleep(5)
 
     # ── Phase 4: Ops (needs everything) ─────────────────────────────────────
     await ws_manager.broadcast_phase_change(session_id, 4, "Phase 4 starting — Ops & Logistics agent...")

@@ -12,7 +12,7 @@ def get_llm():
     if settings.groq_api_key:
         return LLM(model="groq/llama-3.3-70b-versatile", api_key=settings.groq_api_key)
     if settings.gemini_api_key:
-        return LLM(model="gemini/gemini-2.0-flash", api_key=settings.gemini_api_key)
+        return LLM(model="gemini/gemini-2.5-flash", api_key=settings.gemini_api_key)
     raise ValueError("No LLM API key configured.")
 
 
@@ -71,10 +71,17 @@ Return ONLY valid JSON (no markdown):
         crew = Crew(agents=[agent], tasks=[task], verbose=False)
         result = crew.kickoff()
         raw = str(result)
-
-        match = re.search(r'\{[\s\S]*\}', raw)
-        if match:
-            return json.loads(match.group())
+        # Extract JSON from result
+        raw = raw.strip()
+        if "```json" in raw:
+            raw = raw.split("```json")[1].split("```")[0]
+        elif "```" in raw:
+            raw = raw.split("```")[1].split("```")[0]
+        
+        start = raw.find('{')
+        end = raw.rfind('}')
+        if start != -1 and end != -1:
+            return json.loads(raw[start:end+1])
 
         return _mock_speaker_result(category, geography)
 
