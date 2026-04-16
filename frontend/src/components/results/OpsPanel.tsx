@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlassCard } from '../shared/GlassCard'
+import { TerminalCard } from '../shared/TerminalCard'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import type { OpsTask } from '../../types'
 
@@ -179,7 +179,7 @@ function VendorChecklist({ items }: { items: string[] }) {
         </svg>
         Vendor Checklist
       </h3>
-      <GlassCard hover={false}>
+      <TerminalCard title="Vendor Checklist" command="run-vendor-checks">
         <div
           style={{
             display: 'grid',
@@ -232,7 +232,7 @@ function VendorChecklist({ items }: { items: string[] }) {
             </div>
           ))}
         </div>
-      </GlassCard>
+      </TerminalCard>
     </div>
   )
 }

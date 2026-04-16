@@ -148,6 +148,7 @@ const StyledForm = styled.div`
 
   .two-col {
     display: grid;
+    padding: 2rem;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
@@ -166,9 +167,9 @@ export function ConferenceForm() {
   const navigate = useNavigate()
   const { setInput, setSessionId, reset } = useConferenceStore()
 
-  const [category, setCategory] = useState('AI')
+  const [category, setCategory] = useState('')
   const [geography, setGeography] = useState('')
-  const [audienceSize, setAudienceSize] = useState(500)
+  const [audienceSize, setAudienceSize] = useState('')
   const [budget, setBudget] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -223,7 +224,7 @@ export function ConferenceForm() {
               <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
               <path d="M12 11.5a3 3 0 0 0 -3 2.824v1.176a3 3 0 0 0 6 0v-1.176a3 3 0 0 0 -3 -2.824z" />
             </svg>
-            <span>CONF_PLANNER_v7</span>
+            <span>CONFERENCE MASTERMIND</span>
           </div>
           <div className="card-dots"><span /><span /><span /></div>
         </div>
@@ -253,7 +254,6 @@ export function ConferenceForm() {
             />
             <label htmlFor="geo" className="form-label" data-text="LOCATION">LOCATION</label>
           </div>
-
           {/* Audience + Budget */}
           <div className="two-col">
             <div className="form-group">
@@ -277,13 +277,13 @@ export function ConferenceForm() {
                 id="bgt"
                 min={0}
               />
-              <label htmlFor="bgt" className="form-label" data-text="BUDGET_USD">BUDGET_USD</label>
+              <label htmlFor="bgt" className="form-label" data-text="BUDGET_USD">BUDGET</label>
             </div>
           </div>
 
           {error && <p className="error-msg">{error}</p>}
 
-          <div style={{ marginTop: '1.2rem' }}>
+          <div style={{ marginBlockEnd: '1rem' }}>
             <NuclearButton type="submit" />
           </div>
         </div>

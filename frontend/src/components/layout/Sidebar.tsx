@@ -17,7 +17,7 @@ const StyledNav = styled.nav`
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #24292e, #1c2128);
-    padding: 16px 12px;
+    padding: 12px 10px;
     border-radius: 10px;
     box-shadow:
       inset 0 0 16px rgba(0,0,0,0.5),
@@ -29,11 +29,11 @@ const StyledNav = styled.nav`
 
   .switch-panel {
     z-index: 1;
-    height: 160px;
-    width: 52px;
-    margin-right: 20px;
+    height: 150px;
+    width: 36px;
+    margin-right: 12px;
     background: linear-gradient(to bottom, #3d444d, #2d333b);
-    border-radius: 8px;
+    border-radius: 7px;
     box-shadow:
       inset 0 4px 12px rgba(0,0,0,0.6),
       inset 0 -4px 12px rgba(100,100,100,0.15);
@@ -54,8 +54,9 @@ const StyledNav = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 150px;
+    height: 140px;
     flex: 1;
+    min-width: 0;
   }
 
   .choice {
@@ -70,9 +71,9 @@ const StyledNav = styled.nav`
 
   .input-container {
     position: relative;
-    width: 28px;
-    height: 28px;
-    margin-right: 14px;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
     z-index: 2;
     perspective: 400px;
     flex-shrink: 0;
@@ -102,10 +103,10 @@ const StyledNav = styled.nav`
   .lever {
     z-index: 1;
     position: absolute;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     top: 50%;
-    left: -55px;
+    left: -40px;
     transform: translateY(-50%) rotateX(30deg);
     border-radius: 5px;
     background: linear-gradient(135deg, #4f8ef7, #3a7ee0);
@@ -120,7 +121,7 @@ const StyledNav = styled.nav`
   }
 
   .choice-switch:checked + .lever {
-    left: 4px;
+    left: 3px;
     transform: translateY(-50%) rotateX(0deg);
     box-shadow:
       0 4px 12px rgba(79,142,247,0.6),
@@ -149,6 +150,9 @@ const StyledNav = styled.nav`
     font-family: 'Inter', sans-serif;
     cursor: pointer;
     padding: 5px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     background: linear-gradient(to bottom, #2d333b, #22272e);
     border: 1.5px solid #444c56;
     border-radius: 5px;
@@ -200,7 +204,7 @@ export function Sidebar() {
 
   return (
     <aside
-      className="w-52 flex flex-col flex-shrink-0 border-r"
+      className="w-60 flex flex-col flex-shrink-0 border-r"
       style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}
     >
       {/* Mechanical radio nav */}
@@ -240,7 +244,7 @@ export function Sidebar() {
 
       {/* Agent status list */}
       {sessionId && (
-        <div className="flex-1 overflow-y-auto px-3 mt-5">
+        <div className="flex-1 overflow-y-auto px-4 mt-5">
           <p
             className="text-xs font-semibold uppercase tracking-wider mb-2.5 px-1"
             style={{ color: 'var(--text-dim)' }}
@@ -262,7 +266,7 @@ export function Sidebar() {
                       className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                       style={{ background: dotColor }}
                     />
-                    <span className="text-xs truncate" style={{ color: 'var(--text-secondary)' }}>
+                    <span className="text-sm truncate" style={{ color: 'var(--text-secondary)' }}>
                       {AGENT_LABELS[agent]}
                     </span>
                   </div>

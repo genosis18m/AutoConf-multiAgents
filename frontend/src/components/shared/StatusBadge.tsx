@@ -14,21 +14,27 @@ export function StatusBadge({ status }: { status: AgentStatusType }) {
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold',
-        color, bg,
+        'inline-flex items-center gap-2 px-3 py-1 rounded-sm text-[10px] font-bold tracking-[0.15em] uppercase border transition-all duration-300',
+        bg
       )}
+      style={{
+        fontFamily: 'JetBrains Mono, monospace',
+        color: `var(--${color.replace('text-', '')})`,
+        borderColor: `var(--${color.replace('text-', '')})`,
+        boxShadow: pulse ? `0 0 10px var(--${color.replace('text-', '')}), inset 0 0 5px var(--${color.replace('text-', '')})` : 'none',
+        textShadow: pulse ? `0 0 5px var(--${color.replace('text-', '')})` : 'none',
+        opacity: status === 'queued' ? 0.7 : 1,
+      }}
     >
       {status === 'running' ? (
-        <OrbitLoader size={18} label="Agent running" />
+        <OrbitLoader size={14} label="" />
       ) : (
         <span
-          className={clsx(
-            'w-1.5 h-1.5 rounded-full',
-            status === 'queued' && 'bg-text-secondary',
-            status === 'completed' && 'bg-accent-green',
-            status === 'failed' && 'bg-red-400',
-            pulse && 'animate-ping',
-          )}
+          className="w-1.5 h-1.5 rounded-full flex-shrink-0 shadow-sm"
+          style={{ 
+            backgroundColor: `var(--${color.replace('text-', '')})`,
+            boxShadow: `0 0 4px var(--${color.replace('text-', '')})` 
+          }}
         />
       )}
       {label}

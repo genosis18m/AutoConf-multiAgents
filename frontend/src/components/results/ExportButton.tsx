@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { GlowButton } from '../shared/GlowButton'
+import { SparkleButton } from '../shared/SparkleButton'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import { exportPDF } from '../../lib/api'
 
@@ -119,35 +120,11 @@ export function ExportButton({
 
   return (
     <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6 }}>
-      <GlowButton
+      <SparkleButton
         onClick={handleExport}
-        loading={isLoading}
         disabled={isLoading || isSuccess || !sessionId}
-        size={size}
-        variant={isSuccess ? 'secondary' : 'primary'}
-        className={className}
-      >
-        {isSuccess ? (
-          <>
-            <SuccessIcon />
-            Downloaded
-          </>
-        ) : isError ? (
-          <>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-            Retry Export
-          </>
-        ) : (
-          <>
-            {!isLoading && <DownloadIcon />}
-            {isLoading ? 'Generating PDF…' : label}
-          </>
-        )}
-      </GlowButton>
+        label={isSuccess ? "Downloaded" : isError ? "Retry Export" : isLoading ? 'Generating PDF…' : label}
+      />
 
       {/* Inline error message */}
       {isError && errorMessage && (

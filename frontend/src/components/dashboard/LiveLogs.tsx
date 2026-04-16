@@ -29,12 +29,12 @@ export function LiveLogs() {
       style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}
     >
       {logs.map((log, i) => (
-        <div key={i} className="log-entry flex gap-2" style={{ animationDelay: `0ms` }}>
-          <span style={{ color: 'var(--text-dim)' }}>
+        <div key={i} className="log-entry flex gap-3 font-mono text-[11px]" style={{ animationDelay: `0ms` }}>
+          <span style={{ color: 'var(--text-dim)', minWidth: '70px' }}>
             {new Date(log.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
           </span>
-          <span style={{ color: '#00E5FF' }}>
-            {log.agent === 'system' ? '⚡' : AGENT_ICONS[log.agent] ?? '▸'}
+          <span className="font-bold uppercase tracking-widest" style={{ color: '#00ffaa', minWidth: '80px' }}>
+            {log.agent === 'system' ? 'SYSTEM' : log.agent}
           </span>
           <span style={{ color: 'var(--text-secondary)' }}>{log.message}</span>
         </div>

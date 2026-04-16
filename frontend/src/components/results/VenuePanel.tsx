@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlassCard } from '../shared/GlassCard'
+import { TerminalCard } from '../shared/TerminalCard'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import type { Venue } from '../../types'
 
@@ -140,7 +140,7 @@ function BulletList({ items, variant }: { items: string[]; variant: 'pro' | 'con
 // ─── Venue Card ───────────────────────────────────────────────────────────────
 function VenueCard({ venue, maxCapacity }: { venue: Venue; maxCapacity: number }) {
   return (
-    <GlassCard className="stagger-child" hover>
+    <TerminalCard className="stagger-child" title={venue.name} command={`fetch-venue ${venue.name.replace(/\\s+/g, '-').toLowerCase()}`}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14, gap: 8 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
@@ -278,7 +278,7 @@ function VenueCard({ venue, maxCapacity }: { venue: Venue; maxCapacity: number }
           </svg>
         </a>
       )}
-    </GlassCard>
+    </TerminalCard>
   )
 }
 

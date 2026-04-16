@@ -8,7 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-import { GlassCard } from '../shared/GlassCard'
+import { TerminalCard } from '../shared/TerminalCard'
 import { AnimatedCounter } from '../shared/AnimatedCounter'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import type { PricingTier } from '../../types'
@@ -58,26 +58,21 @@ function PricingTierCard({ tier, index }: { tier: PricingTier; index: number }) 
   const isMiddle = index === 1
 
   return (
-    <div
+    <TerminalCard
       className="stagger-child"
-      style={{
-        flex: 1,
-        minWidth: 220,
-        background: style.bg,
-        border: `1px solid ${style.border}`,
-        borderRadius: 16,
-        padding: '24px 20px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 14,
-        position: 'relative',
-        overflow: 'hidden',
-        backdropFilter: 'blur(20px)',
-        boxShadow: isMiddle ? `0 0 32px ${style.border}` : 'none',
-        transform: isMiddle ? 'scale(1.02)' : 'scale(1)',
-        transition: 'all 300ms var(--ease-out-expo)',
-      }}
+      title={`${style.label} Tier`}
+      command={`init-tier ${tier.tier.toLowerCase()}`}
+      minWidth={220}
     >
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 14,
+          position: 'relative',
+        }}
+      >
       {/* Glow orb */}
       <div
         style={{
@@ -143,7 +138,8 @@ function PricingTierCard({ tier, index }: { tier: PricingTier; index: number }) 
         />
         <span style={{ fontSize: 12, color: 'var(--text-secondary)' }}>{tier.availability}</span>
       </div>
-    </div>
+      </div>
+    </TerminalCard>
   )
 }
 
@@ -274,7 +270,7 @@ export function PricingPanel() {
       {/* Pricing tier cards */}
       {pricing_tiers?.length > 0 && (
         <div>
-          <h3 style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 14, textTransform: 'uppercase', letterSpacing: '0.07em', fontSize: 11 }}>
+          <h3 style={{ fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 14, textTransform: 'uppercase', letterSpacing: '0.07em', fontSize: 11 }}>
             Ticket Tiers
           </h3>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'stretch' }}>
@@ -287,7 +283,7 @@ export function PricingPanel() {
 
       {/* Attendance Forecast Chart */}
       {chartData.length > 0 && (
-        <GlassCard hover={false}>
+        <TerminalCard title="Attendance Forecast" command="analyze-forecast">
           <div style={{ marginBottom: 16 }}>
             <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>
               Attendance Forecast
@@ -344,7 +340,7 @@ export function PricingPanel() {
               />
             </AreaChart>
           </ResponsiveContainer>
-        </GlassCard>
+        </TerminalCard>
       )}
 
       {/* Revenue Estimate */}
