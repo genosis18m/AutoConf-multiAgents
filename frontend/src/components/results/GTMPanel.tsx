@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GlassCard } from '../shared/GlassCard'
+import { TerminalCard } from '../shared/TerminalCard'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import type { GTMChannel } from '../../types'
 
@@ -280,7 +280,7 @@ function ChannelDetail({ channel }: { channel: GTMChannel }) {
       </div>
 
       {/* Message Template */}
-      <GlassCard hover={false} style={{ padding: 0, overflow: 'hidden' }}>
+      <TerminalCard title="Message Template" command={`generate-template --channel ${channel.channel.toLowerCase()}`}>
         <div
           style={{
             display: 'flex',
@@ -320,7 +320,7 @@ function ChannelDetail({ channel }: { channel: GTMChannel }) {
             {channel.message_template}
           </pre>
         </div>
-      </GlassCard>
+      </TerminalCard>
     </div>
   )
 }

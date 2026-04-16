@@ -12,6 +12,7 @@ import { ExportButton } from '../components/results/ExportButton'
 import type { AllResults, TicketTier } from '../types'
 import clsx from 'clsx'
 import { OrbitLoader } from '../components/shared/OrbitLoader'
+import { TerminalCard } from '../components/shared/TerminalCard'
 
 const TABS = [
   { id: 'sponsor',   label: 'Sponsors'  },
@@ -125,23 +126,24 @@ function TicketingFallback({ results }: { results: AllResults }) {
     <div className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {data.tiers?.map((tier: TicketTier) => (
-          <div key={tier.tier} className="glass-card p-5 space-y-3 stagger-child">
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--accent-indigo)' }}>{tier.tier}</p>
-            <p className="text-4xl font-extrabold" style={{ color: 'var(--text-primary)' }}>
-              <span className="text-xl font-semibold" style={{ color: 'var(--text-dim)' }}>$</span>
-              {tier.price.toLocaleString()}
-            </p>
-            <p className="text-xs px-2 py-1 rounded-full inline-block" style={{ background: 'var(--bg-elevated)', color: 'var(--text-secondary)' }}>
-              {tier.availability}
-            </p>
-            <ul className="space-y-1.5 pt-1">
-              {tier.perks?.map((p: string) => (
-                <li key={p} className="text-xs flex items-center gap-2" style={{ color: 'var(--text-secondary)' }}>
-                  <span className="text-xs font-bold" style={{ color: 'var(--accent-green)' }}>✓</span> {p}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <TerminalCard key={tier.tier} title={tier.tier} command={`init-tier ${tier.tier.toLowerCase()}`} minWidth="auto">
+            <div className="space-y-3 stagger-child h-full">
+              <p className="text-4xl font-extrabold" style={{ color: 'var(--text-primary)' }}>
+                <span className="text-xl font-semibold" style={{ color: 'var(--text-dim)' }}>$</span>
+                {tier.price.toLocaleString()}
+              </p>
+              <p className="text-xs px-2 py-1 rounded-full inline-block" style={{ background: 'var(--bg-elevated)', color: 'var(--text-secondary)' }}>
+                {tier.availability}
+              </p>
+              <ul className="space-y-1.5 pt-1">
+                {tier.perks?.map((p: string) => (
+                  <li key={p} className="text-xs flex items-center gap-2" style={{ color: 'var(--text-secondary)' }}>
+                    <span className="text-xs font-bold" style={{ color: 'var(--accent-green)' }}>✓</span> {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </TerminalCard>
         ))}
       </div>
       <div className="glass-card p-5">

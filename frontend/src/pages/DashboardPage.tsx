@@ -7,6 +7,9 @@ import { AgentStatusGrid } from '../components/dashboard/AgentStatusGrid'
 import { ProgressTimeline } from '../components/dashboard/ProgressTimeline'
 import { LiveLogs } from '../components/dashboard/LiveLogs'
 import { GlowButton } from '../components/shared/GlowButton'
+import { SparkleButton } from '../components/shared/SparkleButton'
+
+import { CreditCardWidget } from '../components/shared/CreditCardWidget'
 
 export function DashboardPage() {
   const { sessionId, isComplete, isRunning, agentStatuses, input } = useConferenceStore()
@@ -19,13 +22,7 @@ export function DashboardPage() {
     if (!sessionId) navigate('/')
   }, [sessionId, navigate])
 
-  // Auto-navigate to results when all agents complete
-  useEffect(() => {
-    if (isComplete) {
-      const timer = setTimeout(() => navigate('/results'), 1500)
-      return () => clearTimeout(timer)
-    }
-  }, [isComplete, navigate])
+
 
   const agents = Object.values(agentStatuses)
   const completedCount = agents.filter(a => a.status === 'completed').length
@@ -48,48 +45,39 @@ export function DashboardPage() {
         </div>
 
         {isComplete && (
-          <GlowButton onClick={() => navigate('/results')} size="sm">
-            View Results
-          </GlowButton>
+          <SparkleButton onClick={() => navigate('/results')} label="View Results" />
         )}
       </div>
 
-      {/* Stats bar */}
-      <div className="grid grid-cols-3 gap-4">
+      {/* Credit Card Stats bar */}
+      <div className="flex flex-wrap gap-6 justify-between items-center">
         {[
           {
-            label: 'Completed',
+            label: 'COMPLETED',
             value: `${completedCount} / 7`,
-            color: 'var(--accent-green)',
+            title: 'AGENTS',
+            footerLogo: 'status: online',
           },
           {
-            label: 'Running',
-            value: runningCount,
-            color: 'var(--accent-indigo)',
+            label: 'RUNNING',
+            value: `${runningCount}`,
+            title: 'ACTIVE',
+            footerLogo: 'processing',
           },
           {
-            label: 'Progress',
+            label: 'PROGRESS',
             value: `${Math.round(totalProgress)}%`,
-            color: 'var(--accent-purple)',
+            title: 'COMPLETION',
+            footerLogo: 'v7 engine',
           },
         ].map(stat => (
-          <div
-            key={stat.label}
-            className="rounded-xl p-4"
-            style={{
-              background: 'var(--bg-surface)',
-              border: '1px solid var(--border-subtle)',
-            }}
-          >
-            <p
-              className="text-[11px] font-semibold uppercase tracking-wider mb-1"
-              style={{ color: 'var(--text-dim)' }}
-            >
-              {stat.label}
-            </p>
-            <p className="text-2xl font-bold" style={{ color: stat.color }}>
-              {stat.value}
-            </p>
+          <div key={stat.title} className="flex-1 min-w-[320px] max-w-[400px] flex justify-center">
+            <CreditCardWidget 
+              title={stat.title}
+              subtitle={stat.label}
+              value={stat.value}
+              footerLogo={stat.footerLogo}
+            />
           </div>
         ))}
       </div>
@@ -97,14 +85,14 @@ export function DashboardPage() {
       <div className="flex gap-6">
         {/* Phase timeline sidebar */}
         <div
-          className="w-44 flex-shrink-0 rounded-xl p-4"
+          className="w-64 flex-shrink-0 rounded-xl p-5"
           style={{
             background: 'var(--bg-surface)',
             border: '1px solid var(--border-subtle)',
           }}
         >
           <p
-            className="text-[11px] font-semibold uppercase tracking-wider mb-4"
+            className="text-sm font-bold uppercase tracking-[0.2em] mb-6"
             style={{ color: 'var(--text-dim)' }}
           >
             Phases
@@ -147,9 +135,7 @@ export function DashboardPage() {
               Your complete conference plan is ready to view.
             </p>
           </div>
-          <GlowButton onClick={() => navigate('/results')} size="md">
-            View Results
-          </GlowButton>
+          <SparkleButton onClick={() => navigate('/results')} label="View Results" />
         </div>
       )}
 

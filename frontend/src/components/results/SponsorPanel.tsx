@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GlassCard } from '../shared/GlassCard'
+import { TerminalCard } from '../shared/TerminalCard'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import type { Sponsor } from '../../types'
 
@@ -112,11 +112,11 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <GlassCard
+    <TerminalCard
       className="stagger-child"
-      hover={false}
+      title={sponsor.company_name}
+      command={`analyze-sponsor --name "${sponsor.company_name}"`}
       onClick={() => setExpanded((v) => !v)}
-      style={{ cursor: 'pointer' } as React.CSSProperties}
     >
       {/* Header row */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
@@ -263,7 +263,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
           )}
         </div>
       )}
-    </GlassCard>
+    </TerminalCard>
   )
 }
 

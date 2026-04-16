@@ -51,18 +51,18 @@ export function ProgressTimeline() {
             <div className="pb-6">
               <div className="flex items-center gap-2.5">
                 <p
-                  className={clsx('text-sm font-bold tracking-wide transition-colors duration-500', isDone || isActive ? '' : 'opacity-40')}
+                  className={clsx('text-base font-extrabold tracking-widest transition-colors duration-500 uppercase', isDone || isActive ? '' : 'opacity-40')}
                   style={{ 
-                    color: isDone ? '#00E676' : isActive ? '#00E5FF' : 'var(--text-primary)',
-                    textShadow: isDone ? '0 0 10px rgba(0,230,118,0.2)' : isActive ? '0 0 10px rgba(0,229,255,0.2)' : 'none'
+                    color: isDone ? '#00E676' : isActive ? '#00ffaa' : 'var(--text-primary)',
+                    textShadow: isDone ? '0 0 10px rgba(0,230,118,0.3)' : isActive ? '0 0 10px rgba(0,255,170,0.4)' : 'none'
                   }}
                 >
                   {phase.label}
-                  {phase.parallel && <span className="ml-1.5 text-[10px] uppercase font-semibold opacity-70 border rounded-sm px-1 py-0.5 border-current">(parallel)</span>}
+                  {phase.parallel && <span className="ml-2 text-xs uppercase font-extrabold opacity-70 border rounded-md px-1.5 py-0.5 border-current shadow-sm">(parallel)</span>}
                 </p>
-                {isActive && <OrbitLoader size={16} label="" />}
+                {isActive && <OrbitLoader size={20} label="" />}
               </div>
-              <p className="text-xs mt-1.5 font-medium transition-opacity duration-500" style={{ color: 'var(--text-dim)', opacity: isDone || isActive ? 0.9 : 0.4 }}>
+              <p className="text-sm mt-1.5 font-medium transition-opacity duration-500" style={{ color: 'var(--text-dim)', opacity: isDone || isActive ? 1 : 0.5 }}>
                 {phase.desc}
               </p>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlassCard } from '../shared/GlassCard'
+import { TerminalCard } from '../shared/TerminalCard'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import type { Speaker, AgendaSlot } from '../../types'
 
@@ -126,7 +126,7 @@ function AvatarPlaceholder({ name }: { name: string }) {
 // ─── Speaker Card ─────────────────────────────────────────────────────────────
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   return (
-    <GlassCard className="stagger-child" hover>
+    <TerminalCard className="stagger-child" title={speaker.name} command={`fetch-speaker ${speaker.name.replace(/\\s+/g, '-').toLowerCase()}`}>
       {/* Top row */}
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 14 }}>
         <AvatarPlaceholder name={speaker.name} />
@@ -202,7 +202,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
           </a>
         </div>
       )}
-    </GlassCard>
+    </TerminalCard>
   )
 }
 

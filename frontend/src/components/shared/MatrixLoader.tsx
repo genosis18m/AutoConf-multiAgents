@@ -77,7 +77,7 @@ const PATTERNS = Array.from({ length: 5 })
 
 export function MatrixLoader({ label = 'Launching agents' }: { label?: string }) {
   return (
-    <div className="w-full h-64 relative flex flex-col items-center justify-center overflow-hidden rounded-xl" style={{ background: '#000' }}>
+    <div className="w-full relative flex flex-col items-center justify-center overflow-hidden rounded-xl border border-green-500/30" style={{ height: '60vh', minHeight: '500px', background: '#000', boxShadow: '0 0 30px rgba(0,255,65,0.2)' }}>
       <StyledWrapper>
         <div className="matrix-container">
           {PATTERNS.map((_, pi) => (
@@ -91,11 +91,11 @@ export function MatrixLoader({ label = 'Launching agents' }: { label?: string })
       </StyledWrapper>
       {/* Overlay text */}
       <div className="relative z-10 text-center pointer-events-none">
-        <p className="text-lg font-bold" style={{ color: '#00ff41', fontFamily: 'monospace', textShadow: '0 0 10px #00ff41' }}>
+        <p className="text-3xl font-bold tracking-widest mt-6" style={{ color: '#00ff41', fontFamily: 'monospace', textShadow: '0 0 20px #00ff41' }}>
           {label}
         </p>
-        <p className="text-sm mt-1" style={{ color: 'rgba(0,255,65,0.6)', fontFamily: 'monospace' }}>
-          Initialising 7 agents…
+        <p className="text-xl mt-4 tracking-widest" style={{ color: 'rgba(0,255,65,0.8)', fontFamily: 'monospace' }}>
+          Initializing 7 Agents...
         </p>
       </div>
     </div>
