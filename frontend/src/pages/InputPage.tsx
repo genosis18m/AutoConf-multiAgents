@@ -3,34 +3,27 @@ import { EventAILLogo } from '../components/branding/EventAILLogo'
 
 export function InputPage() {
   return (
-    <div className="relative min-h-full overflow-hidden dot-grid" style={{ background: 'var(--bg-primary)' }}>
-      {/* Gradient orbs */}
-      <div className="gradient-orb w-96 h-96 top-[-80px] left-[-80px]" style={{ background: 'var(--accent-cyan)' }} />
-      <div className="gradient-orb w-80 h-80 bottom-[-60px] right-[-60px]" style={{ background: 'var(--accent-purple)' }} />
+    <div className="relative min-h-full overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
+      {/* Subtle ambient orbs */}
+      <div className="gradient-orb w-[500px] h-[500px] top-[-100px] left-[-120px]" style={{ background: 'var(--accent-indigo)' }} />
+      <div className="gradient-orb w-[400px] h-[400px] bottom-[-80px] right-[-100px]" style={{ background: 'var(--accent-purple)' }} />
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-full flex-col items-center justify-center px-5 py-5 sm:px-6 sm:py-7">
+      <div className="relative z-10 flex min-h-full flex-col items-center justify-center px-5 py-8 sm:px-6">
+
         {/* Hero text */}
-        <div className="mb-5 flex max-w-2xl flex-col items-center text-center sm:mb-6">
-          <div
-            className="mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
-            style={{ background: 'rgba(0,229,255,0.1)', border: '1px solid rgba(0,229,255,0.2)', color: '#00E5FF' }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-ping" />
-            7 AI Agents · Phased Execution · Real-time
-          </div>
+        <div className="mb-6 flex max-w-xl flex-col items-center text-center">
+          <EventAILLogo variant="hero" className="mb-4 mx-auto" />
 
-          <EventAILLogo variant="hero" className="mb-3 mx-auto" />
-
-          <p className="mx-auto max-w-xl text-sm sm:text-base" style={{ color: 'var(--text-secondary)' }}>
-            Enter your conference details. 7 autonomous AI agents will research sponsors,
-            speakers, venues, pricing, GTM strategy, and operations — in minutes.
+          <p className="mx-auto max-w-md text-sm sm:text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+            Tell us about your conference. Seven research agents will find
+            sponsors, speakers, venues, pricing, and more — in minutes.
           </p>
         </div>
 
         {/* Form container */}
         <div
-          className="w-full max-w-2xl rounded-xl p-5 sm:p-6"
+          className="w-full max-w-2xl rounded-xl p-5 sm:p-7"
           style={{
             background: 'var(--bg-glass)',
             backdropFilter: 'blur(20px)',
@@ -41,27 +34,20 @@ export function InputPage() {
           <ConferenceForm />
         </div>
 
-        <footer className="mt-5 w-full max-w-4xl">
+        {/* Footer */}
+        <footer className="mt-6 w-full max-w-2xl">
           <div
-            className="rounded-2xl px-4 py-4 sm:px-5"
+            className="rounded-xl px-5 py-4"
             style={{
-              background: 'rgba(18, 18, 26, 0.7)',
+              background: 'var(--bg-surface)',
               border: '1px solid var(--border-subtle)',
-              backdropFilter: 'blur(18px)',
             }}
           >
             <div className="flex flex-wrap justify-center gap-2">
-              {[
-                '💰 Sponsors',
-                '🎤 Speakers',
-                '🏛️ Venues',
-                '📊 Pricing',
-                '📣 GTM',
-                '⚙️ Ops',
-              ].map((item) => (
+              {['Sponsors', 'Speakers', 'Venues', 'Pricing', 'GTM Strategy', 'Operations'].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full px-3 py-1 text-[11px] sm:text-xs"
+                  className="rounded-full px-3 py-1 text-xs font-medium"
                   style={{
                     background: 'var(--bg-elevated)',
                     border: '1px solid var(--border-subtle)',
@@ -75,13 +61,13 @@ export function InputPage() {
 
             <div
               className="mt-4 flex flex-col items-center justify-between gap-2 border-t pt-3 text-center sm:flex-row sm:text-left"
-              style={{ borderColor: 'rgba(42, 42, 58, 0.9)' }}
+              style={{ borderColor: 'var(--border-subtle)' }}
             >
-              <p className="text-[11px] sm:text-xs" style={{ color: 'var(--text-secondary)' }}>
-                EventAIL plans multi-day conferences with 7 autonomous agents and live execution updates.
+              <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+                EventAIL plans multi-day conferences using seven autonomous agents with live progress updates.
               </p>
-              <p className="text-[11px] sm:text-xs" style={{ color: 'var(--text-dim)' }}>
-                FastAPI · React · WebSocket streaming · Export-ready outputs
+              <p className="text-xs" style={{ color: 'var(--text-dim)' }}>
+                Results export-ready in minutes
               </p>
             </div>
           </div>

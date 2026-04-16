@@ -16,7 +16,7 @@ def get_llm():
     raise ValueError("No LLM API key configured. Set GROQ_API_KEY or GEMINI_API_KEY.")
 
 
-async def run_sponsor_agent(category: str, geography: str, audience_size: int, budget: float = None) -> dict:
+async def run_sponsor_agent(category: str, geography: str, audience_size: int, budget: float) -> dict:
     try:
         llm = get_llm()
 
@@ -81,7 +81,7 @@ Return ONLY a valid JSON object (no markdown, no extra text) in exactly this for
         start = raw.find('{')
         end = raw.rfind('}')
         if start != -1 and end != -1:
-            return json.loads(raw[start:end+1])
+            return json.loads(str(raw)[start:end+1])
 
         return _mock_sponsor_result(category, geography)
 
