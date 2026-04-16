@@ -29,7 +29,6 @@ export function Header() {
             className="text-xs px-2.5 py-1 rounded-full"
             style={{
               color: 'var(--text-dim)',
-              fontFamily: 'var(--font-mono)',
               background: 'var(--bg-elevated)',
               border: '1px solid var(--border-subtle)',
             }}
