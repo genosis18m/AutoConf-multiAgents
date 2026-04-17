@@ -182,7 +182,7 @@ export function ConferenceForm() {
 
   const [category, setCategory] = useState('')
   const [geography, setGeography] = useState('')
-  const [audienceSize, setAudienceSize] = useState('')
+  const [audienceSize, setAudienceSize] = useState<number>(0)
   const [budget, setBudget] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -199,17 +199,17 @@ export function ConferenceForm() {
       const input = {
         category,
         geography: geography.trim(),
-        audience_size: audienceSize,
+        audience_size: Number(audienceSize),
         budget: budget ? parseFloat(budget) : undefined,
       }
       setInput(input)
       const session = await startGeneration(input)
       setSessionId(session.session_id)
+      setLoading(false)
       navigate('/dashboard')
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Connection failed'
       setError(`ERR: ${msg}`)
-    } finally {
       setLoading(false)
     }
   }
