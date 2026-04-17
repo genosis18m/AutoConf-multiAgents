@@ -70,7 +70,7 @@ const StyledForm = styled.div`
   /* ── form group ── */
   .form-group {
     position: relative;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.25rem;
   }
 
   .form-label {
@@ -148,9 +148,22 @@ const StyledForm = styled.div`
 
   .two-col {
     display: grid;
-    padding: 2rem;
+    padding: 1.2rem 0.2rem 1rem;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+
+  @media (max-height: 820px) {
+    .card-body { padding: 1rem; }
+
+    .form-group {
+      margin-bottom: 0.95rem;
+    }
+
+    .two-col {
+      padding: 0.9rem 0 0.7rem;
+      gap: 0.8rem;
+    }
   }
 
   .error-msg {

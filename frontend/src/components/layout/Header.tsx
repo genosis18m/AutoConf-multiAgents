@@ -9,7 +9,7 @@ export function Header() {
 
   return (
     <header
-      className="h-14 border-b flex items-center justify-between px-6 flex-shrink-0"
+      className="h-16 border-b flex items-center justify-between px-6 md:px-7 flex-shrink-0"
       style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-surface)' }}
     >
       <button
