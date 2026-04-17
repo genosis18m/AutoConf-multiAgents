@@ -1,5 +1,9 @@
 export const API_BASE = '/api'
-export const WS_BASE = (sessionId: string) => `ws://localhost:8000/ws/${sessionId}`
+export const WS_BASE = (sessionId: string) => {
+  if (typeof window === 'undefined') return `ws://localhost:5173/ws/${sessionId}`
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
+  return `${protocol}//${window.location.host}/ws/${sessionId}`
+}
 
 export const AGENT_LABELS: Record<string, string> = {
   sponsor: 'Sponsor Research',

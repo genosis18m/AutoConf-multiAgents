@@ -1,4 +1,9 @@
-from crewai import Agent, Task, Crew, LLM
+try:
+    from crewai import Agent, Task, Crew, LLM
+    CREWAI_AVAILABLE = True
+except Exception:
+    Agent = Task = Crew = LLM = None
+    CREWAI_AVAILABLE = False
 from config import settings
 import json
 import logging
@@ -8,6 +13,8 @@ logger = logging.getLogger(__name__)
 
 
 def get_llm():
+    if not CREWAI_AVAILABLE:
+        raise RuntimeError("CrewAI is not available in this environment.")
     if settings.groq_api_key:
         return LLM(model="groq/llama-3.3-70b-versatile", api_key=settings.groq_api_key)
     if settings.gemini_api_key:

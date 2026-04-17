@@ -1,0 +1,67 @@
+2026-04-17 15:01:28,923 main INFO: ConferenceAI starting up...
+2026-04-17 20:01:12,723 services.websocket_manager INFO: WebSocket connected: 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:14,519 agents.sponsor_agent ERROR: Sponsor agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:14,520 agents.orchestrator INFO: Agent sponsor completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:16,194 services.websocket_manager INFO: WebSocket disconnected: 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:19,519 agents.speaker_agent ERROR: Speaker agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:19,520 agents.orchestrator INFO: Agent speaker completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:24,520 agents.ticketing_agent ERROR: Ticketing agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:24,520 agents.orchestrator INFO: Agent ticketing completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:29,520 agents.venue_agent ERROR: Venue agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:29,520 agents.orchestrator INFO: Agent venue completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:34,520 agents.pricing_agent ERROR: Pricing agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:34,521 agents.orchestrator INFO: Agent pricing completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:39,521 agents.gtm_agent ERROR: GTM agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:39,521 agents.orchestrator INFO: Agent gtm completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:44,522 agents.ops_agent ERROR: Ops agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:44,522 agents.orchestrator INFO: Agent ops completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:44,522 agents.orchestrator INFO: Conference plan completed for session 5abfd6ed-56a2-469b-9387-31a871b6a7f3
+2026-04-17 20:01:44,559 main INFO: ConferenceAI shutting down...
+2026-04-17 20:01:45,467 main INFO: ConferenceAI starting up...
+2026-04-17 20:01:46,448 main INFO: ConferenceAI starting up...
+2026-04-17 20:01:48,452 agents.sponsor_agent ERROR: Sponsor agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:48,452 agents.orchestrator INFO: Agent sponsor completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:01:53,453 agents.speaker_agent ERROR: Speaker agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:53,453 agents.orchestrator INFO: Agent speaker completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:01:58,454 agents.ticketing_agent ERROR: Ticketing agent error: CrewAI is not available in this environment.
+2026-04-17 20:01:58,454 agents.orchestrator INFO: Agent ticketing completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:02:03,454 agents.venue_agent ERROR: Venue agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:03,455 agents.orchestrator INFO: Agent venue completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:02:08,455 agents.pricing_agent ERROR: Pricing agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:08,455 agents.orchestrator INFO: Agent pricing completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:02:11,197 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:11,200 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:11,208 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:13,019 agents.sponsor_agent ERROR: Sponsor agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:13,020 agents.orchestrator INFO: Agent sponsor completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:13,456 agents.gtm_agent ERROR: GTM agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:13,456 agents.orchestrator INFO: Agent gtm completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:02:18,020 agents.speaker_agent ERROR: Speaker agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:18,021 agents.orchestrator INFO: Agent speaker completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:18,457 agents.ops_agent ERROR: Ops agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:18,457 agents.orchestrator INFO: Agent ops completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:02:18,457 agents.orchestrator INFO: Conference plan completed for session 03b45ecf-a2a4-4519-83f1-b1392e75b803
+2026-04-17 20:02:21,189 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:23,022 agents.ticketing_agent ERROR: Ticketing agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:23,022 agents.orchestrator INFO: Agent ticketing completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:28,023 agents.venue_agent ERROR: Venue agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:28,023 agents.orchestrator INFO: Agent venue completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:31,063 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:31,079 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:31,083 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:33,024 agents.pricing_agent ERROR: Pricing agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:33,024 agents.orchestrator INFO: Agent pricing completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:38,024 agents.gtm_agent ERROR: GTM agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:38,024 agents.orchestrator INFO: Agent gtm completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:43,024 agents.ops_agent ERROR: Ops agent error: CrewAI is not available in this environment.
+2026-04-17 20:02:43,025 agents.orchestrator INFO: Agent ops completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:43,025 agents.orchestrator INFO: Conference plan completed for session 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:45,977 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:48,738 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:48,750 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:48,755 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:49,383 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:50,160 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:50,176 services.websocket_manager INFO: WebSocket connected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:02:50,179 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1
+2026-04-17 20:04:37,493 services.websocket_manager INFO: WebSocket disconnected: 2c35bd6f-1f6f-4ac6-9cd8-4369323943a1

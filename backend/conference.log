@@ -3522,3 +3522,136 @@ For more details, see: https://docs.crewai.com/en/learn/llm-connections
 2026-04-16 18:58:41,462 httpx INFO: HTTP Request: GET https://lutzwxeagcuuarvexnrw.supabase.co/rest/v1/agent_results?select=%2A&session_id=eq.b4300c3c-f83d-4c3f-9145-5337b85c2fc3 "HTTP/2 404 Not Found"
 2026-04-16 18:58:41,466 services.supabase_client ERROR: get_agent_results error: {'code': 'PGRST205', 'details': None, 'hint': None, 'message': "Could not find the table 'public.agent_results' in the schema cache"}
 2026-04-16 18:59:00,192 services.websocket_manager INFO: WebSocket disconnected: b4300c3c-f83d-4c3f-9145-5337b85c2fc3
+2026-04-16 12:24:04,082 crewai.cli.config INFO: Using config path: /home/mohit-adoni/.config/crewai/settings.json
+2026-04-16 12:24:04,127 crewai.cli.config INFO: Using config path: /home/mohit-adoni/.config/crewai/settings.json
+2026-04-16 12:24:04,444 main INFO: ConferenceAI starting up...
+2026-04-16 12:24:04,485 main INFO: ConferenceAI starting up...
+2026-04-16 12:28:53,589 crewai.cli.config INFO: Using config path: /home/mohit-adoni/.config/crewai/settings.json
+2026-04-16 12:28:53,929 main INFO: ConferenceAI starting up...
+2026-04-16 12:30:13,696 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:16,702 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:30:20,877 root ERROR: Google Gemini API error: 503 - This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+2026-04-16 12:30:20,883 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:30:23,642 root ERROR: Google Gemini API error: 503 - This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+2026-04-16 12:30:23,648 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:30:29,376 root ERROR: Google Gemini API error: 503 - This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+2026-04-16 12:30:29,387 agents.sponsor_agent ERROR: Sponsor agent error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-16 12:30:29,388 agents.orchestrator INFO: Agent sponsor completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:34,476 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:30:44,123 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:30:46,318 root ERROR: Google Gemini API error: 503 - This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+2026-04-16 12:30:46,323 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:30:50,413 root ERROR: Google Gemini API error: 503 - This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+2026-04-16 12:30:50,422 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:30:50,872 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 9.756770815s.
+2026-04-16 12:30:50,877 agents.speaker_agent ERROR: Speaker agent error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 9.756770815s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}
+2026-04-16 12:30:50,878 agents.orchestrator INFO: Agent speaker completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,880 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,883 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,885 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,887 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,888 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,889 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,890 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,891 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:50,892 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:30:55,962 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:30:56,514 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 4.195420123s.
+2026-04-16 12:30:56,518 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:30:56,896 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 3.681340567s.
+2026-04-16 12:30:56,904 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:30:57,284 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 3.293860267s.
+2026-04-16 12:30:57,289 agents.ticketing_agent ERROR: Ticketing agent error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 3.293860267s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '3s'}]}}
+2026-04-16 12:30:57,289 agents.orchestrator INFO: Agent ticketing completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:31:02,411 root INFO: Gemini: Successfully validated tool 'google_places_search'
+2026-04-16 12:31:02,411 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:31:02,827 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 57.742974833s.
+2026-04-16 12:31:02,831 root INFO: Gemini: Successfully validated tool 'google_places_search'
+2026-04-16 12:31:02,834 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:31:03,210 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 57.36550386s.
+2026-04-16 12:31:03,217 root INFO: Gemini: Successfully validated tool 'google_places_search'
+2026-04-16 12:31:03,221 root INFO: Gemini: Successfully validated tool 'web_search'
+2026-04-16 12:31:03,682 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 56.964292602s.
+2026-04-16 12:31:03,687 agents.venue_agent ERROR: Venue agent error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 56.964292602s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '56s'}]}}
+2026-04-16 12:31:03,687 agents.orchestrator INFO: Agent venue completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:31:08,769 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:31:09,314 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 51.377958102s.
+2026-04-16 12:31:09,318 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:31:09,700 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 50.874968992s.
+2026-04-16 12:31:09,708 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:31:10,234 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 50.479830647s.
+2026-04-16 12:31:10,240 agents.pricing_agent ERROR: Pricing agent error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 50.479830647s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '50s'}]}}
+2026-04-16 12:31:10,240 agents.orchestrator INFO: Agent pricing completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:31:15,334 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:31:15,765 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 44.814804961s.
+2026-04-16 12:31:15,768 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:31:16,158 root ERROR: Google Gemini API error: 429 - You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash
+Please retry in 44.411112533s.
+2026-04-16 12:31:16,167 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:31:18,087 root ERROR: Google Gemini API error: 503 - This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+2026-04-16 12:31:18,091 agents.gtm_agent ERROR: GTM agent error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-04-16 12:31:18,091 agents.orchestrator INFO: Agent gtm completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:31:23,178 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:31:24,674 root ERROR: Google Gemini API error: 503 - This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+2026-04-16 12:31:24,682 google_genai.models INFO: AFC is enabled with max remote calls: 10.
+2026-04-16 12:32:27,979 agents.orchestrator INFO: Agent ops completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,979 agents.orchestrator INFO: Conference plan completed for session 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,981 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,983 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,986 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,987 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,988 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,989 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:32:27,990 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:11,357 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:13,324 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:13,335 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:13,341 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:14,215 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:16,075 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:16,078 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:16,090 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:16,751 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:17,822 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:17,826 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:17,835 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:18,513 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:20,064 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:20,065 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:20,076 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:33:25,272 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:03,496 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:03,499 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:03,508 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:03,979 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:05,167 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:05,177 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:05,182 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:06,261 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:38,790 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:38,794 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:38,806 services.websocket_manager INFO: WebSocket connected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
+2026-04-16 12:34:38,794 services.websocket_manager INFO: WebSocket disconnected: 80a16fbd-0c72-44ce-abca-c2ba397ea659
