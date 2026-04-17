@@ -4,7 +4,10 @@ nohup: ignoring input
 > vite --host 0.0.0.0 --port 5173
 
 
-  VITE v5.4.21  ready in 207 ms
+  VITE v5.4.21  ready in 260 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://10.81.103.196:5173/
+8:14:44 PM [vite] hmr update /src/pages/InputPage.tsx, /src/index.css
+8:14:58 PM [vite] hmr update /src/components/branding/EventAILLogo.tsx, /src/index.css
+8:15:07 PM [vite] hmr update /src/components/input/ConferenceForm.tsx, /src/index.css

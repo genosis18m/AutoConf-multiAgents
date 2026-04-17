@@ -1,5 +1,17 @@
-export const API_BASE = '/api'
+const backendBase = (import.meta.env.VITE_BACKEND_URL as string | undefined)?.replace(/\/+$/, '')
+
+export const API_BASE = backendBase ? `${backendBase}/api` : '/api'
+
 export const WS_BASE = (sessionId: string) => {
+  if (backendBase) {
+    const wsBase = backendBase.startsWith('https://')
+      ? backendBase.replace('https://', 'wss://')
+      : backendBase.startsWith('http://')
+        ? backendBase.replace('http://', 'ws://')
+        : backendBase
+    return `${wsBase}/ws/${sessionId}`
+  }
+
   if (typeof window === 'undefined') return `ws://localhost:5173/ws/${sessionId}`
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
   return `${protocol}//${window.location.host}/ws/${sessionId}`

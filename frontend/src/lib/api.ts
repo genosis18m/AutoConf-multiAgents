@@ -1,7 +1,8 @@
 import axios from 'axios'
 import type { ConferenceInput, Session, AllResults } from '../types'
+import { API_BASE } from './constants'
 
-const api = axios.create({ baseURL: '/api', timeout: 30000 })
+const api = axios.create({ baseURL: API_BASE, timeout: 30000 })
 
 export async function startGeneration(input: ConferenceInput): Promise<Session> {
   const { data } = await api.post<Session>('/generate', input)

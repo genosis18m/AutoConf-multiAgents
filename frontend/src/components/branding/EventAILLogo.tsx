@@ -83,8 +83,8 @@ export function EventAILLogo({ variant = 'full', className }: EventAILLogoProps)
         variant="mark"
         className={clsx(
           'shrink-0',
-          isHeader && 'h-8 w-8',
-          isHero && 'h-16 w-16 sm:h-20 sm:w-20',
+          isHeader && 'h-9 w-9',
+          isHero && 'h-14 w-14 sm:h-16 sm:w-16',
           !isHeader && !isHero && 'h-28 w-28 sm:h-36 sm:w-36',
         )}
       />
@@ -93,7 +93,7 @@ export function EventAILLogo({ variant = 'full', className }: EventAILLogoProps)
         <div
           className={clsx(
             'font-semibold uppercase tracking-[0.14em]',
-            isHeader ? 'text-[1rem] sm:text-[1.1rem]' : isHero ? 'text-[2.25rem] sm:text-[3.3rem]' : 'text-[2.5rem] sm:text-[4.25rem]',
+            isHeader ? 'text-[1.08rem] sm:text-[1.18rem]' : isHero ? 'text-[2rem] sm:text-[2.9rem]' : 'text-[2.5rem] sm:text-[4.25rem]',
           )}
           style={{ color: '#2A79B7' }}
         >
@@ -102,7 +102,7 @@ export function EventAILLogo({ variant = 'full', className }: EventAILLogoProps)
         <div
           className={clsx(
             'uppercase tracking-[0.16em]',
-            isHeader ? 'text-[0.45rem] sm:text-[0.5rem]' : isHero ? 'text-[0.6rem] sm:text-[0.82rem]' : 'text-[0.7rem] sm:text-[0.95rem]',
+            isHeader ? 'text-[0.5rem] sm:text-[0.56rem]' : isHero ? 'text-[0.58rem] sm:text-[0.76rem]' : 'text-[0.7rem] sm:text-[0.95rem]',
           )}
           style={{ color: 'rgba(186, 221, 255, 0.9)' }}
         >
