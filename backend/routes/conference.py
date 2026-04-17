@@ -187,7 +187,7 @@ async def export_pdf(session_id: str):
     def kv_table(payload: dict):
         rows = [["Field", "Value"]]
         for key, value in payload.items():
-            rows.append([format_label(str(key)), textify(value)])
+            rows.append([Paragraph(format_label(str(key)), body_style), Paragraph(escape(textify(value)), body_style)])
         return styled_table(rows, col_widths=[2.0 * inch, 4.9 * inch])
 
     def list_of_dicts_table(items: list):
@@ -204,7 +204,7 @@ async def export_pdf(session_id: str):
         if not keys:
             return None
 
-        header = [format_label(str(k)) for k in keys]
+        header = [Paragraph(format_label(str(k)), body_style) for k in keys]
         rows = [header]
 
         for item in items:
@@ -213,7 +213,7 @@ async def export_pdf(session_id: str):
             row = []
             for key in keys:
                 value = item.get(key)
-                row.append(textify(value))
+                row.append(Paragraph(escape(textify(value)), body_style))
             rows.append(row)
 
         col_count = max(1, len(keys))
