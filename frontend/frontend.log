@@ -1,0 +1,10 @@
+nohup: ignoring input
+
+> conference-ai-frontend@1.0.0 dev
+> vite --host 0.0.0.0 --port 5173
+
+
+  VITE v5.4.21  ready in 207 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://10.81.103.196:5173/

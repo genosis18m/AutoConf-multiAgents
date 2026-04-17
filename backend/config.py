@@ -1,9 +1,10 @@
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv(override=True)
-
+env_path = Path(__file__).resolve().parent / ".env"
+load_dotenv(dotenv_path=env_path, override=True)
 class Settings(BaseSettings):
     # LLM
     groq_api_key: str = ""
@@ -27,7 +28,7 @@ class Settings(BaseSettings):
     cors_origins: list[str] = ["*"]
 
     class Config:
-        env_file = ".env"
+        env_file = str(env_path)
         env_file_encoding = "utf-8"
         extra = "ignore"
 
