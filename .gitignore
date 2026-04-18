@@ -8,6 +8,10 @@ venv/
 backend/.env
 .env
 
+# Logs
+*.log
+backend/*.log
+
 # Node
 node_modules/
 dist/
