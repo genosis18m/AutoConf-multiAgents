@@ -1,18 +1,27 @@
 from tavily import TavilyClient
 from config import settings
-from crewai.tools import BaseTool
-from pydantic import Field
-import logging
+try:
+    from crewai.tools import BaseTool
+except ImportError:
+    BaseTool = object
 
+import logging
 logger = logging.getLogger(__name__)
 
 
 class TavilySearchTool(BaseTool):
+    if BaseTool is object:
+        # Dummy properties if not using CrewAI
+        def __init__(self, **kwargs):
+            super().__init__()
+            for k, v in kwargs.items():
+                setattr(self, k, v)
     name: str = "web_search"
     description: str = (
         "Search the web for up-to-date information about events, sponsors, speakers, venues. "
         "Input: a search query string. Returns: list of relevant web results with title, url, content."
     )
+
 
     def _run(self, query: str) -> str:
         if not settings.tavily_api_key:
