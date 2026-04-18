@@ -1,20 +1,19 @@
-from crewai import Agent, Task, Crew, LLM
+try:
+    from crewai import Agent, Task, Crew, LLM
+    CREWAI_AVAILABLE = True
+except Exception:
+    Agent = Task = Crew = LLM = None
+    CREWAI_AVAILABLE = False
 from tools.google_places import google_places_tool
 from tools.tavily_search import tavily_search_tool
 from config import settings
+from agents.base_llm import get_llm, run_crew_with_fallback
 import json
 import logging
 import re
 
 logger = logging.getLogger(__name__)
 
-
-def get_llm():
-    if settings.groq_api_key:
-        return LLM(model="groq/llama-3.3-70b-versatile", api_key=settings.groq_api_key)
-    if settings.gemini_api_key:
-        return LLM(model="gemini/gemini-2.5-flash", api_key=settings.gemini_api_key)
-    raise ValueError("No LLM API key configured.")
 
 
 async def run_venue_agent(category: str, geography: str, audience_size: int, budget: float = None) -> dict:
@@ -66,8 +65,10 @@ Return ONLY valid JSON:
             agent=agent,
         )
 
-        crew = Crew(agents=[agent], tasks=[task], verbose=False)
-        result = crew.kickoff()
+        def _build_and_run(llm_):
+            agent.llm = llm_
+            return Crew(agents=[agent], tasks=[task], verbose=False).kickoff()
+        result = run_crew_with_fallback(_build_and_run)
         raw = str(result)
         # Extract JSON from result
         raw = raw.strip()

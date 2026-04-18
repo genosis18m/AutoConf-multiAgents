@@ -1,0 +1,25 @@
+nohup: ignoring input
+
+> conference-ai-frontend@1.0.0 dev
+> vite --host 0.0.0.0 --port 5173
+
+
+  VITE v5.4.21  ready in 236 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://10.81.103.196:5173/
+10:53:28 PM [vite] ws proxy error:
+Error: This socket has been ended by the other party
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at Socket.writeAfterFIN [as write] (node:net:575:14)
+    at Socket.ondata (node:internal/streams/readable:1009:22)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)
+11:48:37 PM [vite] hmr update /src/pages/DashboardPage.tsx, /src/index.css
+12:34:11 AM [vite] hmr update /src/components/dashboard/ProgressTimeline.tsx, /src/index.css
+12:34:18 AM [vite] hmr update /src/components/dashboard/ProgressTimeline.tsx, /src/index.css
+12:35:29 AM [vite] hmr update /src/components/dashboard/ProgressTimeline.tsx, /src/index.css

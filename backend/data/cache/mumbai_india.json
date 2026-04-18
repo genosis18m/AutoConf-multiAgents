@@ -1,0 +1,217 @@
+{
+  "sponsor": {
+    "sponsors": [
+      {
+        "rank": 1,
+        "company_name": "Reliance Jio",
+        "industry": "Telecom / Digital Services",
+        "relevance_score": 0.98,
+        "estimated_budget": "$80,000–150,000",
+        "contact_info": {"email": "partnerships@jio.com", "linkedin": "linkedin.com/company/reliance-jio"},
+        "rationale": "Mumbai-headquartered digital conglomerate with massive interest in 5G, AI, and cloud. Top sponsor for large-scale national tech events.",
+        "outreach_email": "Dear Jio Platforms Team,\n\nWe are organizing Mumbai's premier Technology Conference and believe Jio's vision of a Digital India aligns perfectly with our mission. With 10,000 attendees, this is the ideal stage for your latest innovations.\n\nLet's connect.\n\nBest,\nConferenceAI Team"
+      },
+      {
+        "rank": 2,
+        "company_name": "HDFC Bank",
+        "industry": "Fintech / Banking",
+        "relevance_score": 0.94,
+        "estimated_budget": "$60,000–100,000",
+        "contact_info": {"email": "corporate.events@hdfcbank.com", "linkedin": "linkedin.com/company/hdfc-bank"},
+        "rationale": "India's largest private bank, headquartered in Mumbai. Major investor in fintech and tech innovation sponsors.",
+        "outreach_email": "Dear HDFC Bank Team,\n\nOur Mumbai Technology Conference will attract 10,000 finance and technology professionals. HDFC Bank's digital transformation journey makes it a compelling keynote sponsor.\n\nKind regards,\nConferenceAI Team"
+      },
+      {
+        "rank": 3,
+        "company_name": "Tata Consultancy Services (TCS)",
+        "industry": "IT Consulting",
+        "relevance_score": 0.93,
+        "estimated_budget": "$50,000–90,000",
+        "contact_info": {"email": "events@tcs.com", "linkedin": "linkedin.com/company/tata-consultancy-services"},
+        "rationale": "TCS global HQ is in Mumbai. Premier partner for any national technology conference.",
+        "outreach_email": "Dear TCS Events Team,\n\nWith your Mumbai headquarters and world-class AI practice, TCS is the natural presenting sponsor for our Mumbai Technology Conference.\n\nSincerely,\nConferenceAI Team"
+      },
+      {
+        "rank": 4,
+        "company_name": "Bombay Stock Exchange (BSE)",
+        "industry": "FinTech / Capital Markets",
+        "relevance_score": 0.88,
+        "estimated_budget": "$30,000–60,000",
+        "contact_info": {"email": "info@bseindia.com", "linkedin": "linkedin.com/company/bombay-stock-exchange"},
+        "rationale": "BSE is deeply interested in tech-fintech convergence events and has sponsored prior Mumbai events.",
+        "outreach_email": "Dear BSE Team,\n\nOur conference brings together the intersection of technology and finance — ideal for BSE's innovation agenda. We'd love to have you as a co-sponsor.\n\nBest regards,\nConferenceAI Team"
+      },
+      {
+        "rank": 5,
+        "company_name": "Navi Technologies",
+        "industry": "Fintech / Insurtech",
+        "relevance_score": 0.85,
+        "estimated_budget": "$20,000–40,000",
+        "contact_info": {"email": "partnerships@navi.com", "linkedin": "linkedin.com/company/navi"},
+        "rationale": "Mumbai-based fintech unicorn backed by Sachin Bansal. Actively sponsors young tech conferences for brand building.",
+        "outreach_email": "Dear Navi Team,\n\nOur conference, focused on the future of technology and financial services, offers Navi a perfect audience. Early sponsorship slots available at preferential rates.\n\nBest,\nConferenceAI Team"
+      }
+    ],
+    "total_found": 5,
+    "search_queries_used": ["Technology conference sponsors Mumbai India", "Fintech companies Mumbai sponsorship"]
+  },
+  "speaker": {
+    "speakers": [
+      {
+        "name": "Nandan Nilekani",
+        "title": "Co-founder & Non-Executive Chairman",
+        "organization": "Infosys; Architect of Aadhaar",
+        "relevance_score": 0.99,
+        "influence_score": 0.99,
+        "topics": ["Digital Public Infrastructure", "India Stack", "Tech for Governance"],
+        "suggested_slot": "Keynote Day 1 — 10:00 AM",
+        "bio_summary": "One of the most influential technologists in India, Nandan Nilekani co-founded Infosys and led the creation of Aadhaar, India's digital identity infrastructure used by 1.3 billion people.",
+        "source_url": "https://en.wikipedia.org/wiki/Nandan_Nilekani"
+      },
+      {
+        "name": "Uday Kotak",
+        "title": "Founder & Former MD",
+        "organization": "Kotak Mahindra Bank",
+        "relevance_score": 0.94,
+        "influence_score": 0.95,
+        "topics": ["Digital Banking", "Fintech Revolution", "Building for Bharat"],
+        "suggested_slot": "Keynote Day 1 — 11:30 AM",
+        "bio_summary": "Founder of India's most admired private bank, Uday Kotak is a voice on financial inclusion and India's digital economy.",
+        "source_url": "https://kotakbank.com"
+      },
+      {
+        "name": "Falguni Nayar",
+        "title": "Founder & CEO",
+        "organization": "Nykaa",
+        "relevance_score": 0.90,
+        "influence_score": 0.91,
+        "topics": ["D2C Commerce Tech", "Building India's Unicorns", "AI in Retail"],
+        "suggested_slot": "Session Day 1 — 2:00 PM",
+        "bio_summary": "Founder of Nykaa, one of India's most successful D2C tech platforms. A powerful voice on entrepreneurship and technology-driven retail.",
+        "source_url": "https://nykaa.com"
+      },
+      {
+        "name": "Shinjini Kumar",
+        "title": "CEO",
+        "organization": "Salt — India's first neo-bank for women",
+        "relevance_score": 0.87,
+        "influence_score": 0.85,
+        "topics": ["Women in Fintech", "Neo-banking", "Financial Inclusion"],
+        "suggested_slot": "Session Day 2 — 10:00 AM",
+        "bio_summary": "Former BCG and Goldman Sachs executive, Shinjini founded India's first neo-bank targeting women. Strong voice on inclusive fintech.",
+        "source_url": "https://linkedin.com/in/shinjini-kumar"
+      }
+    ],
+    "agenda_mapping": [
+      {"time_slot": "Keynote Day 1 — 10:00 AM", "speaker": "Nandan Nilekani", "topic": "India's Digital Stack: What Comes Next"},
+      {"time_slot": "Keynote Day 1 — 11:30 AM", "speaker": "Uday Kotak", "topic": "Digital Banking in the Age of AI"},
+      {"time_slot": "Session Day 1 — 2:00 PM", "speaker": "Falguni Nayar", "topic": "Building India's Next Generation of Consumer Tech"},
+      {"time_slot": "Session Day 2 — 10:00 AM", "speaker": "Shinjini Kumar", "topic": "Inclusive Fintech: Banking the Next 500 Million"}
+    ]
+  },
+  "venue": {
+    "venues": [
+      {
+        "rank": 1,
+        "name": "Jio World Convention Centre",
+        "address": "G Block, Bandra Kurla Complex (BKC), Mumbai 400051",
+        "city": "Mumbai, India",
+        "capacity": 10000,
+        "estimated_cost": "$30,000–60,000",
+        "rating": 4.9,
+        "pros": ["World-class facility", "BKC prime location", "Cutting-edge AV/LED", "200+ parking bays", "Full F&B services"],
+        "cons": ["Very high demand — book 3+ months in advance", "Premium pricing"],
+        "google_maps_url": "https://maps.google.com/?q=Jio+World+Convention+Centre+Mumbai",
+        "google_place_id": "ChIJJioWorldMumbai"
+      },
+      {
+        "rank": 2,
+        "name": "NSCI Dome",
+        "address": "Worli Sports Club, Dr. Annie Besant Road, Worli, Mumbai 400018",
+        "city": "Mumbai, India",
+        "capacity": 8000,
+        "estimated_cost": "$15,000–25,000",
+        "rating": 4.5,
+        "pros": ["Iconic Mumbai venue", "Large main hall", "Metro connectivity", "Flexible layout"],
+        "cons": ["Older infrastructure", "Limited dedicated parking"],
+        "google_maps_url": "https://maps.google.com/?q=NSCI+Dome+Mumbai",
+        "google_place_id": "ChIJNSCIDomeMumbai"
+      },
+      {
+        "rank": 3,
+        "name": "Grand Hyatt Mumbai",
+        "address": "Off Western Express Highway, Santacruz East, Mumbai 400055",
+        "city": "Mumbai, India",
+        "capacity": 4000,
+        "estimated_cost": "$18,000–30,000",
+        "rating": 4.7,
+        "pros": ["Premium hotel experience", "Near airport", "5-star catering", "Full AV support", "Executive lounges"],
+        "cons": ["Smaller capacity than Jio WCC or NSCI"],
+        "google_maps_url": "https://maps.google.com/?q=Grand+Hyatt+Mumbai",
+        "google_place_id": "ChIJGrandHyattMumbai"
+      }
+    ]
+  },
+  "ticketing": {
+    "tiers": [
+      {"tier": "Early Bird", "price": 79, "availability": "First 1000 (8 weeks before)", "perks": ["Full access", "Networking lunch", "Goodie bag", "Recording access"]},
+      {"tier": "Standard", "price": 149, "availability": "General sale", "perks": ["Full access", "Networking lunch", "Recording access"]},
+      {"tier": "VIP", "price": 499, "availability": "Limited to 200", "perks": ["All Standard perks", "VIP speaker dinner", "Front row seating", "1:1 mentoring"]},
+      {"tier": "Student", "price": 29, "availability": "300 seats with college ID", "perks": ["Full conference access"]}
+    ],
+    "conversion_estimates": {"Early Bird": 0.25, "Standard": 0.55, "VIP": 0.05, "Student": 0.15},
+    "recommended_platform": "Konfhub / Townscript / Eventbrite (UPI, cards, net banking)",
+    "notes": "Mumbai audience has higher purchasing power vs other Indian cities. VIP tier at ₹41,000 is viable for CXO attendees. Support UPI for mass adoption."
+  },
+  "pricing": {
+    "revenue_projection": {"early_bird": 197500, "standard": 817500, "vip": 499000, "student": 43500, "total": 1557500},
+    "cost_breakdown": {"venue": 45000, "catering": 80000, "av_production": 35000, "speaker_fees": 50000, "marketing": 25000, "logistics": 15000, "platform_fees": 8000, "total": 258000},
+    "profit_margin_pct": 83.4,
+    "recommended_ticket_price": 149,
+    "notes": "Mumbai's purchasing power enables premium pricing. ROI is extremely strong at scale."
+  },
+  "gtm": {
+    "channels": [
+      {
+        "channel": "LinkedIn",
+        "strategy": "Target BKC and Bandra professionals in finance, tech, and consulting. Sponsored content + InMail to CXOs.",
+        "message_template": "🌆 Mumbai's biggest tech conference of 2026 is here! 10,000 professionals. World-class speakers. Jio World Convention Centre. Get your ticket now.",
+        "target_communities": ["Mumbai Finance Professionals", "BKC Tech Leaders", "Maharashtra Entrepreneurs"]
+      },
+      {
+        "channel": "Twitter/X",
+        "strategy": "Live speaker announcements, countdown, event day live-tweeting.",
+        "message_template": "Mumbai TechConf 2026 is OFFICIAL 🚀 10,000 attendees | Jio World Centre | India's top speakers. Early bird OPEN. #MumbaiTech #TechConf2026",
+        "target_communities": ["#MumbaiTech", "#StartupIndia", "#FinTechIndia"]
+      }
+    ],
+    "timeline": [
+      {"week": "10 weeks before", "action": "Announce event, open early bird, LinkedIn campaign launch"},
+      {"week": "8 weeks before", "action": "Speaker announcement #1, PR push via media outlets"},
+      {"week": "6 weeks before", "action": "Early bird closes, standard opens, email blast"},
+      {"week": "4 weeks before", "action": "VIP dinner invitations, final speaker schedule"},
+      {"week": "2 weeks before", "action": "Last-chance promo, partner co-promotions"},
+      {"week": "1 week before", "action": "Logistics email to all registered attendees"}
+    ],
+    "key_messages": [
+      "Mumbai's largest technology conference of 2026",
+      "Where finance meets technology",
+      "10,000 professionals, one unforgettable experience",
+      "India's most exclusive tech networking event"
+    ]
+  },
+  "ops": {
+    "logistics_plan": {
+      "pre_event": ["Venue walkthrough 2 weeks before", "AV dry run day before", "Volunteer training session", "Green room setup for speakers"],
+      "day_of": ["Registration opens 2hr before keynote", "Digital badge scanning at entry", "Dedicated media zone", "Live stream control room"],
+      "post_event": ["Recordings online within 24hr", "Attendee NPS survey", "Sponsor ROI report", "Thank you emailer to all attenders"]
+    },
+    "team_requirements": {"event_manager": 2, "volunteers": 40, "av_technicians": 8, "security": 20, "catering_staff": 30},
+    "risk_mitigation": [
+      "Overcrowd protocol: overflow rooms with live stream",
+      "Mumbai monsoon backup plan if outdoor elements scheduled",
+      "Dedicated app for agenda, networking, and live polls",
+      "Emergency medical team on site"
+    ]
+  }
+}

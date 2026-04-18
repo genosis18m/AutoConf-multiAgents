@@ -17,7 +17,7 @@ const StyledNav = styled.nav`
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #24292e, #1c2128);
-    padding: 12px 10px;
+    padding: 14px 12px;
     border-radius: 10px;
     box-shadow:
       inset 0 0 16px rgba(0,0,0,0.5),
@@ -29,9 +29,9 @@ const StyledNav = styled.nav`
 
   .switch-panel {
     z-index: 1;
-    height: 150px;
-    width: 36px;
-    margin-right: 12px;
+    height: 162px;
+    width: 40px;
+    margin-right: 14px;
     background: linear-gradient(to bottom, #3d444d, #2d333b);
     border-radius: 7px;
     box-shadow:
@@ -54,7 +54,7 @@ const StyledNav = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 140px;
+    height: 150px;
     flex: 1;
     min-width: 0;
   }
@@ -145,11 +145,11 @@ const StyledNav = styled.nav`
 
   .choice-plate {
     color: #8b949e;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 7px 12px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -204,11 +204,11 @@ export function Sidebar() {
 
   return (
     <aside
-      className="w-60 flex flex-col flex-shrink-0 border-r"
+      className="w-64 lg:w-72 flex flex-col flex-shrink-0 border-r"
       style={{ background: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}
     >
       {/* Mechanical radio nav */}
-      <div className="p-3 mt-3">
+      <div className="p-4 mt-3">
         <StyledNav>
           <div className="radio-input">
             <div className="switch-panel">

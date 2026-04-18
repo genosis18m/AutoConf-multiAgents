@@ -70,7 +70,7 @@ const StyledForm = styled.div`
   /* ── form group ── */
   .form-group {
     position: relative;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.25rem;
   }
 
   .form-label {
@@ -148,9 +148,22 @@ const StyledForm = styled.div`
 
   .two-col {
     display: grid;
-    padding: 2rem;
+    padding: 1.2rem 0.2rem 1rem;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+
+  @media (max-height: 820px) {
+    .card-body { padding: 1rem; }
+
+    .form-group {
+      margin-bottom: 0.95rem;
+    }
+
+    .two-col {
+      padding: 0.9rem 0 0.7rem;
+      gap: 0.8rem;
+    }
   }
 
   .error-msg {
@@ -169,7 +182,7 @@ export function ConferenceForm() {
 
   const [category, setCategory] = useState('')
   const [geography, setGeography] = useState('')
-  const [audienceSize, setAudienceSize] = useState('')
+  const [audienceSize, setAudienceSize] = useState<number>(0)
   const [budget, setBudget] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -186,17 +199,17 @@ export function ConferenceForm() {
       const input = {
         category,
         geography: geography.trim(),
-        audience_size: audienceSize,
+        audience_size: Number(audienceSize),
         budget: budget ? parseFloat(budget) : undefined,
       }
       setInput(input)
       const session = await startGeneration(input)
       setSessionId(session.session_id)
+      setLoading(false)
       navigate('/dashboard')
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Connection failed'
       setError(`ERR: ${msg}`)
-    } finally {
       setLoading(false)
     }
   }

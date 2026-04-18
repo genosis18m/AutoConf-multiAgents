@@ -126,11 +126,13 @@ async def get_agent_result(session_id: str, agent_name: str):
 
 @router.post("/export/{session_id}")
 async def export_pdf(session_id: str):
+    from reportlab.lib import colors
     from reportlab.lib.pagesizes import letter
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-    from reportlab.lib.styles import getSampleStyleSheet
+    from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+    from reportlab.lib.units import inch
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
     import tempfile
-    import json
+    from html import escape
 
     db_results = await get_agent_results(session_id)
     memory_results = _results.get(session_id, {})
@@ -139,18 +141,149 @@ async def export_pdf(session_id: str):
     if not combined:
         raise HTTPException(status_code=404, detail="No results to export.")
 
+    def format_label(key: str) -> str:
+        return key.replace("_", " ").strip().title()
+
+    def textify(value) -> str:
+        if value is None:
+            return "-"
+        if isinstance(value, bool):
+            return "Yes" if value else "No"
+        if isinstance(value, float):
+            return f"{value:,.2f}"
+        if isinstance(value, (int, str)):
+            return str(value)
+        if isinstance(value, list):
+            if not value:
+                return "-"
+            return ", ".join(textify(v) for v in value)
+        if isinstance(value, dict):
+            parts = [f"{format_label(k)}: {textify(v)}" for k, v in value.items()]
+            return "; ".join(parts)
+        return str(value)
+
+    def styled_table(data_rows, col_widths=None):
+        table = Table(data_rows, colWidths=col_widths, hAlign="LEFT")
+        table.setStyle(
+            TableStyle(
+                [
+                    ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#0f172a")),
+                    ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
+                    ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                    ("FONTSIZE", (0, 0), (-1, -1), 9),
+                    ("ALIGN", (0, 0), (-1, -1), "LEFT"),
+                    ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                    ("GRID", (0, 0), (-1, -1), 0.3, colors.HexColor("#cbd5e1")),
+                    ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#f8fafc")]),
+                    ("LEFTPADDING", (0, 0), (-1, -1), 6),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+                    ("TOPPADDING", (0, 0), (-1, -1), 5),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+                ]
+            )
+        )
+        return table
+
+    def kv_table(payload: dict):
+        rows = [["Field", "Value"]]
+        for key, value in payload.items():
+            rows.append([Paragraph(format_label(str(key)), body_style), Paragraph(escape(textify(value)), body_style)])
+        return styled_table(rows, col_widths=[2.0 * inch, 4.9 * inch])
+
+    def list_of_dicts_table(items: list):
+        if not items:
+            return None
+
+        keys = []
+        for item in items:
+            if isinstance(item, dict):
+                for k in item.keys():
+                    if k not in keys:
+                        keys.append(k)
+
+        if not keys:
+            return None
+
+        header = [Paragraph(format_label(str(k)), body_style) for k in keys]
+        rows = [header]
+
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            row = []
+            for key in keys:
+                value = item.get(key)
+                row.append(Paragraph(escape(textify(value)), body_style))
+            rows.append(row)
+
+        col_count = max(1, len(keys))
+        col_width = 6.9 * inch / col_count
+        return styled_table(rows, col_widths=[col_width] * col_count)
+
     tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
-    doc = SimpleDocTemplate(tmp.name, pagesize=letter)
+    doc = SimpleDocTemplate(
+        tmp.name,
+        pagesize=letter,
+        leftMargin=0.6 * inch,
+        rightMargin=0.6 * inch,
+        topMargin=0.6 * inch,
+        bottomMargin=0.6 * inch,
+    )
     styles = getSampleStyleSheet()
+    title_style = styles["Title"]
+    section_style = styles["Heading1"]
+    subsection_style = styles["Heading3"]
+    body_style = ParagraphStyle(
+        "BodySmall",
+        parent=styles["BodyText"],
+        fontSize=9,
+        leading=12,
+    )
     story = []
 
-    story.append(Paragraph("ConferenceAI — Full Conference Plan", styles["Title"]))
-    story.append(Spacer(1, 20))
+    story.append(Paragraph("ConferenceAI — Full Conference Plan", title_style))
+    story.append(Paragraph(f"Session ID: {escape(session_id)}", body_style))
+    story.append(Spacer(1, 14))
 
     for agent, data in combined.items():
-        story.append(Paragraph(f"{agent.upper()} AGENT RESULTS", styles["Heading1"]))
-        story.append(Paragraph(json.dumps(data, indent=2)[:2000], styles["Code"]))
-        story.append(Spacer(1, 12))
+        story.append(Paragraph(f"{format_label(agent)} Agent Results", section_style))
+        story.append(Spacer(1, 6))
+
+        if not isinstance(data, dict):
+            story.append(Paragraph(escape(textify(data)), body_style))
+            story.append(Spacer(1, 12))
+            continue
+
+        summary_data = {}
+
+        for key, value in data.items():
+            label = format_label(str(key))
+
+            if isinstance(value, list):
+                if value and all(isinstance(item, dict) for item in value):
+                    story.append(Paragraph(label, subsection_style))
+                    table = list_of_dicts_table(value)
+                    if table:
+                        story.append(table)
+                    else:
+                        story.append(Paragraph("No tabular data available.", body_style))
+                    story.append(Spacer(1, 10))
+                else:
+                    bullet_items = "<br/>".join(f"• {escape(textify(item))}" for item in value) or "-"
+                    story.append(Paragraph(label, subsection_style))
+                    story.append(Paragraph(bullet_items, body_style))
+                    story.append(Spacer(1, 10))
+            elif isinstance(value, dict):
+                story.append(Paragraph(label, subsection_style))
+                story.append(kv_table(value))
+                story.append(Spacer(1, 10))
+            else:
+                summary_data[key] = value
+
+        if summary_data:
+            story.append(Paragraph("Summary", subsection_style))
+            story.append(kv_table(summary_data))
+            story.append(Spacer(1, 12))
 
     doc.build(story)
     return FileResponse(tmp.name, media_type="application/pdf", filename=f"conference_plan_{session_id[:8]}.pdf")

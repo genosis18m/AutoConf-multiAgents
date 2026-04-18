@@ -4,6 +4,7 @@ from typing import Any
 
 from services.websocket_manager import WebSocketManager
 from services.supabase_client import upsert_agent_result, update_session_status
+from services.cache_loader import get_cached_plan
 from agents.sponsor_agent import run_sponsor_agent
 from agents.speaker_agent import run_speaker_agent
 from agents.ticketing_agent import run_ticketing_agent
@@ -49,22 +50,41 @@ async def run_conference_plan(
 ):
     await update_session_status(session_id, "running")
 
+    # ── Fast path: serve from pre-built cache if available ───────────────────
+    cached = get_cached_plan(geography)
+    if cached:
+        logger.info(f"[cache] Serving pre-built plan for '{geography}'")
+        _AGENT_NAMES = ["sponsor", "speaker", "ticketing", "venue", "pricing", "gtm", "ops"]
+        await ws_manager.broadcast_phase_change(session_id, 1, "Loading pre-built conference plan...")
+        for agent_name in _AGENT_NAMES:
+            await ws_manager.broadcast_agent_status(session_id, agent_name, "running", 50, f"{agent_name} agent loading cache...")
+            await asyncio.sleep(0.3)
+            result = cached.get(agent_name, {})
+            await upsert_agent_result(session_id, agent_name, result, "completed")
+            await ws_manager.broadcast_agent_status(session_id, agent_name, "completed", 100, f"{agent_name} agent complete.")
+            await ws_manager.broadcast_agent_result(session_id, agent_name, result)
+            logger.info(f"[cache] Agent {agent_name} served for session {session_id}")
+        await update_session_status(session_id, "completed")
+        await ws_manager.broadcast_complete(session_id)
+        logger.info(f"[cache] Conference plan (cached) completed for session {session_id}")
+        return cached
+
     base = dict(category=category, geography=geography, audience_size=audience_size, budget=budget)
 
     # ── Phase 1: Sequential to respect Free Tier API limits ───────────────────
     await ws_manager.broadcast_phase_change(session_id, 1, "Phase 1 starting — Sponsor, Speaker & Venue agents (running to respect rate limit)...")
 
     sponsor_result = await _run_agent("sponsor", run_sponsor_agent, base, session_id, ws_manager)
-    await asyncio.sleep(5)
+    await asyncio.sleep(1)
     
     speaker_result = await _run_agent("speaker", run_speaker_agent, {k: v for k, v in base.items() if k != "budget"}, session_id, ws_manager)
-    await asyncio.sleep(5)
+    await asyncio.sleep(1)
     
     ticketing_result = await _run_agent("ticketing", run_ticketing_agent, base, session_id, ws_manager)
-    await asyncio.sleep(5)
+    await asyncio.sleep(1)
     
     venue_result = await _run_agent("venue", run_venue_agent, base, session_id, ws_manager)
-    await asyncio.sleep(5)
+    await asyncio.sleep(1)
 
     # ── Phase 2: Pricing (needs venue) ───────────────────────────────────────
     await ws_manager.broadcast_phase_change(session_id, 2, "Phase 2 starting — Pricing & Footfall agent...")
@@ -76,7 +96,7 @@ async def run_conference_plan(
         session_id,
         ws_manager,
     )
-    await asyncio.sleep(5)
+    await asyncio.sleep(1)
 
     # ── Phase 3: GTM (needs speaker + pricing) ───────────────────────────────
     await ws_manager.broadcast_phase_change(session_id, 3, "Phase 3 starting — GTM & Communication agent...")
@@ -88,7 +108,7 @@ async def run_conference_plan(
         session_id,
         ws_manager,
     )
-    await asyncio.sleep(5)
+    await asyncio.sleep(1)
 
     # ── Phase 4: Ops (needs everything) ─────────────────────────────────────
     await ws_manager.broadcast_phase_change(session_id, 4, "Phase 4 starting — Ops & Logistics agent...")

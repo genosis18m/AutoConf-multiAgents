@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react'
 import { useConferenceStore } from '../store/useConferenceStore'
 import type { AgentName, WSMessage } from '../types'
+import { WS_BASE } from '../lib/constants'
 
 export function useWebSocket(sessionId: string | null) {
   const wsRef = useRef<WebSocket | null>(null)
@@ -9,7 +10,7 @@ export function useWebSocket(sessionId: string | null) {
   const connect = useCallback(() => {
     if (!sessionId || wsRef.current?.readyState === WebSocket.OPEN) return
 
-    const wsUrl = `ws://localhost:8000/ws/${sessionId}`
+    const wsUrl = WS_BASE(sessionId)
     const ws = new WebSocket(wsUrl)
     wsRef.current = ws
 
