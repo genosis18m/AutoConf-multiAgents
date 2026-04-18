@@ -11,7 +11,6 @@ logging.basicConfig(
     format="%(asctime)s %(name)s %(levelname)s: %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("conference.log")
     ]
 )
 logger = logging.getLogger(__name__)
