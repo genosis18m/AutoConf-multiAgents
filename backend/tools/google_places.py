@@ -1,6 +1,10 @@
 import httpx
 from config import settings
-from crewai.tools import BaseTool
+try:
+    from crewai.tools import BaseTool
+except ImportError:
+    BaseTool = object
+
 import logging
 import json
 
@@ -10,6 +14,12 @@ PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place"
 
 
 class GooglePlacesTool(BaseTool):
+    if BaseTool is object:
+        # Dummy properties if not using CrewAI
+        def __init__(self, **kwargs):
+            super().__init__()
+            for k, v in kwargs.items():
+                setattr(self, k, v)
     name: str = "google_places_search"
     description: str = (
         "Search for venues and event spaces using Google Places API. "
