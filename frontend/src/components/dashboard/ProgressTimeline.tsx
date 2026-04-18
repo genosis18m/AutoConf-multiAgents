@@ -10,13 +10,13 @@ const PHASES = [
 ]
 
 export function ProgressTimeline() {
-  const { currentPhase } = useConferenceStore()
+  const { currentPhase, isComplete } = useConferenceStore()
 
   return (
     <div className="flex flex-col gap-0">
       {PHASES.map((phase, i) => {
-        const isDone = currentPhase > phase.id
-        const isActive = currentPhase === phase.id
+        const isDone = isComplete || currentPhase > phase.id
+        const isActive = currentPhase === phase.id && !isComplete
 
         return (
           <div key={phase.id} className="flex gap-3">
@@ -24,21 +24,27 @@ export function ProgressTimeline() {
             <div className="flex flex-col items-center">
               <div
                 className={clsx(
-                  'w-3.5 h-3.5 rounded-full border-2 flex-shrink-0 mt-0.5 transition-all duration-[800ms] ease-out-expo relative',
+                  'w-3.5 h-3.5 rounded-full border-2 flex-shrink-0 mt-0.5 transition-all duration-700 relative',
                 )}
                 style={{
                   borderColor: isDone ? '#00E676' : isActive ? '#00E5FF' : 'rgba(255,255,255,0.1)',
                   backgroundColor: isDone ? '#00E676' : isActive ? '#00E5FF' : 'var(--bg-elevated)',
-                  boxShadow: isDone ? '0 0 12px rgba(0,230,118,0.5)' : isActive ? '0 0 15px rgba(0,229,255,0.6)' : 'none',
+                  boxShadow: isDone ? '0 0 12px rgba(0,230,118,0.5)' : isActive ? '0 0 20px rgba(0,229,255,0.8)' : 'none',
+                  animation: isActive ? 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' : 'none',
                 }}
               >
                 {isActive && (
-                  <span className="animate-ping absolute inset-0 rounded-full bg-cyan-400 opacity-60"></span>
+                  <span 
+                    className="absolute inset-0 rounded-full bg-cyan-400 opacity-75"
+                    style={{
+                      animation: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite'
+                    }}
+                  />
                 )}
               </div>
               {i < PHASES.length - 1 && (
                 <div
-                  className="w-0.5 flex-1 mt-1.5 min-h-8 transition-all duration-[1200ms] ease-out-expo"
+                  className="w-0.5 flex-1 mt-1.5 min-h-8 transition-all duration-1000"
                   style={{ 
                     background: isDone ? 'linear-gradient(180deg, #00E676, rgba(0,230,118,0.2))' : 'var(--border-subtle)',
                     boxShadow: isDone ? '0 0 8px rgba(0,230,118,0.3)' : 'none'

@@ -1,0 +1,222 @@
+{
+  "sponsor": {
+    "sponsors": [
+      {
+        "rank": 1,
+        "company_name": "Persistent Systems",
+        "industry": "IT Services & Digital Engineering",
+        "relevance_score": 0.97,
+        "estimated_budget": "$40,000–80,000",
+        "contact_info": {"email": "sponsorships@persistent.com", "linkedin": "linkedin.com/company/persistent-systems"},
+        "rationale": "Pune-headquartered global technology company with a strong AI/ML practice. Consistently sponsors major tech conferences in the city.",
+        "outreach_email": "Dear Persistent Systems Team,\n\nWe are organizing a premier Technology conference in Pune, India and believe Persistent Systems would be an ideal strategic partner given your deep roots in Pune's tech ecosystem.\n\nLet's connect to explore sponsorship opportunities.\n\nBest,\nConferenceAI Team"
+      },
+      {
+        "rank": 2,
+        "company_name": "Infosys BPM",
+        "industry": "Business Process Management / AI",
+        "relevance_score": 0.95,
+        "estimated_budget": "$50,000–100,000",
+        "contact_info": {"email": "events@infosys.com", "linkedin": "linkedin.com/company/infosys"},
+        "rationale": "Infosys has a major campus in Pune and actively sponsors regional tech summits to attract talent.",
+        "outreach_email": "Dear Infosys Team,\n\nWe are hosting the premier Tech Conference in Pune and would love to partner with Infosys. Your brand presence in Pune aligns perfectly with our audience of 5,000+ technology professionals.\n\nKind regards,\nConferenceAI Team"
+      },
+      {
+        "rank": 3,
+        "company_name": "TIBCO Software (Cloud Software Group)",
+        "industry": "Cloud & Analytics",
+        "relevance_score": 0.91,
+        "estimated_budget": "$25,000–50,000",
+        "contact_info": {"email": "partnerships@tibco.com", "linkedin": "linkedin.com/company/tibco-software"},
+        "rationale": "Large India R&D center in Pune, strong interest in community events and developer outreach.",
+        "outreach_email": "Dear TIBCO Team,\n\nWe'd love to have TIBCO as a sponsor for our Pune Technology Conference. Your analytics and integration stack is widely used by our expected audience.\n\nBest,\nConferenceAI Team"
+      },
+      {
+        "rank": 4,
+        "company_name": "Cummins India",
+        "industry": "Industrial / Technology",
+        "relevance_score": 0.85,
+        "estimated_budget": "$20,000–40,000",
+        "contact_info": {"email": "india.comms@cummins.com", "linkedin": "linkedin.com/company/cummins"},
+        "rationale": "Pune is Cummins India's largest base. They invest heavily in STEM education and innovation events.",
+        "outreach_email": "Dear Cummins India Team,\n\nWith Pune being your largest India hub, we'd love to partner for our upcoming Technology Conference. Your CSR focus on STEM makes this a natural fit.\n\nRegards,\nConferenceAI Team"
+      },
+      {
+        "rank": 5,
+        "company_name": "Syntel (Atos)",
+        "industry": "IT Services",
+        "relevance_score": 0.82,
+        "estimated_budget": "$15,000–30,000",
+        "contact_info": {"email": "marketing@syntel.com", "linkedin": "linkedin.com/company/syntel"},
+        "rationale": "Major Pune presence, strong talent acquisition goals in the tech community.",
+        "outreach_email": "Dear Syntel Team,\n\nOur Pune Technology Conference offers your team a prime opportunity to showcase capabilities and engage with 5,000+ professionals.\n\nSincerely,\nConferenceAI Team"
+      }
+    ],
+    "total_found": 5,
+    "search_queries_used": ["Technology conference sponsors Pune India", "IT companies Pune sponsorship events"]
+  },
+  "speaker": {
+    "speakers": [
+      {
+        "name": "Dr. Vijay Bhatkar",
+        "title": "Chairman, ETH Research Lab & Param Supercomputer creator",
+        "organization": "C-DAC / Vidya Pratishthan",
+        "relevance_score": 0.99,
+        "influence_score": 0.98,
+        "topics": ["Supercomputing in India", "National AI Mission", "Deep Tech Innovation"],
+        "suggested_slot": "Keynote Day 1 — 10:00 AM",
+        "bio_summary": "Legendary Indian computer scientist and creator of India's PARAM supercomputer. Chancellor of Nalanda University and a national icon in technology.",
+        "source_url": "https://en.wikipedia.org/wiki/Vijay_Bhatkar"
+      },
+      {
+        "name": "Rashmi Deshpande",
+        "title": "VP Engineering",
+        "organization": "Persistent Systems",
+        "relevance_score": 0.93,
+        "influence_score": 0.89,
+        "topics": ["Platform Engineering", "AI-first Products", "Engineering at Scale"],
+        "suggested_slot": "Keynote Day 1 — 11:30 AM",
+        "bio_summary": "Engineering leader at one of Pune's largest tech companies, driving AI-integrated product development.",
+        "source_url": "https://linkedin.com/in/rashmi-deshpande"
+      },
+      {
+        "name": "Prof. Bhaskar Ramamurthi",
+        "title": "Former Director",
+        "organization": "IIT Madras",
+        "relevance_score": 0.90,
+        "influence_score": 0.92,
+        "topics": ["5G & Open RAN", "Industry-Academia Collaboration", "Deep Tech Startups"],
+        "suggested_slot": "Session Day 1 — 2:00 PM",
+        "bio_summary": "Renowned educator and researcher who led IIT Madras to global rankings and championed deep tech entrepreneurship.",
+        "source_url": "https://www.iitm.ac.in"
+      },
+      {
+        "name": "Manish Sabharwal",
+        "title": "Co-founder & Executive Vice Chairman",
+        "organization": "TeamLease Services",
+        "relevance_score": 0.86,
+        "influence_score": 0.88,
+        "topics": ["Future of Work", "Skilling & Employment Tech", "HR Tech"],
+        "suggested_slot": "Session Day 2 — 11:00 AM",
+        "bio_summary": "One of India's foremost voices on labour market and employment, relevant to tech workforce transformation.",
+        "source_url": "https://teamlease.com"
+      }
+    ],
+    "agenda_mapping": [
+      {"time_slot": "Keynote Day 1 — 10:00 AM", "speaker": "Dr. Vijay Bhatkar", "topic": "India's AI Future: From Supercomputing to National AI Mission"},
+      {"time_slot": "Keynote Day 1 — 11:30 AM", "speaker": "Rashmi Deshpande", "topic": "Building AI-First Products at Scale"},
+      {"time_slot": "Session Day 1 — 2:00 PM", "speaker": "Prof. Bhaskar Ramamurthi", "topic": "Deep Tech Startups & Industry-Academia Bridge"},
+      {"time_slot": "Session Day 2 — 11:00 AM", "speaker": "Manish Sabharwal", "topic": "The Future of Work in the Age of AI"}
+    ]
+  },
+  "venue": {
+    "venues": [
+      {
+        "rank": 1,
+        "name": "JW Marriott Hotel Pune",
+        "address": "Senapati Bapat Road, Pune 411016",
+        "city": "Pune, India",
+        "capacity": 3000,
+        "estimated_cost": "$12,000–18,000",
+        "rating": 4.7,
+        "pros": ["Premium brand", "Central Senapati Bapat Road location", "State-of-art AV", "Multiple breakout halls", "Ample parking"],
+        "cons": ["Premium pricing", "Requires advance booking"],
+        "google_maps_url": "https://maps.google.com/?q=JW+Marriott+Pune",
+        "google_place_id": "ChIJMarriottPune"
+      },
+      {
+        "rank": 2,
+        "name": "MCCIA Trade Tower",
+        "address": "ICC Complex, Senapati Bapat Road, Pune 411016",
+        "city": "Pune, India",
+        "capacity": 2000,
+        "estimated_cost": "$6,000–10,000",
+        "rating": 4.4,
+        "pros": ["Purpose-built conference facility", "Affordable", "Central location", "Industry associations on-site"],
+        "cons": ["Older AV infrastructure", "Parking can fill quickly"],
+        "google_maps_url": "https://maps.google.com/?q=MCCIA+Trade+Tower+Pune",
+        "google_place_id": "ChIJMCCIAPune"
+      },
+      {
+        "rank": 3,
+        "name": "Sahara Star Pune",
+        "address": "Plot No. 34, Survey No. 231, Hissa No. 16, Viman Nagar, Pune 411014",
+        "city": "Pune, India",
+        "capacity": 5000,
+        "estimated_cost": "$15,000–25,000",
+        "rating": 4.5,
+        "pros": ["Largest convention space in Pune", "Near airport", "Full catering", "All-in-one facility"],
+        "cons": ["Higher budget required", "Further from city centre"],
+        "google_maps_url": "https://maps.google.com/?q=Sahara+Star+Pune",
+        "google_place_id": "ChIJSaharaStarPune"
+      }
+    ]
+  },
+  "ticketing": {
+    "tiers": [
+      {"tier": "Early Bird", "price": 49, "availability": "First 500 (6 weeks before event)", "perks": ["Full conference access", "Networking lunch", "Swag bag", "Recording access"]},
+      {"tier": "Standard", "price": 99, "availability": "General sale", "perks": ["Full conference access", "Networking lunch", "Recording access"]},
+      {"tier": "VIP", "price": 249, "availability": "Limited to 100", "perks": ["All Standard perks", "Speaker dinner", "VIP lounge", "1:1 mentoring slot"]},
+      {"tier": "Student", "price": 19, "availability": "150 seats with valid college ID", "perks": ["Full conference access"]}
+    ],
+    "conversion_estimates": {"Early Bird": 0.30, "Standard": 0.50, "VIP": 0.05, "Student": 0.15},
+    "recommended_platform": "Konfhub / Townscript (UPI, Net Banking supported)",
+    "notes": "Pune's tech audience is price-sensitive but will pay for premium access. UPI support is essential. Student tier attracts from COEP, Symbiosis, and PICT."
+  },
+  "pricing": {
+    "revenue_projection": {"early_bird": 73500, "standard": 247500, "vip": 124500, "student": 14250, "total": 459750},
+    "cost_breakdown": {"venue": 15000, "catering": 40000, "av_production": 18000, "speaker_fees": 25000, "marketing": 12000, "logistics": 8000, "platform_fees": 4000, "total": 122000},
+    "profit_margin_pct": 73.5,
+    "recommended_ticket_price": 99,
+    "notes": "At 5000 attendees in Pune, this conference is extremely profitable. Consider investing in speaker travel and premium venue."
+  },
+  "gtm": {
+    "channels": [
+      {
+        "channel": "LinkedIn",
+        "strategy": "Target Pune IT professionals via sponsored posts and native ads. Focus on Persistent, Infosys, TCS Pune employees.",
+        "message_template": "🚀 Announcing the Premier Tech Conference Pune 2026! Join 5,000+ professionals for keynotes, workshops & networking. Early bird tickets LIVE!",
+        "target_communities": ["Pune Tech Professionals", "Persistent Systems Alumni", "Infosys Pune Network"]
+      },
+      {
+        "channel": "WhatsApp/Telegram",
+        "strategy": "Share in Pune-specific developer and startup WhatsApp groups.",
+        "message_template": "Hey Pune tech fam! Big conference coming up — grab your early bird before it's gone!",
+        "target_communities": ["Pune Developers Group", "Pune Startups", "PuneTech Community"]
+      },
+      {
+        "channel": "PuneTech.com",
+        "strategy": "List event on PuneTech — the go-to community portal for Pune's tech community.",
+        "message_template": "Listing on PuneTech with a community discount code for early bird tickets.",
+        "target_communities": ["PuneTech Community", "PuneTech Newsletter 15k subscribers"]
+      }
+    ],
+    "timeline": [
+      {"week": "8 weeks before", "action": "Launch event, open early bird, post on all channels"},
+      {"week": "6 weeks before", "action": "Speaker announcement, PuneTech feature, LinkedIn ads"},
+      {"week": "4 weeks before", "action": "Early bird closes, standard opens, WhatsApp blitz"},
+      {"week": "2 weeks before", "action": "Final speaker reveal, FOMO content push"},
+      {"week": "1 week before", "action": "Logistics email to attendees, last-minute promo"}
+    ],
+    "key_messages": [
+      "Pune's biggest tech conference of 2026",
+      "Learn from India's top technology leaders",
+      "5,000+ professionals in one place",
+      "Actionable insights you can implement immediately"
+    ]
+  },
+  "ops": {
+    "logistics_plan": {
+      "pre_event": ["Venue walkthrough 2 weeks before", "AV testing 1 day before", "Volunteer briefing morning of event", "Speaker green room setup"],
+      "day_of": ["Registration opens 1.5hr before keynote", "Welcome desk with badge printing", "Live streaming setup for remote attendees", "WhatsApp helpline for attendees"],
+      "post_event": ["Recording upload within 48hr", "Attendee survey via Typeform", "Thank you emails + recording links", "Sponsor report with reach metrics"]
+    },
+    "team_requirements": {"event_manager": 1, "volunteers": 20, "av_technicians": 4, "security": 6, "catering_staff": 15},
+    "risk_mitigation": [
+      "Backup AV equipment on standby",
+      "Generator for power backup at venue",
+      "Overflow room for 500+ attendees if registration exceeds capacity",
+      "Medical first aid team on site"
+    ]
+  }
+}

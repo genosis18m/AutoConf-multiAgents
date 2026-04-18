@@ -1,0 +1,237 @@
+{
+  "sponsor": {
+    "sponsors": [
+      {
+        "rank": 1,
+        "company_name": "JPMorgan Chase",
+        "industry": "Financial Services / FinTech",
+        "relevance_score": 0.98,
+        "estimated_budget": "$150,000–300,000",
+        "contact_info": {"email": "techsponsors@jpmorgan.com", "linkedin": "linkedin.com/company/jpmorgan-chase"},
+        "rationale": "NYC headquartered global investment bank with a massive technology innovation division. Title sponsor of major NYC tech events.",
+        "outreach_email": "Dear JPMorgan Chase Tech Events Team,\n\nWe are organizing New York's premier Technology Conference at the Javits Center and believe JPMorgan Chase's technology leadership makes you the ideal presenting sponsor.\n\nLet's connect.\n\nConferenceAI Team"
+      },
+      {
+        "rank": 2,
+        "company_name": "Google NYC",
+        "industry": "Cloud / AI / Search",
+        "relevance_score": 0.97,
+        "estimated_budget": "$100,000–200,000",
+        "contact_info": {"email": "devrel-events@google.com", "linkedin": "linkedin.com/company/google"},
+        "rationale": "Google's NYC campus hosts thousands of engineers. Cloud Next NYC and Google for Startups NYC are key community touchpoints.",
+        "outreach_email": "Dear Google NYC Partnerships Team,\n\nOur New York Technology Conference attracts 15,000+ developers and executives. Google Cloud's presence would be the anchor of our sponsor pavilion.\n\nBest,\nConferenceAI Team"
+      },
+      {
+        "rank": 3,
+        "company_name": "Bloomberg LP",
+        "industry": "Financial Technology / Media",
+        "relevance_score": 0.95,
+        "estimated_budget": "$80,000–150,000",
+        "contact_info": {"email": "events@bloomberg.com", "linkedin": "linkedin.com/company/bloomberg"},
+        "rationale": "Bloomberg is New York's tech unicorn and a major employer of engineers and data scientists. Natural sponsor for NYC tech events.",
+        "outreach_email": "Dear Bloomberg Events Team,\n\nWith your tech-first culture and 7,000 NYC engineers, Bloomberg at NYC TechConf makes perfect sense. We're offering premier visibility across 15,000 attendees.\n\nSincerely,\nConferenceAI Team"
+      },
+      {
+        "rank": 4,
+        "company_name": "Salesforce",
+        "industry": "CRM / Cloud Software",
+        "relevance_score": 0.91,
+        "estimated_budget": "$60,000–100,000",
+        "contact_info": {"email": "sponsorships@salesforce.com", "linkedin": "linkedin.com/company/salesforce"},
+        "rationale": "Salesforce is a top NYC employer with Salesforce Tower under construction in Manhattan. Regularly sponsors Dreamforce-scale events.",
+        "outreach_email": "Dear Salesforce Events Team,\n\nNYC TechConf 2026 is the ideal platform to showcase Einstein AI and Salesforce's platform innovations to 15,000 enterprise professionals.\n\nBest regards,\nConferenceAI Team"
+      },
+      {
+        "rank": 5,
+        "company_name": "MongoDB",
+        "industry": "Developer Tools / Database",
+        "relevance_score": 0.88,
+        "estimated_budget": "$40,000–70,000",
+        "contact_info": {"email": "events@mongodb.com", "linkedin": "linkedin.com/company/mongodb"},
+        "rationale": "MongoDB is HQ'd in NYC with a strong developer community focus. Very active in NYC tech events.",
+        "outreach_email": "Dear MongoDB Team,\n\nYour NYC HQ and developer-first culture make MongoDB a natural fit for our conference. We'd love to give your team a hands-on demo stage.\n\nBest,\nConferenceAI Team"
+      }
+    ],
+    "total_found": 5,
+    "search_queries_used": ["Technology conference sponsors New York NYC", "NYC tech companies sponsorship events 2026"]
+  },
+  "speaker": {
+    "speakers": [
+      {
+        "name": "Sam Altman",
+        "title": "CEO",
+        "organization": "OpenAI",
+        "relevance_score": 1.0,
+        "influence_score": 1.0,
+        "topics": ["The Future of AI", "AGI & Society", "AI Safety"],
+        "suggested_slot": "Keynote Day 1 — 9:30 AM",
+        "bio_summary": "CEO of OpenAI, the company behind GPT-4 and ChatGPT. The world's most influential voice in artificial intelligence.",
+        "source_url": "https://openai.com"
+      },
+      {
+        "name": "Jensen Huang",
+        "title": "Founder & CEO",
+        "organization": "NVIDIA",
+        "relevance_score": 0.99,
+        "influence_score": 1.0,
+        "topics": ["GPU Computing", "AI Infrastructure", "The Next Wave of AI"],
+        "suggested_slot": "Keynote Day 1 — 11:00 AM",
+        "bio_summary": "Founder and CEO of NVIDIA, the company powering the AI revolution with its GPU chips. One of the most iconic technology CEOs of this era.",
+        "source_url": "https://nvidia.com"
+      },
+      {
+        "name": "Fei-Fei Li",
+        "title": "Professor & Co-Director, Stanford Human-Centered AI Institute",
+        "organization": "Stanford University / World Labs",
+        "relevance_score": 0.97,
+        "influence_score": 0.98,
+        "topics": ["Computer Vision", "Human-Centered AI", "AI Ethics & Inclusion"],
+        "suggested_slot": "Keynote Day 2 — 10:00 AM",
+        "bio_summary": "Inventor of ImageNet and co-director of Stanford HAI. A global authority on AI ethics and human-centered machine learning.",
+        "source_url": "https://ai.stanford.edu/~feifeili"
+      },
+      {
+        "name": "Yann LeCun",
+        "title": "Chief AI Scientist",
+        "organization": "Meta AI (FAIR)",
+        "relevance_score": 0.96,
+        "influence_score": 0.97,
+        "topics": ["Deep Learning", "Self-Supervised Learning", "AI Beyond LLMs"],
+        "suggested_slot": "Session Day 1 — 2:00 PM",
+        "bio_summary": "Turing Award winner and pioneer of convolutional neural networks. Leads Meta's Fundamental AI Research lab.",
+        "source_url": "https://yann.lecun.com"
+      },
+      {
+        "name": "Demis Hassabis",
+        "title": "CEO & Co-founder",
+        "organization": "Google DeepMind",
+        "relevance_score": 0.98,
+        "influence_score": 0.99,
+        "topics": ["AlphaFold", "Scientific AI", "Reinforcement Learning"],
+        "suggested_slot": "Session Day 2 — 2:00 PM",
+        "bio_summary": "Co-founder and CEO of DeepMind. Nobel Prize-linked for AlphaFold's revolutionary impact on protein science. One of the founding fathers of modern AI.",
+        "source_url": "https://deepmind.google"
+      }
+    ],
+    "agenda_mapping": [
+      {"time_slot": "Keynote Day 1 — 9:30 AM", "speaker": "Sam Altman", "topic": "The Future of Artificial General Intelligence"},
+      {"time_slot": "Keynote Day 1 — 11:00 AM", "speaker": "Jensen Huang", "topic": "Accelerating AI: The Next Era of GPU Computing"},
+      {"time_slot": "Session Day 1 — 2:00 PM", "speaker": "Yann LeCun", "topic": "Beyond Large Language Models: What AI Needs Next"},
+      {"time_slot": "Keynote Day 2 — 10:00 AM", "speaker": "Fei-Fei Li", "topic": "Human-Centered AI: Building Intelligence That Serves Humanity"},
+      {"time_slot": "Session Day 2 — 2:00 PM", "speaker": "Demis Hassabis", "topic": "AlphaFold, Science, and the Next Frontier of AI Discovery"}
+    ]
+  },
+  "venue": {
+    "venues": [
+      {
+        "rank": 1,
+        "name": "Jacob K. Javits Convention Center",
+        "address": "429 11th Ave, New York, NY 10001",
+        "city": "New York, USA",
+        "capacity": 25000,
+        "estimated_cost": "$80,000–200,000",
+        "rating": 4.6,
+        "pros": ["Largest convention space in NYC", "Hudson Yards proximity", "World-class AV infrastructure", "Multiple halls", "Easy subway/bus access"],
+        "cons": ["Very high cost", "Requires 6+ month advance booking for major dates"],
+        "google_maps_url": "https://maps.google.com/?q=Javits+Convention+Center+NYC",
+        "google_place_id": "ChIJJavitsNYC"
+      },
+      {
+        "rank": 2,
+        "name": "The Shed at Hudson Yards",
+        "address": "545 W 30th St, New York, NY 10001",
+        "city": "New York, USA",
+        "capacity": 5000,
+        "estimated_cost": "$45,000–80,000",
+        "rating": 4.8,
+        "pros": ["Iconic architecture", "Flexible space design", "Premium experience", "Close to Javits"],
+        "cons": ["Higher per-head cost", "Limited to smaller conferences"],
+        "google_maps_url": "https://maps.google.com/?q=The+Shed+Hudson+Yards+NYC",
+        "google_place_id": "ChIJShedHudsonYardsNYC"
+      },
+      {
+        "rank": 3,
+        "name": "Marriott Marquis Times Square",
+        "address": "1535 Broadway, New York, NY 10036",
+        "city": "New York, USA",
+        "capacity": 4000,
+        "estimated_cost": "$50,000–90,000",
+        "rating": 4.5,
+        "pros": ["Times Square icon", "Full hotel amenities", "Multiple ballrooms", "Excellent catering", "Central Manhattan location"],
+        "cons": ["Traffic congestion in Midtown", "Premium hotel prices for attendees"],
+        "google_maps_url": "https://maps.google.com/?q=Marriott+Marquis+Times+Square",
+        "google_place_id": "ChIJMarriottMarquisNYC"
+      }
+    ]
+  },
+  "ticketing": {
+    "tiers": [
+      {"tier": "Early Bird", "price": 299, "availability": "First 1000 (8 weeks before)", "perks": ["Full 2-day access", "Workshops", "Networking dinner", "Recordings", "Swag"]},
+      {"tier": "General Admission", "price": 599, "availability": "General sale", "perks": ["Full 2-day access", "Workshops", "Networking reception", "Recordings"]},
+      {"tier": "VIP", "price": 1499, "availability": "Limited to 200", "perks": ["All GA perks", "Speaker dinner", "VIP lounge", "1:1 roundtables", "Priority seating"]},
+      {"tier": "Student", "price": 99, "availability": "500 seats with .edu email", "perks": ["Full conference access", "Student networking session"]}
+    ],
+    "conversion_estimates": {"Early Bird": 0.20, "General Admission": 0.60, "VIP": 0.05, "Student": 0.15},
+    "recommended_platform": "Eventbrite / Hopin (credit cards, Apple Pay, Google Pay)",
+    "notes": "NYC audience has the highest willingness to pay globally. VIP pricing at $1,499 is market-standard for premium conferences like AWS re:Invent or Salesforce Dreamforce."
+  },
+  "pricing": {
+    "revenue_projection": {"early_bird": 897000, "general_admission": 5391000, "vip": 1498500, "student": 297000, "total": 8083500},
+    "cost_breakdown": {"venue": 150000, "catering": 200000, "av_production": 80000, "speaker_fees": 150000, "marketing": 75000, "logistics": 50000, "platform_fees": 25000, "total": 730000},
+    "profit_margin_pct": 91.0,
+    "recommended_ticket_price": 599,
+    "notes": "NYC pricing reflects a world-class tech event. Margin is high because of scale. Re-invest surplus into live streaming, satellite cities, and keynote production."
+  },
+  "gtm": {
+    "channels": [
+      {
+        "channel": "LinkedIn",
+        "strategy": "Target NYC metro area tech executives, VCs, and startup founders via sponsored posts and direct InMail.",
+        "message_template": "🗽 NYC TechConf 2026 is OFFICIAL — Javits Center | 15,000 attendees | Sam Altman, Jensen Huang & more. Early bird tickets live NOW.",
+        "target_communities": ["NYC Tech Leaders", "Silicon Alley", "Wall Street Meets Tech", "VC Community NYC"]
+      },
+      {
+        "channel": "Twitter/X",
+        "strategy": "Build hype through speaker teaser clips, countdown, and media partnerships with TechCrunch, The Verge.",
+        "message_template": "The wait is over. NYC TechConf 2026 has arrived. 5 world-changing speakers. 1 iconic venue. Get your ticket before it sells out. #NYCTech #TechConf2026",
+        "target_communities": ["#NYCTech", "#AIConference", "#StartupNYC", "#FutureOfAI"]
+      },
+      {
+        "channel": "TechCrunch / The Information",
+        "strategy": "Exclusive interview with a headline speaker published 6 weeks before event, driving viral coverage.",
+        "message_template": "Partner with TechCrunch for an exclusive 'behind the scenes' piece featuring speaker interviews and sneak peek content.",
+        "target_communities": ["TechCrunch readers", "The Information subscribers", "HN readers"]
+      }
+    ],
+    "timeline": [
+      {"week": "12 weeks before", "action": "First speaker announced via TechCrunch exclusive"},
+      {"week": "10 weeks before", "action": "Early bird opens, LinkedIn campaign, PR blast"},
+      {"week": "8 weeks before", "action": "Speaker #2 & #3 announced, video teaser release"},
+      {"week": "6 weeks before", "action": "Early bird closes, GA opens, partner co-marketing push"},
+      {"week": "4 weeks before", "action": "Final lineup revealed, VIP dinner invitations sent"},
+      {"week": "2 weeks before", "action": "Last-chance GA, hotel block reminder, press preview"},
+      {"week": "1 week before", "action": "Full logistics email, app download prompt, live stream link"}
+    ],
+    "key_messages": [
+      "New York's most important tech conference of 2026",
+      "Where the future of AI is being decided",
+      "15,000 innovators, one iconic city",
+      "The conference Silicon Valley wishes it hosted"
+    ]
+  },
+  "ops": {
+    "logistics_plan": {
+      "pre_event": ["Venue contract signed 6 months prior", "AV production company hired 4 months prior", "Speaker travel & hotel coordinated by event manager", "Volunteer recruitment via EventBrite volunteer program"],
+      "day_of": ["Registration opens 2.5hr before keynote", "Digital badge & NFC wristbands", "Dedicated media/press zone", "Live stream production room", "Satellite watch parties in 5 cities"],
+      "post_event": ["All recordings on YouTube within 24hr", "Speaker feedback forms", "Sponsor leads delivered within 48hr", "Post-event NPS survey"]
+    },
+    "team_requirements": {"event_manager": 3, "volunteers": 80, "av_technicians": 15, "security": 40, "catering_staff": 60, "media_team": 5},
+    "risk_mitigation": [
+      "Weather contingency plan (indoor-only format)",
+      "On-site cybersecurity team for payment and data security",
+      "Medical first aid team with AED stations",
+      "Overflow live stream rooms with 500-seat capacity each",
+      "Backup speakers confirmed for each keynote slot"
+    ]
+  }
+}
