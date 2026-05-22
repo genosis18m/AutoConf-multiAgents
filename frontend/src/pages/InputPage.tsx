@@ -1,34 +1,22 @@
 import { ConferenceForm } from '../components/input/ConferenceForm'
 import { EventAILLogo } from '../components/branding/EventAILLogo'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useConferenceStore } from '../store/useConferenceStore'
-import { loadDemo, getResults } from '../lib/api'
+import { DEMO_DATA } from '../lib/demoData'
 
 export function InputPage() {
   const navigate = useNavigate()
   const { setSessionId, setAllResults, reset } = useConferenceStore()
-  const [loadingDemo, setLoadingDemo] = useState<string | null>(null)
 
-  const handleDemoClick = async (city: string) => {
-    setLoadingDemo(city)
-    try {
-      reset()
-      // 1. Get a demo session_id from backend
-      const session = await loadDemo(city)
-      // 2. Immediately fetch the full pre-cached results
-      const { results } = await getResults(session.session_id)
-      // 3. Pre-load results into store (simulation hook reads from here)
-      setAllResults(results)
-      // 4. Set session id (triggers useDemoSimulation on DashboardPage)
-      setSessionId(session.session_id)
-      // 5. Go to dashboard — simulation will animate and then auto-redirect to results
-      navigate('/dashboard')
-    } catch (err) {
-      console.error(err)
-    } finally {
-      setLoadingDemo(null)
-    }
+  const handleDemoClick = (city: string) => {
+    // All demo data is bundled in the frontend — no backend call needed.
+    // Works on Vercel even without a deployed backend.
+    const data = DEMO_DATA[city]
+    if (!data) return
+    reset()
+    setAllResults(data)
+    setSessionId(`demo_${city}_local`)
+    navigate('/dashboard')
   }
 
 
@@ -58,19 +46,17 @@ export function InputPage() {
           <div className="flex flex-wrap justify-center gap-3">
             <button
               onClick={() => handleDemoClick('delhi')}
-              disabled={loadingDemo !== null}
               className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
               style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)' }}
             >
-              {loadingDemo === 'delhi' ? 'Loading...' : '🇮🇳 AI Summit Delhi'}
+              🇮🇳 AI Summit Delhi
             </button>
             <button
               onClick={() => handleDemoClick('new_york')}
-              disabled={loadingDemo !== null}
               className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
               style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)' }}
             >
-              {loadingDemo === 'new_york' ? 'Loading...' : '🇺🇸 SaaS Growth NY'}
+              🇺🇸 SaaS Growth NY
             </button>
           </div>
         </div>
