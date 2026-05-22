@@ -3,20 +3,25 @@ import { useNavigate } from 'react-router-dom'
 import { useConferenceStore } from '../store/useConferenceStore'
 import { useWebSocket } from '../hooks/useWebSocket'
 import { useAgentStatus } from '../hooks/useAgentStatus'
+import { useDemoSimulation } from '../hooks/useDemoSimulation'
 import { AgentStatusGrid } from '../components/dashboard/AgentStatusGrid'
 import { ProgressTimeline } from '../components/dashboard/ProgressTimeline'
 import { LiveLogs } from '../components/dashboard/LiveLogs'
 import { GlowButton } from '../components/shared/GlowButton'
 import { SparkleButton } from '../components/shared/SparkleButton'
-
 import { CreditCardWidget } from '../components/shared/CreditCardWidget'
 
 export function DashboardPage() {
   const { sessionId, isComplete, isRunning, agentStatuses, input } = useConferenceStore()
   const navigate = useNavigate()
 
-  useWebSocket(sessionId)
-  useAgentStatus(sessionId)
+  const isDemo = sessionId?.startsWith('demo_') ?? false
+
+  // For real sessions, connect WebSocket and poll status
+  useWebSocket(isDemo ? null : sessionId)
+  useAgentStatus(isDemo ? null : sessionId)
+  // For demo sessions, simulate agent-by-agent animation
+  useDemoSimulation(isDemo ? sessionId : null)
 
   useEffect(() => {
     if (!sessionId) navigate('/')

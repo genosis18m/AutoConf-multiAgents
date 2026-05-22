@@ -3,6 +3,7 @@ import { GlowButton } from '../shared/GlowButton'
 import { SparkleButton } from '../shared/SparkleButton'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import { exportPDF } from '../../lib/api'
+import { API_BASE } from '../../lib/constants'
 
 // ─── Download icon ────────────────────────────────────────────────────────────
 function DownloadIcon() {
@@ -79,25 +80,29 @@ export function ExportButton({
     setErrorMessage(null)
 
     try {
-      const blob = await exportPDF(sessionId)
+      // Use fetch so the browser creates the blob in same-origin context,
+      // making anchor.download work correctly for the PDF filename.
+      const url = `${API_BASE}/export/${sessionId}`
 
-      // Build a local object URL and trigger browser download
-      const url = URL.createObjectURL(blob)
-      const filename = `conference-plan-${sessionId.slice(0, 8)}.pdf`
+      const response = await fetch(url, { method: 'POST' })
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}`)
+      }
+
+      const arrayBuffer = await response.arrayBuffer()
+      const blob = new Blob([arrayBuffer], { type: 'application/pdf' })
+      const objectUrl = URL.createObjectURL(blob)
 
       const anchor = document.createElement('a')
-      anchor.href = url
-      anchor.download = filename
+      anchor.href = objectUrl
+      anchor.download = 'ai_conference_plan.pdf'
       anchor.style.display = 'none'
       document.body.appendChild(anchor)
       anchor.click()
       document.body.removeChild(anchor)
-
-      // Clean up the object URL after a short delay
-      setTimeout(() => URL.revokeObjectURL(url), 10_000)
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 10_000)
 
       setExportState('success')
-      // Reset back to idle after 3 s so the button can be clicked again
       setTimeout(() => setExportState('idle'), 3000)
     } catch (err: unknown) {
       const message =
@@ -106,7 +111,6 @@ export function ExportButton({
           : 'Failed to export PDF. Please try again.'
       setErrorMessage(message)
       setExportState('error')
-      // Reset to idle after 6 s so the user can retry
       setTimeout(() => {
         setExportState('idle')
         setErrorMessage(null)

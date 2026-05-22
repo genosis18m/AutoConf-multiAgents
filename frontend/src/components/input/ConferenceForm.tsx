@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { CategorySelector } from './CategorySelector'
 import { MatrixLoader } from '../shared/MatrixLoader'
-import { NuclearButton } from '../shared/NuclearButton'
 import { useConferenceStore } from '../../store/useConferenceStore'
 import { startGeneration } from '../../lib/api'
 
@@ -297,7 +296,18 @@ export function ConferenceForm() {
           {error && <p className="error-msg">{error}</p>}
 
           <div style={{ marginBlockEnd: '1rem' }}>
-            <NuclearButton type="submit" />
+            <button
+              type="submit"
+              className="w-full py-3 rounded-md font-bold transition-colors uppercase tracking-widest text-sm"
+              style={{
+                background: 'var(--accent-indigo)',
+                color: '#fff',
+                border: 'none',
+                boxShadow: '0 4px 14px rgba(79, 142, 247, 0.4)'
+              }}
+            >
+              Start Agents
+            </button>
           </div>
         </div>
       </form>

@@ -1,7 +1,38 @@
 import { ConferenceForm } from '../components/input/ConferenceForm'
 import { EventAILLogo } from '../components/branding/EventAILLogo'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useConferenceStore } from '../store/useConferenceStore'
+import { loadDemo, getResults } from '../lib/api'
 
 export function InputPage() {
+  const navigate = useNavigate()
+  const { setSessionId, setAllResults, reset } = useConferenceStore()
+  const [loadingDemo, setLoadingDemo] = useState<string | null>(null)
+
+  const handleDemoClick = async (city: string) => {
+    setLoadingDemo(city)
+    try {
+      reset()
+      // 1. Get a demo session_id from backend
+      const session = await loadDemo(city)
+      // 2. Immediately fetch the full pre-cached results
+      const { results } = await getResults(session.session_id)
+      // 3. Pre-load results into store (simulation hook reads from here)
+      setAllResults(results)
+      // 4. Set session id (triggers useDemoSimulation on DashboardPage)
+      setSessionId(session.session_id)
+      // 5. Go to dashboard — simulation will animate and then auto-redirect to results
+      navigate('/dashboard')
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoadingDemo(null)
+    }
+  }
+
+
+
   return (
     <div className="relative h-full overflow-x-hidden overflow-y-auto" style={{ background: 'var(--bg-primary)' }}>
       {/* Subtle ambient orbs */}
@@ -14,11 +45,34 @@ export function InputPage() {
         {/* Hero text */}
         <div className="mb-3 flex max-w-xl flex-col items-center text-center">
           <EventAILLogo variant="hero" className="mb-2 mx-auto" />
+        </div>
 
-          <p className="mx-auto max-w-md text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Tell us about your conference. Seven research agents will find
-            sponsors, speakers, venues, pricing, and more — in minutes.
+        {/* Demo Disclaimer Banner */}
+        <div 
+          className="w-full max-w-2xl mb-4 p-4 rounded-xl border border-dashed text-center"
+          style={{ borderColor: 'var(--accent-indigo)', background: 'rgba(79, 142, 247, 0.05)' }}
+        >
+          <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
+            This platform is powered by live AI agents (Groq + Gemini + Tavily). To plan your own event, connect your API keys (also needs Google Maps API key). Or, explore a pre-generated demo below to see the basic functioning of how it should work:
           </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => handleDemoClick('delhi')}
+              disabled={loadingDemo !== null}
+              className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
+              style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)' }}
+            >
+              {loadingDemo === 'delhi' ? 'Loading...' : '🇮🇳 AI Summit Delhi'}
+            </button>
+            <button
+              onClick={() => handleDemoClick('new_york')}
+              disabled={loadingDemo !== null}
+              className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
+              style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)' }}
+            >
+              {loadingDemo === 'new_york' ? 'Loading...' : '🇺🇸 SaaS Growth NY'}
+            </button>
+          </div>
         </div>
 
         {/* Form container */}

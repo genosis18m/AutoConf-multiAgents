@@ -1,13 +1,11 @@
-nohup: ignoring input
 
 > conference-ai-frontend@1.0.0 dev
-> vite --host 0.0.0.0 --port 5173
+> vite --port 5174
 
+Port 5174 is in use, trying another one...
 
-  VITE v5.4.21  ready in 260 ms
+  VITE v5.4.21  ready in 263 ms
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: http://10.81.103.196:5173/
-8:14:44 PM [vite] hmr update /src/pages/InputPage.tsx, /src/index.css
-8:14:58 PM [vite] hmr update /src/components/branding/EventAILLogo.tsx, /src/index.css
-8:15:07 PM [vite] hmr update /src/components/input/ConferenceForm.tsx, /src/index.css
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help

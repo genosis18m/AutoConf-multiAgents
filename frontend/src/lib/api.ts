@@ -9,6 +9,11 @@ export async function startGeneration(input: ConferenceInput): Promise<Session> 
   return data
 }
 
+export async function loadDemo(city: string): Promise<Session> {
+  const { data } = await api.get<{ session_id: string }>(`/demo/${city}`)
+  return { session_id: data.session_id, status: 'completed' }
+}
+
 export async function getStatus(sessionId: string) {
   const { data } = await api.get(`/status/${sessionId}`)
   return data
@@ -26,5 +31,6 @@ export async function getAgentResult(sessionId: string, agent: string) {
 
 export async function exportPDF(sessionId: string): Promise<Blob> {
   const response = await api.post(`/export/${sessionId}`, {}, { responseType: 'blob' })
-  return response.data
+  // Explicitly re-type as PDF so browsers recognise it correctly
+  return new Blob([response.data], { type: 'application/pdf' })
 }
