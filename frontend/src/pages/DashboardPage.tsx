@@ -41,14 +41,14 @@ export function DashboardPage() {
   const totalProgress = agents.reduce((sum, a) => sum + (a.progress || 0), 0) / Math.max(agents.length, 1)
 
   return (
-    <div className="p-6 space-y-6 animate-page-in">
+    <div className="p-3 md:p-6 space-y-4 md:space-y-6 animate-page-in">
       {/* Page header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
+          <h1 className="text-xl md:text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
             Agent Dashboard
           </h1>
-          <p className="text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+          <p className="text-xs md:text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>
             {input
               ? `${input.category} · ${input.geography} · ${input.audience_size.toLocaleString()} attendees`
               : 'Waiting for input…'}
@@ -60,8 +60,8 @@ export function DashboardPage() {
         )}
       </div>
 
-      {/* Credit Card Stats bar */}
-      <div className="flex flex-wrap gap-6 justify-between items-center">
+      {/* Credit Card Stats bar — horizontal scroll on mobile */}
+      <div className="flex gap-4 md:gap-6 justify-start md:justify-between items-center overflow-x-auto pb-1 -mx-3 px-3 md:mx-0 md:px-0">
         {[
           {
             label: 'COMPLETED',
@@ -82,7 +82,7 @@ export function DashboardPage() {
             footerLogo: 'v7 engine',
           },
         ].map(stat => (
-          <div key={stat.title} className="flex-1 min-w-[320px] max-w-[400px] flex justify-center">
+          <div key={stat.title} className="flex-shrink-0 flex justify-center" style={{ minWidth: '260px', maxWidth: '360px' }}>
             <CreditCardWidget 
               title={stat.title}
               subtitle={stat.label}
@@ -93,23 +93,22 @@ export function DashboardPage() {
         ))}
       </div>
 
-      <div className="flex gap-6">
-        {/* Phase timeline sidebar */}
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+        {/* Phase timeline sidebar — collapses to horizontal strip on mobile */}
         <div
-          className="w-64 flex-shrink-0 rounded-xl p-5"
+          className="md:w-64 flex-shrink-0 rounded-xl p-4 md:p-5"
           style={{
             background: 'var(--bg-surface)',
             border: '1px solid var(--border-subtle)',
           }}
         >
           <p
-            className="text-sm font-bold uppercase tracking-[0.2em] mb-6"
+            className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-4 md:mb-6"
             style={{ color: 'var(--text-dim)' }}
           >
             Phases
           </p>
-          <ProgressTimeline />
-        </div>
+          <ProgressTimeline /></div>
 
         {/* Agent grid */}
         <div className="flex-1 space-y-6">
