@@ -7,9 +7,24 @@ import { useDemoSimulation } from '../hooks/useDemoSimulation'
 import { AgentStatusGrid } from '../components/dashboard/AgentStatusGrid'
 import { ProgressTimeline } from '../components/dashboard/ProgressTimeline'
 import { LiveLogs } from '../components/dashboard/LiveLogs'
-import { GlowButton } from '../components/shared/GlowButton'
 import { SparkleButton } from '../components/shared/SparkleButton'
-import { CreditCardWidget } from '../components/shared/CreditCardWidget'
+
+function StatTile({ label, value, unit, tone }: { label: string; value: string; unit?: string; tone: string }) {
+  return (
+    <div
+      className="flex-1 rounded-2xl px-5 py-4"
+      style={{ background: 'var(--ink-raise)', border: '1px solid var(--line)', minWidth: 0 }}
+    >
+      <p className="kicker" style={{ fontSize: '0.6rem' }}>{label}</p>
+      <p className="mt-1.5 flex items-baseline gap-1.5">
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '2rem', lineHeight: 1, letterSpacing: '-0.03em', color: tone }}>
+          {value}
+        </span>
+        {unit && <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--faint)' }}>{unit}</span>}
+      </p>
+    </div>
+  )
+}
 
 export function DashboardPage() {
   const { sessionId, isComplete, isRunning, agentStatuses, input } = useConferenceStore()
@@ -17,17 +32,14 @@ export function DashboardPage() {
 
   const isDemo = sessionId?.startsWith('demo_') ?? false
 
-  // For real sessions, connect WebSocket and poll status
   useWebSocket(isDemo ? null : sessionId)
   useAgentStatus(isDemo ? null : sessionId)
-  // For demo sessions, simulate agent-by-agent animation
   useDemoSimulation(isDemo ? sessionId : null)
 
   useEffect(() => {
     if (!sessionId) navigate('/')
   }, [sessionId, navigate])
 
-  // Auto-redirect to results when all agents finish
   useEffect(() => {
     if (isComplete) {
       const timer = setTimeout(() => navigate('/results'), 1500)
@@ -41,87 +53,50 @@ export function DashboardPage() {
   const totalProgress = agents.reduce((sum, a) => sum + (a.progress || 0), 0) / Math.max(agents.length, 1)
 
   return (
-    <div className="p-3 md:p-6 space-y-4 md:space-y-6 animate-page-in">
+    <div className="p-4 md:p-7 space-y-5 md:space-y-6 animate-page-in">
       {/* Page header */}
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl md:text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
-            Agent Dashboard
+          <p className="kicker">Step 02 — The Floor</p>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(1.7rem, 3vw, 2.3rem)', letterSpacing: '-0.03em', color: 'var(--chalk)', marginTop: '0.35rem' }}>
+            Agents at work
           </h1>
-          <p className="text-xs md:text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+          <p className="text-sm mt-1" style={{ color: 'var(--haze)' }}>
             {input
-              ? `${input.category} · ${input.geography} · ${input.audience_size.toLocaleString()} attendees`
-              : 'Waiting for input…'}
+              ? <>{input.category} · {input.geography} · {input.audience_size.toLocaleString()} attendees</>
+              : isDemo
+                ? 'Pre-generated demo · seven agents replaying a finished run'
+                : 'Waiting for a brief…'}
           </p>
         </div>
 
-        {isComplete && (
-          <SparkleButton onClick={() => navigate('/results')} label="View Results" />
-        )}
+        {isComplete && <SparkleButton onClick={() => navigate('/results')} label="View the plan" />}
       </div>
 
-      {/* Credit Card Stats bar — horizontal scroll on mobile */}
-      <div className="flex gap-4 md:gap-6 justify-start md:justify-between items-center overflow-x-auto pb-1 -mx-3 px-3 md:mx-0 md:px-0">
-        {[
-          {
-            label: 'COMPLETED',
-            value: `${completedCount} / 7`,
-            title: 'AGENTS',
-            footerLogo: 'status: online',
-          },
-          {
-            label: 'RUNNING',
-            value: `${runningCount}`,
-            title: 'ACTIVE',
-            footerLogo: 'processing',
-          },
-          {
-            label: 'PROGRESS',
-            value: `${Math.round(totalProgress)}%`,
-            title: 'COMPLETION',
-            footerLogo: 'v7 engine',
-          },
-        ].map(stat => (
-          <div key={stat.title} className="flex-shrink-0 flex justify-center" style={{ minWidth: '260px', maxWidth: '360px' }}>
-            <CreditCardWidget 
-              title={stat.title}
-              subtitle={stat.label}
-              value={stat.value}
-              footerLogo={stat.footerLogo}
-            />
-          </div>
-        ))}
+      {/* Stat strip */}
+      <div className="flex gap-3 md:gap-4 overflow-x-auto pb-1 -mx-4 px-4 md:mx-0 md:px-0">
+        <StatTile label="Wrapped" value={`${completedCount}/7`} unit="agents" tone="var(--mint)" />
+        <StatTile label="On air" value={`${runningCount}`} unit="now" tone="var(--ember)" />
+        <StatTile label="Completion" value={`${Math.round(totalProgress)}`} unit="%" tone="var(--iris)" />
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-        {/* Phase timeline sidebar — collapses to horizontal strip on mobile */}
+        {/* Run of show — phases */}
         <div
-          className="md:w-64 flex-shrink-0 rounded-xl p-4 md:p-5"
-          style={{
-            background: 'var(--bg-surface)',
-            border: '1px solid var(--border-subtle)',
-          }}
+          className="md:w-64 flex-shrink-0 rounded-2xl p-5"
+          style={{ background: 'var(--ink-raise)', border: '1px solid var(--line)' }}
         >
-          <p
-            className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-4 md:mb-6"
-            style={{ color: 'var(--text-dim)' }}
-          >
-            Phases
-          </p>
-          <ProgressTimeline /></div>
+          <p className="kicker mb-5">Run of show</p>
+          <ProgressTimeline />
+        </div>
 
-        {/* Agent grid */}
-        <div className="flex-1 space-y-6">
+        {/* Agent board */}
+        <div className="flex-1 space-y-6 min-w-0">
           <AgentStatusGrid />
 
           {/* Live logs */}
-          <div className="mt-6">
-            <p
-              className="text-[11px] font-semibold uppercase tracking-wider mb-4"
-              style={{ color: 'var(--text-dim)' }}
-            >
-              Live Logs
-            </p>
+          <div>
+            <p className="kicker mb-3">Live feed</p>
             <LiveLogs />
           </div>
         </div>
@@ -130,34 +105,34 @@ export function DashboardPage() {
       {/* Completion banner */}
       {isComplete && (
         <div
-          className="rounded-xl p-5 flex items-center justify-between"
+          className="rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
           style={{
-            background: 'var(--bg-surface)',
-            border: '1px solid rgba(87,204,153,0.3)',
+            background: 'color-mix(in srgb, var(--mint) 8%, var(--ink-raise))',
+            border: '1px solid color-mix(in srgb, var(--mint) 35%, transparent)',
             animation: 'fade-in-up 0.4s var(--ease-out-expo) forwards',
           }}
         >
           <div>
-            <p className="font-semibold text-base" style={{ color: 'var(--accent-green)' }}>
-              All 7 agents completed
+            <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.15rem', color: 'var(--mint)' }}>
+              That's a wrap — all 7 agents done
             </p>
-            <p className="text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-              Your complete conference plan is ready to view.
+            <p className="text-sm mt-0.5" style={{ color: 'var(--haze)' }}>
+              Your complete conference plan is ready to read and export.
             </p>
           </div>
-          <SparkleButton onClick={() => navigate('/results')} label="View Results" />
+          <SparkleButton onClick={() => navigate('/results')} label="View the plan" />
         </div>
       )}
 
       {/* Idle state */}
       {!isRunning && !isComplete && (
         <div
-          className="rounded-xl p-10 text-center"
-          style={{ background: 'var(--bg-surface)', border: '1px dashed var(--border-subtle)' }}
+          className="rounded-2xl p-10 text-center"
+          style={{ background: 'var(--ink-raise)', border: '1px dashed var(--line)' }}
         >
-          <p className="font-semibold mb-1" style={{ color: 'var(--text-secondary)' }}>No active session</p>
-          <p className="text-sm" style={{ color: 'var(--text-dim)' }}>
-            Go to <strong style={{ color: 'var(--accent-indigo)' }}>New Plan</strong> to generate a conference.
+          <p style={{ fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--haze)', marginBottom: 4 }}>No active session</p>
+          <p className="text-sm" style={{ color: 'var(--faint)' }}>
+            Head to <strong style={{ color: 'var(--ember)' }}>The Brief</strong> to open the floor.
           </p>
         </div>
       )}

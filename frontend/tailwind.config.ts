@@ -6,32 +6,32 @@ const config: Config = {
     extend: {
       colors: {
         bg: {
-          primary: '#0A0A0F',
-          surface: '#12121A',
-          elevated: '#1A1A24',
+          primary: '#14101C',
+          surface: '#1C1726',
+          elevated: '#271F33',
         },
         accent: {
-          cyan: '#00E5FF',
-          orange: '#FF6B35',
-          green: '#00E676',
-          purple: '#B388FF',
-          yellow: '#FFD740',
-          red: '#FF5252',
+          cyan: '#FF6A3D',
+          orange: '#F2A65A',
+          green: '#54D6A6',
+          purple: '#9B8CFF',
+          yellow: '#FFC85A',
+          red: '#FF5C5C',
         },
         text: {
-          primary: '#E8E8EC',
-          secondary: '#9898A0',
-          dim: '#5A5A66',
+          primary: '#F4ECE3',
+          secondary: '#B2A8BE',
+          dim: '#6F6582',
         },
         border: {
-          subtle: '#2A2A3A',
-          glow: 'rgba(0, 229, 255, 0.3)',
+          subtle: '#38304A',
+          glow: 'rgba(255, 106, 61, 0.3)',
         },
       },
       fontFamily: {
-        display: ['Clash Display', 'Satoshi', 'sans-serif'],
-        body: ['Plus Jakarta Sans', 'General Sans', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        display: ['Bricolage Grotesque', 'serif'],
+        body: ['Hanken Grotesk', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
       },
       borderRadius: {
         sm: '8px',
@@ -53,8 +53,8 @@ const config: Config = {
       },
       keyframes: {
         'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 8px #00E5FF' },
-          '50%': { boxShadow: '0 0 28px #00E5FF' },
+          '0%, 100%': { boxShadow: '0 0 8px #FF6A3D' },
+          '50%': { boxShadow: '0 0 28px #FF6A3D' },
         },
         'gradient-shift': {
           '0%': { backgroundPosition: '0% 50%' },

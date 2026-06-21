@@ -4,7 +4,7 @@ import { useConferenceStore } from '../../store/useConferenceStore'
 const NAV_ITEMS = [
   {
     to: '/',
-    label: 'New Plan',
+    label: 'Brief',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 5v14M5 12h14" />
@@ -13,7 +13,7 @@ const NAV_ITEMS = [
   },
   {
     to: '/dashboard',
-    label: 'Dashboard',
+    label: 'Floor',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -25,7 +25,7 @@ const NAV_ITEMS = [
   },
   {
     to: '/results',
-    label: 'Results',
+    label: 'Plan',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
@@ -54,10 +54,10 @@ export function MobileNav() {
         left: 0,
         right: 0,
         zIndex: 50,
-        background: 'rgba(22, 27, 34, 0.95)',
+        background: 'rgba(14, 11, 21, 0.94)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '1px solid var(--border-subtle)',
+        borderTop: '1px solid var(--line)',
         paddingBottom: 'env(safe-area-inset-bottom)',
       }}
     >

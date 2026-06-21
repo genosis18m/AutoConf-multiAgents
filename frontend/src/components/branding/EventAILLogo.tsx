@@ -16,8 +16,8 @@ export function EventAILLogo({ variant = 'full', className }: EventAILLogoProps)
       >
         <defs>
           <linearGradient id="eventailMarkGradient" x1="22" y1="18" x2="136" y2="140" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stopColor="#2A79B7" />
-            <stop offset="1" stopColor="#0B365E" />
+            <stop offset="0" stopColor="#FF7E4D" />
+            <stop offset="1" stopColor="#8C5BD6" />
           </linearGradient>
         </defs>
 
@@ -92,21 +92,21 @@ export function EventAILLogo({ variant = 'full', className }: EventAILLogoProps)
       <div className={clsx(isHeader ? 'leading-none' : 'space-y-1')}>
         <div
           className={clsx(
-            'font-semibold uppercase tracking-[0.14em]',
-            isHeader ? 'text-[1.08rem] sm:text-[1.18rem]' : isHero ? 'text-[2rem] sm:text-[2.9rem]' : 'text-[2.5rem] sm:text-[4.25rem]',
+            'font-bold tracking-[-0.02em]',
+            isHeader ? 'text-[1.18rem] sm:text-[1.3rem]' : isHero ? 'text-[2.2rem] sm:text-[3.1rem]' : 'text-[2.5rem] sm:text-[4.25rem]',
           )}
-          style={{ color: '#2A79B7' }}
+          style={{ fontFamily: 'var(--font-display)', color: 'var(--chalk)' }}
         >
-          EventAIL
+          Event<span style={{ color: 'var(--ember)' }}>AIL</span>
         </div>
         <div
           className={clsx(
-            'uppercase tracking-[0.16em]',
-            isHeader ? 'text-[0.5rem] sm:text-[0.56rem]' : isHero ? 'text-[0.58rem] sm:text-[0.76rem]' : 'text-[0.7rem] sm:text-[0.95rem]',
+            'uppercase',
+            isHeader ? 'text-[0.5rem] sm:text-[0.56rem]' : isHero ? 'text-[0.58rem] sm:text-[0.74rem]' : 'text-[0.7rem] sm:text-[0.9rem]',
           )}
-          style={{ color: 'rgba(186, 221, 255, 0.9)' }}
+          style={{ fontFamily: 'var(--font-mono)', letterSpacing: '0.22em', color: 'var(--faint)' }}
         >
-          7-Agent Autonomous Platform
+          Conference Production · 7 Agents
         </div>
       </div>
     </div>
