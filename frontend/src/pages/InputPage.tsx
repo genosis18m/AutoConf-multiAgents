@@ -1,16 +1,15 @@
 import { ConferenceForm } from '../components/input/ConferenceForm'
-import { EventAILLogo } from '../components/branding/EventAILLogo'
 import { useNavigate } from 'react-router-dom'
 import { useConferenceStore } from '../store/useConferenceStore'
 import { DEMO_DATA } from '../lib/demoData'
+
+const DEPARTMENTS = ['Sponsors', 'Speakers', 'Venues', 'Ticketing', 'Pricing', 'Go-to-Market', 'Operations']
 
 export function InputPage() {
   const navigate = useNavigate()
   const { setSessionId, setAllResults, reset } = useConferenceStore()
 
   const handleDemoClick = (city: string) => {
-    // All demo data is bundled in the frontend — no backend call needed.
-    // Works on Vercel even without a deployed backend.
     const data = DEMO_DATA[city]
     if (!data) return
     reset()
@@ -19,100 +18,125 @@ export function InputPage() {
     navigate('/dashboard')
   }
 
-
+  // Headline words rise in sequence on load (the "marquee").
+  const line1 = ['Brief', 'the', 'agents.']
+  const line2 = ['Get', 'the', 'whole', 'conference.']
 
   return (
-    <div className="relative h-full overflow-x-hidden overflow-y-auto" style={{ background: 'var(--bg-primary)' }}>
-      {/* Subtle ambient orbs */}
-      <div className="gradient-orb w-[500px] h-[500px] top-[-100px] left-[-120px]" style={{ background: 'var(--accent-indigo)' }} />
-      <div className="gradient-orb w-[400px] h-[400px] bottom-[-80px] right-[-100px]" style={{ background: 'var(--accent-purple)' }} />
+    <div className="relative h-full flex flex-col overflow-x-hidden overflow-y-auto" style={{ background: 'var(--ink)' }}>
+      {/* Ambient orbs */}
+      <div className="gradient-orb w-[460px] h-[460px] top-[-150px] left-[-160px]" style={{ background: 'var(--ember)' }} />
+      <div className="gradient-orb w-[400px] h-[400px] bottom-[-140px] right-[-120px]" style={{ background: 'var(--iris)' }} />
 
-      {/* Content */}
-      <div className="relative z-10 flex min-h-full flex-col items-center justify-start px-4 py-3 sm:px-6 sm:py-4 lg:justify-center">
-
-        {/* Hero text */}
-        <div className="mb-3 flex max-w-xl flex-col items-center text-center">
-          <EventAILLogo variant="hero" className="mb-2 mx-auto" />
-        </div>
-
-        {/* Demo Disclaimer Banner */}
-        <div 
-          className="w-full max-w-2xl mb-4 p-4 rounded-xl border border-dashed text-center"
-          style={{ borderColor: 'var(--accent-indigo)', background: 'rgba(79, 142, 247, 0.05)' }}
-        >
-          <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
-            This platform is powered by live AI agents (Groq + Gemini + Tavily). To plan your own event, connect your API keys (also needs Google Maps API key). Or, explore a pre-generated demo below to see the basic functioning of how it should work:
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <button
-              onClick={() => handleDemoClick('delhi')}
-              className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
-              style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)' }}
-            >
-              🇮🇳 AI Summit Delhi
-            </button>
-            <button
-              onClick={() => handleDemoClick('new_york')}
-              className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors"
-              style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)' }}
-            >
-              🇺🇸 SaaS Growth NY
-            </button>
+      {/* ── Demo bar (pinned at the top) ── */}
+      <div
+        className="relative z-10 flex-shrink-0 border-b"
+        style={{ borderColor: 'var(--line-soft)', background: 'rgba(255,106,61,0.045)' }}
+      >
+        <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 py-2.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <span className="kicker" style={{ fontSize: '0.62rem' }}>
+            Explore a finished plan — no keys needed
+          </span>
+          <div className="flex flex-wrap gap-2.5">
+            <DemoPass flag="🇮🇳" name="AI Summit" place="New Delhi" onClick={() => handleDemoClick('delhi')} />
+            <DemoPass flag="🇺🇸" name="SaaS Growth" place="New York" onClick={() => handleDemoClick('new_york')} />
           </div>
         </div>
+      </div>
 
-        {/* Form container */}
-        <div
-          className="w-full max-w-2xl rounded-xl p-4 sm:p-5"
-          style={{
-            background: 'var(--bg-glass)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid var(--border-subtle)',
-            boxShadow: 'var(--shadow-card)',
-          }}
-        >
-          <ConferenceForm />
-        </div>
+      {/* ── Hero + brief (vertically centered, fits the viewport) ── */}
+      <div className="relative z-10 flex-1 flex items-center">
+        <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 py-7 lg:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-center">
 
-        {/* Footer */}
-        <footer className="mt-3 w-full max-w-2xl">
-          <div
-            className="rounded-xl px-4 py-3"
-            style={{
-              background: 'var(--bg-surface)',
-              border: '1px solid var(--border-subtle)',
-            }}
-          >
-            <div className="flex flex-wrap justify-center gap-2">
-              {['Sponsors', 'Speakers', 'Venues', 'Pricing', 'GTM Strategy', 'Operations'].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full px-3 py-1 text-xs font-medium"
-                  style={{
-                    background: 'var(--bg-elevated)',
-                    border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-secondary)',
-                  }}
-                >
-                  {item}
+            {/* Marquee hero */}
+            <div>
+              <p className="kicker mb-4">Autonomous conference production</p>
+
+              <h1
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 800,
+                  lineHeight: 0.97,
+                  letterSpacing: '-0.035em',
+                  fontSize: 'clamp(2.15rem, 4.8vw, 3.9rem)',
+                  color: 'var(--chalk)',
+                }}
+              >
+                <span className="block">
+                  {line1.map((w, i) => (
+                    <span key={i} className="marquee-word" style={{ animationDelay: `${i * 90}ms`, marginRight: '0.28em' }}>{w}</span>
+                  ))}
                 </span>
-              ))}
+                <span className="block">
+                  {line2.map((w, i) => (
+                    <span
+                      key={i}
+                      className="marquee-word"
+                      style={{ animationDelay: `${(line1.length + i) * 90}ms`, marginRight: '0.28em', color: i === 3 ? 'var(--ember)' : undefined }}
+                    >
+                      {w}
+                    </span>
+                  ))}
+                </span>
+              </h1>
+
+              <p className="mt-4 max-w-md" style={{ color: 'var(--haze)', fontSize: '1rem', lineHeight: 1.55 }}>
+                Seven specialist agents research sponsors, speakers, venues, pricing,
+                go-to-market and operations in parallel — then hand you one
+                export-ready plan.
+              </p>
+
+              {/* Department index */}
+              <div className="mt-6 flex flex-wrap gap-x-4 gap-y-1.5">
+                {DEPARTMENTS.map((d, i) => (
+                  <span key={d} className="inline-flex items-baseline gap-1.5" style={{ fontSize: '0.8rem', color: 'var(--haze)' }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--faint)' }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    {d}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div
-              className="mt-3 flex flex-col items-center justify-between gap-2 border-t pt-3 text-center sm:flex-row sm:text-left"
-              style={{ borderColor: 'var(--border-subtle)' }}
-            >
-              <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                EventAIL plans multi-day conferences using seven autonomous agents with live progress updates.
-              </p>
-              <p className="text-xs" style={{ color: 'var(--text-dim)' }}>
-                Results export-ready in minutes
+            {/* The brief (entry pass) */}
+            <div>
+              <ConferenceForm />
+              <p className="mt-3 text-xs text-center lg:text-left" style={{ color: 'var(--faint)', lineHeight: 1.5 }}>
+                Live runs use your own Groq · Gemini · Tavily keys (plus Google Maps).
               </p>
             </div>
           </div>
-        </footer>
+        </div>
       </div>
     </div>
+  )
+}
+
+function DemoPass({ flag, name, place, onClick }: { flag: string; name: string; place: string; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="group flex items-center gap-2.5 rounded-full pl-2.5 pr-3.5 py-1.5 transition-all"
+      style={{ background: 'var(--ink-raise)', border: '1px solid var(--line)' }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.borderColor = 'var(--ember)'
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.borderColor = 'var(--line)'
+      }}
+    >
+      <span className="text-base leading-none">{flag}</span>
+      <span className="leading-tight whitespace-nowrap" style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '0.85rem', color: 'var(--chalk)' }}>
+        {name}
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.06em', color: 'var(--faint)', textTransform: 'uppercase', marginLeft: 6 }}>
+          {place}
+        </span>
+      </span>
+      <span style={{ color: 'var(--ember)', fontSize: '1rem', transition: 'transform 200ms' }} className="group-hover:translate-x-0.5">→</span>
+    </button>
   )
 }

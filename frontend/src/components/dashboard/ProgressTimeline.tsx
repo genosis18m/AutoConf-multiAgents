@@ -1,12 +1,11 @@
 import { useConferenceStore } from '../../store/useConferenceStore'
 import clsx from 'clsx'
-import { OrbitLoader } from '../shared/OrbitLoader'
 
 const PHASES = [
-  { id: 1, label: 'Phase 1', desc: 'Sponsor + Speaker + Venue', parallel: true },
-  { id: 2, label: 'Phase 2', desc: 'Pricing & Footfall', parallel: false },
-  { id: 3, label: 'Phase 3', desc: 'GTM & Communications', parallel: false },
-  { id: 4, label: 'Phase 4', desc: 'Ops & Logistics', parallel: false },
+  { id: 1, label: 'Research', desc: 'Sponsors · Speakers · Venue', parallel: true },
+  { id: 2, label: 'Pricing', desc: 'Pricing & footfall', parallel: false },
+  { id: 3, label: 'Go-to-Market', desc: 'Comms & channels', parallel: false },
+  { id: 4, label: 'Operations', desc: 'Run of show & logistics', parallel: false },
 ]
 
 export function ProgressTimeline() {
@@ -17,54 +16,66 @@ export function ProgressTimeline() {
       {PHASES.map((phase, i) => {
         const isDone = currentPhase > phase.id
         const isActive = currentPhase === phase.id
+        const tone = isDone ? 'var(--mint)' : isActive ? 'var(--ember)' : 'var(--faint)'
 
         return (
-          <div key={phase.id} className="flex gap-3">
-            {/* Line + dot */}
+          <div key={phase.id} className="flex gap-3.5">
+            {/* Marker + connector */}
             <div className="flex flex-col items-center">
               <div
-                className={clsx(
-                  'w-3.5 h-3.5 rounded-full border-2 flex-shrink-0 mt-0.5 transition-all duration-[800ms] ease-out-expo relative',
-                )}
-                style={{
-                  borderColor: isDone ? '#00E676' : isActive ? '#00E5FF' : 'rgba(255,255,255,0.1)',
-                  backgroundColor: isDone ? '#00E676' : isActive ? '#00E5FF' : 'var(--bg-elevated)',
-                  boxShadow: isDone ? '0 0 12px rgba(0,230,118,0.5)' : isActive ? '0 0 15px rgba(0,229,255,0.6)' : 'none',
-                }}
+                className="relative flex items-center justify-center flex-shrink-0 mt-0.5"
+                style={{ width: 22, height: 22 }}
               >
                 {isActive && (
-                  <span className="animate-ping absolute inset-0 rounded-full bg-cyan-400 opacity-60"></span>
+                  <span
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'var(--ember)', opacity: 0.25, animation: 'pulse-glow 1.8s ease-in-out infinite' }}
+                  />
                 )}
+                <span
+                  className="rounded-full flex items-center justify-center"
+                  style={{
+                    width: isDone || isActive ? 22 : 12,
+                    height: isDone || isActive ? 22 : 12,
+                    border: `2px solid ${tone}`,
+                    background: isDone ? 'var(--mint)' : isActive ? 'color-mix(in srgb, var(--ember) 20%, var(--ink-raise))' : 'var(--ink-high)',
+                    transition: 'all 0.5s var(--ease-out-expo)',
+                  }}
+                >
+                  {isDone && (
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="3.5">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  )}
+                </span>
               </div>
               {i < PHASES.length - 1 && (
                 <div
-                  className="w-0.5 flex-1 mt-1.5 min-h-8 transition-all duration-[1200ms] ease-out-expo"
-                  style={{ 
-                    background: isDone ? 'linear-gradient(180deg, #00E676, rgba(0,230,118,0.2))' : 'var(--border-subtle)',
-                    boxShadow: isDone ? '0 0 8px rgba(0,230,118,0.3)' : 'none'
-                  }}
+                  className="w-0.5 flex-1 my-1.5 min-h-9"
+                  style={{ background: isDone ? 'var(--mint)' : 'var(--line)', transition: 'all 1s var(--ease-out-expo)' }}
                 />
               )}
             </div>
 
             {/* Content */}
-            <div className="pb-6">
-              <div className="flex items-center gap-2.5">
-                <p
-                  className={clsx('text-base font-extrabold tracking-widest transition-colors duration-500 uppercase', isDone || isActive ? '' : 'opacity-40')}
-                  style={{ 
-                    color: isDone ? '#00E676' : isActive ? '#00ffaa' : 'var(--text-primary)',
-                    textShadow: isDone ? '0 0 10px rgba(0,230,118,0.3)' : isActive ? '0 0 10px rgba(0,255,170,0.4)' : 'none'
-                  }}
-                >
-                  {phase.label}
-                  {phase.parallel && <span className="ml-2 text-xs uppercase font-extrabold opacity-70 border rounded-md px-1.5 py-0.5 border-current shadow-sm">(parallel)</span>}
-                </p>
-                {isActive && <OrbitLoader size={20} label="" />}
+            <div className="pb-6" style={{ opacity: isDone || isActive ? 1 : 0.5 }}>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.16em', color: 'var(--faint)' }}>
+                  PHASE {phase.id}
+                </span>
+                {phase.parallel && (
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.54rem', letterSpacing: '0.12em', color: 'var(--iris)', border: '1px solid color-mix(in srgb, var(--iris) 35%, transparent)', borderRadius: 999, padding: '1px 6px' }}>
+                    PARALLEL
+                  </span>
+                )}
               </div>
-              <p className="text-sm mt-1.5 font-medium transition-opacity duration-500" style={{ color: 'var(--text-dim)', opacity: isDone || isActive ? 1 : 0.5 }}>
-                {phase.desc}
+              <p
+                className={clsx('mt-0.5')}
+                style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1rem', letterSpacing: '-0.01em', color: isDone ? 'var(--mint)' : isActive ? 'var(--ember)' : 'var(--chalk)' }}
+              >
+                {phase.label}
               </p>
+              <p className="text-xs mt-0.5" style={{ color: 'var(--haze)' }}>{phase.desc}</p>
             </div>
           </div>
         )

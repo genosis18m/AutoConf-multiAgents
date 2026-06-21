@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { useConferenceStore } from '../../store/useConferenceStore'
-import { AGENT_ICONS } from '../../lib/constants'
 
 export function LiveLogs() {
   const { logs } = useConferenceStore()
@@ -13,11 +12,11 @@ export function LiveLogs() {
   if (logs.length === 0) {
     return (
       <div
-        className="rounded-lg p-4 text-center h-32 flex items-center justify-center"
-        style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}
+        className="rounded-xl p-4 text-center h-32 flex items-center justify-center"
+        style={{ background: 'var(--ink-deep)', border: '1px solid var(--line)' }}
       >
-        <p className="text-xs" style={{ color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
-          Logs will appear here when agents start...
+        <p style={{ color: 'var(--faint)', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.08em' }}>
+          The feed opens when the first agent goes live.
         </p>
       </div>
     )
@@ -25,18 +24,27 @@ export function LiveLogs() {
 
   return (
     <div
-      className="rounded-lg p-3 h-48 overflow-y-auto space-y-1"
-      style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}
+      className="rounded-xl p-3.5 h-52 overflow-y-auto space-y-1"
+      style={{ background: 'var(--ink-deep)', border: '1px solid var(--line)' }}
     >
       {logs.map((log, i) => (
-        <div key={i} className="log-entry flex gap-3 font-mono text-[11px]" style={{ animationDelay: `0ms` }}>
-          <span style={{ color: 'var(--text-dim)', minWidth: '70px' }}>
+        <div key={i} className="log-entry flex gap-3 items-baseline" style={{ animationDelay: '0ms' }}>
+          <span style={{ color: 'var(--faint)', minWidth: 62, fontSize: '0.68rem' }}>
             {new Date(log.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
           </span>
-          <span className="font-bold uppercase tracking-widest" style={{ color: '#00ffaa', minWidth: '80px' }}>
-            {log.agent === 'system' ? 'SYSTEM' : log.agent}
+          <span
+            style={{
+              color: log.agent === 'system' ? 'var(--iris)' : 'var(--ember)',
+              minWidth: 76,
+              fontSize: '0.66rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+            }}
+          >
+            {log.agent === 'system' ? 'system' : log.agent}
           </span>
-          <span style={{ color: 'var(--text-secondary)' }}>{log.message}</span>
+          <span style={{ color: 'var(--haze)', fontSize: '0.72rem' }}>{log.message}</span>
         </div>
       ))}
       <div ref={bottomRef} />

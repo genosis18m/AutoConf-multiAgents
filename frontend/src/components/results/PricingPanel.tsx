@@ -310,8 +310,8 @@ export function PricingPanel() {
             <AreaChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="cyanGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#00E5FF" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#00E5FF" stopOpacity={0.02} />
+                  <stop offset="5%" stopColor="#FF6A3D" stopOpacity={0.32} />
+                  <stop offset="95%" stopColor="#FF6A3D" stopOpacity={0.02} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />
@@ -332,11 +332,11 @@ export function PricingPanel() {
               <Area
                 type="monotone"
                 dataKey="cumulative"
-                stroke="#00E5FF"
+                stroke="#FF6A3D"
                 strokeWidth={2}
                 fill="url(#cyanGrad)"
                 dot={false}
-                activeDot={{ r: 5, fill: '#00E5FF', stroke: '#0A0A0F', strokeWidth: 2 }}
+                activeDot={{ r: 5, fill: '#FF6A3D', stroke: '#14101C', strokeWidth: 2 }}
               />
             </AreaChart>
           </ResponsiveContainer>

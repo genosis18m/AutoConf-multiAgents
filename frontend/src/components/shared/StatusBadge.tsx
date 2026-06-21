@@ -1,42 +1,38 @@
-import clsx from 'clsx'
 import type { AgentStatusType } from '../../types'
-import { OrbitLoader } from './OrbitLoader'
 
-const config: Record<AgentStatusType, { label: string; color: string; bg: string; pulse?: boolean }> = {
-  queued:    { label: 'Queued',    color: 'text-text-secondary', bg: 'bg-bg-elevated', pulse: false },
-  running:   { label: 'Running',   color: 'text-accent-cyan',    bg: 'bg-accent-cyan/10', pulse: true },
-  completed: { label: 'Done',      color: 'text-accent-green',   bg: 'bg-accent-green/10', pulse: false },
-  failed:    { label: 'Failed',    color: 'text-accent-red',     bg: 'bg-red-500/10', pulse: false },
+const config: Record<string, { label: string; tone: string; pulse?: boolean }> = {
+  queued:    { label: 'Queued', tone: 'var(--faint)' },
+  running:   { label: 'Live',   tone: 'var(--ember)', pulse: true },
+  completed: { label: 'Done',   tone: 'var(--mint)' },
+  failed:    { label: 'Failed', tone: 'var(--accent-red)' },
 }
 
-export function StatusBadge({ status }: { status: AgentStatusType }) {
-  const { label, color, bg, pulse } = config[status]
+export function StatusBadge({ status }: { status?: AgentStatusType }) {
+  const { label, tone, pulse } = config[status ?? 'queued'] ?? config.queued
+
   return (
     <span
-      className={clsx(
-        'inline-flex items-center gap-2 px-3 py-1 rounded-sm text-[10px] font-bold tracking-[0.15em] uppercase border transition-all duration-300',
-        bg
-      )}
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full"
       style={{
-        fontFamily: 'JetBrains Mono, monospace',
-        color: `var(--${color.replace('text-', '')})`,
-        borderColor: `var(--${color.replace('text-', '')})`,
-        boxShadow: pulse ? `0 0 10px var(--${color.replace('text-', '')}), inset 0 0 5px var(--${color.replace('text-', '')})` : 'none',
-        textShadow: pulse ? `0 0 5px var(--${color.replace('text-', '')})` : 'none',
-        opacity: status === 'queued' ? 0.7 : 1,
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.58rem',
+        fontWeight: 600,
+        letterSpacing: '0.16em',
+        textTransform: 'uppercase',
+        color: tone,
+        background: `color-mix(in srgb, ${tone} 12%, transparent)`,
+        border: `1px solid color-mix(in srgb, ${tone} 30%, transparent)`,
+        opacity: (status ?? 'queued') === 'queued' ? 0.75 : 1,
       }}
     >
-      {status === 'running' ? (
-        <OrbitLoader size={14} label="" />
-      ) : (
-        <span
-          className="w-1.5 h-1.5 rounded-full flex-shrink-0 shadow-sm"
-          style={{ 
-            backgroundColor: `var(--${color.replace('text-', '')})`,
-            boxShadow: `0 0 4px var(--${color.replace('text-', '')})` 
-          }}
-        />
-      )}
+      <span
+        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+        style={{
+          backgroundColor: tone,
+          boxShadow: `0 0 6px ${tone}`,
+          animation: pulse ? 'pulse-glow 1.6s ease-in-out infinite' : 'none',
+        }}
+      />
       {label}
     </span>
   )

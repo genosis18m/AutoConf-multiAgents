@@ -10,7 +10,12 @@ export function Header() {
   return (
     <header
       className="h-14 md:h-16 border-b flex items-center justify-between px-4 md:px-7 flex-shrink-0"
-      style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-surface)' }}
+      style={{
+        borderColor: 'var(--line)',
+        background: 'rgba(20, 16, 28, 0.86)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+      }}
     >
       <button
         className="flex items-center gap-2.5 group"
@@ -26,14 +31,17 @@ export function Header() {
       <div className="flex items-center gap-2 md:gap-3">
         {sessionId && (
           <span
-            className="hidden sm:inline text-xs px-2.5 py-1 rounded-full"
+            className="hidden sm:inline-flex items-center gap-1.5 text-[0.62rem] px-2.5 py-1 rounded-full"
             style={{
-              color: 'var(--text-dim)',
-              background: 'var(--bg-elevated)',
-              border: '1px solid var(--border-subtle)',
+              fontFamily: 'var(--font-mono)',
+              letterSpacing: '0.1em',
+              color: 'var(--faint)',
+              background: 'var(--ink-high)',
+              border: '1px solid var(--line)',
             }}
           >
-            {sessionId.slice(0, 8)}
+            <span style={{ color: 'var(--ember)' }}>#</span>
+            {sessionId.slice(0, 8).toUpperCase()}
           </span>
         )}
         {isRunning  && <StatusBadge status="running" />}

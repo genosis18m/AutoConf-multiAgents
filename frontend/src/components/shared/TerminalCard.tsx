@@ -10,211 +10,115 @@ export interface TerminalCardProps {
   onClick?: () => void;
 }
 
-export const TerminalCard = ({ title = "Terminal", command, children, minWidth = '344px', className, onClick }: TerminalCardProps) => {
+/**
+ * PlanCard — a "call sheet" entry. A titled card with a mono filing slug,
+ * an ember index tick, and a clean ink body. Keeps the TerminalCard API so
+ * every result panel re-skins for free.
+ */
+export const TerminalCard = ({ title = 'Entry', command, children, minWidth = '344px', className, onClick }: TerminalCardProps) => {
   return (
     <StyledWrapper style={{ minWidth, cursor: onClick ? 'pointer' : 'default' }} className={className} onClick={onClick}>
-      <div className="card">
-        <div className="wrap border">
-          <div className="terminal">
-            <hgroup className="head">
-              <p className="title">
-                <svg width="16px" height="16px" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth={2} stroke="currentColor" fill="none">
-                  <path d="M7 15L10 12L7 9M13 15H17M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" />
-                </svg>
-                {title}
-              </p>
-              <button className="copy_toggle" tabIndex={-1} type="button">
-                <svg width="16px" height="16px" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth={2} stroke="currentColor" fill="none">
-                  <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
-                  <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                </svg>
-              </button>
-            </hgroup>
-            <div className="body">
-              {command && (
-                <pre className="pre" style={{ marginBottom: children ? "16px" : 0 }}>{"          "}<code>-&nbsp;</code>{"\n"}{"          "}<code>npx&nbsp;</code>{"\n"}{"          "}<code className="cmd" data-cmd={command} />{"\n"}{"        "}</pre>
-              )}
-              {children}
-            </div>
-          </div>
+      <div className="plan-card">
+        <header className="head">
+          <span className="tick" aria-hidden="true" />
+          <p className="title">{title}</p>
+          {command && <code className="slug">{command}</code>}
+        </header>
+        <div className="body">
+          {children}
         </div>
       </div>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
   display: flex;
   flex: 1;
 
-  .card {
-    padding: 1rem;
-    overflow: hidden;
-    border: 1px solid #c5c5c5;
-    border-radius: 12px;
-    background-color: #d9d9d92f;
-    backdrop-filter: blur(8px);
+  .plan-card {
+    position: relative;
     width: 100%;
     height: 100%;
-  }
-  .wrap {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    position: relative;
-    z-index: 10;
-    border: 0.5px solid #525252;
-    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.015), transparent 40%),
+      var(--ink-raise);
+    border: 1px solid var(--line);
+    border-radius: 14px;
     overflow: hidden;
-    height: 100%;
+    transition: border-color 250ms cubic-bezier(0.16,1,0.3,1),
+                box-shadow 250ms cubic-bezier(0.16,1,0.3,1),
+                transform 250ms cubic-bezier(0.16,1,0.3,1);
   }
-  .terminal {
-    display: flex;
-    flex-direction: column;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      "Liberation Mono", "Courier New", monospace;
-    height: 100%;
+
+  .plan-card:hover {
+    border-color: #4a4060;
+    box-shadow: 0 14px 36px rgba(8, 5, 14, 0.45);
+    transform: translateY(-2px);
   }
+
+  /* ember accent rail down the left edge */
+  .plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--ember), rgba(255,106,61,0));
+    opacity: 0.85;
+  }
+
   .head {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-    min-height: 40px;
-    padding-inline: 12px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    background-color: #202425;
+    gap: 10px;
+    padding: 11px 16px 11px 18px;
+    border-bottom: 1px solid var(--line-soft);
+    background: rgba(255, 255, 255, 0.018);
   }
+
+  .tick {
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--ember);
+    box-shadow: 0 0 10px rgba(255, 106, 61, 0.55);
+    flex-shrink: 0;
+  }
+
   .title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 2.5rem;
-    user-select: none;
+    font-family: var(--font-display);
     font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: -0.01em;
+    color: var(--chalk);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: #8e8e8e;
   }
-  .title > svg {
-    height: 18px;
-    width: 18px;
-    margin-top: 2px;
-    color: #006adc;
-  }
-  .copy_toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.25rem;
-    border: 0.65px solid #c1c2c5;
+
+  .slug {
     margin-left: auto;
-    border-radius: 6px;
-    background-color: #202425;
-    color: #8e8e8e;
-    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    color: var(--faint);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 45%;
+    flex-shrink: 1;
   }
-  .copy_toggle > svg {
-    width: 20px;
-    height: 20px;
-  }
-  .copy_toggle:active > svg > path,
-  .copy_toggle:focus-within > svg > path {
-    animation: clipboard-check 500ms linear forwards;
-  }
+
   .body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    position: relative;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    padding: 1rem;
-    line-height: 19px;
-    color: white;
-    background-color: black;
-  }
-  .pre {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-wrap: nowrap;
-    white-space: pre;
-    background-color: transparent;
-    overflow: hidden;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  .pre code:nth-child(1) {
-    color: #575757;
-  }
-  .pre code:nth-child(2) {
-    color: #e34ba9;
-  }
-  .cmd {
-    height: 19px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-  }
-  .cmd::before {
-    content: attr(data-cmd);
-    position: relative;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    background-color: transparent;
-    animation: inputs 8s steps(22) infinite;
-  }
-  .cmd::after {
-    content: "";
-    position: relative;
-    display: block;
-    height: 100%;
-    overflow: hidden;
-    background-color: transparent;
-    border-right: 0.15em solid #e34ba9;
-    animation: cursor 0.5s step-end infinite alternate, blinking 0.5s infinite;
-  }
-
-  @keyframes blinking {
-    20%,
-    80% {
-      transform: scaleY(1);
-    }
-    50% {
-      transform: scaleY(0);
-    }
-  }
-  @keyframes cursor {
-    50% {
-      border-right-color: transparent;
-    }
-  }
-  @keyframes inputs {
-    0%,
-    100% {
-      width: 0;
-    }
-    10%,
-    90% {
-      width: 58px;
-    }
-    30%,
-    70% {
-      width: 215px;
-      max-width: max-content;
-    }
-  }
-  @keyframes clipboard-check {
-    100% {
-      color: #fff;
-      d: path(
-        "M 9 5 H 7 a 2 2 0 0 0 -2 2 v 12 a 2 2 0 0 0 2 2 h 10 a 2 2 0 0 0 2 -2 V 7 a 2 2 0 0 0 -2 -2 h -2 M 9 5 a 2 2 0 0 0 2 2 h 2 a 2 2 0 0 0 2 -2 M 9 5 a 2 2 0 0 1 2 -2 h 2 a 2 2 0 0 1 2 2 m -6 9 l 2 2 l 4 -4"
-      );
-    }
+    padding: 16px;
+    color: var(--chalk);
   }
 `;
